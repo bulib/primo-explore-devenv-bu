@@ -1,0 +1,18 @@
+app.service('UserInfoService', [function () {
+    var vm = this;
+    vm.getUserSessionManagerService = getUserSessionManagerService;
+    vm.getJwtUtilService = getJwtUtilService;
+    vm.getDecodedToken = getDecodedToken;
+    
+    funtion getJwtUtilService(ctrl) {
+        return vm.getUserSessionManagerService(ctrl).jwtUtilService;
+    }
+    
+    function getUserSessionManagerService(ctrl) {
+        return ctrl.userSessionManagerService || ctrl.authenticationService.userSessionManagerService;
+    }
+    
+    function getDecodedToken(ctrl) {
+        return vm.getJwtUtilService(ctrl).getDecodedToken();
+    }
+}]);
