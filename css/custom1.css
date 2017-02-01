@@ -166,6 +166,7 @@ prm-brief-result .item-title {
 .fulltext > span:first-of-type,
 .fulltext_linktorsrc > span:first-of-type {
   color: #147114;
+  font-weight: 600;
 }
 prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon {
   float: left;
@@ -178,9 +179,14 @@ prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon {
   left: -1.5em;
 }
 
-/*Availability Gray*/
+/*Availability Statement*/
 .status-unavailable, [class*="unavailable"] > span:first-of-type, [class*="no_"] > span:first-of-type, .restricted > span:first-of-type, .duedate > span:first-of-type {
     color: #676767;
+}
+prm-search-result-availability-line {
+  line-height: 1.2em;
+  padding-top: .5em;
+  padding-bottom: .2em;
 }
 
 /*Results background make lighter from #f1f1f1 to #f8f8f8*/
@@ -293,4 +299,31 @@ md-card.default-card._md.md-primoExplore-theme {
 .md-headline {
     font-weight: 400;
     color: #4d6b82;
+}
+
+/*Home Page Images*/
+.buHomeImg {
+  border: 1px solid #aaaaaa;
+}
+.buHomeImg {
+  width: 300px;
+}
+@media (max-width: 400px) {
+  .buHomeImg {
+    width: 200px;
+  }
+}
+
+/*Contrast of headings in My Favorites*/
+/*My Favorites*/
+md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, md-toolbar:not(.md-menu-toolbar) .toolbar-title {
+    font-weight: 400;
+    font-size: 1.2em;
+    margin-right: .5em;
+    padding-left: .5em;
+}
+
+/*My Favorites, My Account Headers*/
+md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, md-toolbar:not(.md-menu-toolbar) .toolbar-title {
+    font-weight: 400;
 }
