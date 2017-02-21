@@ -92,9 +92,7 @@ md-dialog.light-on-dark-dialog {
 }
 
 /*Hide the redundant main menu links code text*/
-.md-subhead {
-    font-size: 16px;
-    line-height: 24px;
+prm-main-menu[menu-type=full] md-card-title md-card-title-text:only-child .md-subhead {
     display: none;
 }
 
@@ -326,4 +324,31 @@ md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, md-t
 /*My Favorites, My Account Headers*/
 md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, md-toolbar:not(.md-menu-toolbar) .toolbar-title {
     font-weight: 400;
+}
+
+/*Clickable logo*/
+prm-logo div.product-logo {
+    display:none;
+}
+
+prm-logo div.product-logo-local {
+ display: flex;
+}
+
+/*Full record gray overlay defect fix?*/
+body.md-dialog-is-showing  {
+    overflow-x:visible!important;
+}
+
+/*Citation trails*/
+
+/*Selected text highlighting*/
+::selection {
+    background: rgba(0, 188, 212, 0.25);
+}
+
+/*Send to first button hover*/
+.md-button.md-primary._md-focused:not([disabled]), .md-button.md-primary.hovered:not([disabled]), .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary:focus:not([disabled]), .md-button.md-primary:hover:not([disabled]) {
+  color: #080606;
+  background-color: rgba(58,58,58,.1);
 }
