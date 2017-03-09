@@ -13,8 +13,28 @@ var app = angular.module('viewCustom', ['angularLoad']);
   }, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
 })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-ga('create', 'UA-5204430-3', 'auto');
+ga('create', 'UA-70089149-1', 'auto');
 ga('send', 'pageview');
+
+app.run(['$rootScope', '$location', '$window', function ($rootScope, $location, $window) {
+  $rootScope.$on('$locationChangeSuccess', function (event) {
+    $window.ga('send', 'pageview', { location: $location.url() });
+  });
+}]);
+
+app.controller('prmLogoAfterController', [function () {
+  var vm = this;
+  vm.getIconLink = getIconLink;
+  function getIconLink() {
+    return vm.parentCtrl.iconLink;
+  }
+}]);
+
+app.component('prmLogoAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: 'prmLogoAfterController',
+  template: '<div class="product-logo product-logo-local" layout="row" layout-align="start center" layout-fill id="banner" tabindex="0" role="banner">\n  <a href="https://www.bu.edu/library/search">\n  <img class="logo-image" alt="{{::(\'nui.header.LogoAlt\' | translate)}}" ng-src="{{$ctrl.getIconLink()}}"/>\n  </a>\n  </div>'
+});
 
 function addProxy() {
   app.controller('prmServiceLinksAfterController', [function () {
