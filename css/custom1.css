@@ -352,3 +352,8 @@ body.md-dialog-is-showing  {
   color: #080606;
   background-color: rgba(58,58,58,.1);
 }
+
+/*Spacing for ed in brief result title*/
+prm-brief-result .item-title span {
+     padding-right: .1em;
+}
