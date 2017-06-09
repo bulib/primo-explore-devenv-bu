@@ -268,7 +268,8 @@ span[ng-if="cur.patronGroup"] {display:none;}
 div#virtualBrowse {
     display: none;
 }
-span[translate="brief.results.tabs.browseshelf"] {display:none;}
+button[aria-label="Virtual Browse"] {display:none;}
+
 
 /*Nov 2016 SP*/
 /*Highlighted Search Terms*/
@@ -356,4 +357,46 @@ body.md-dialog-is-showing  {
 /*Spacing for ed in brief result title*/
 prm-brief-result .item-title span {
      padding-right: .1em;
+}
+
+/*May 2017 SP/
+/*Hide Tags*/
+div#tags {display: none;}
+button[aria-label="Tags"] {display:none;}
+
+/*Browse Search*/
+/*Browse search bar background*/
+.prm-primary-bg, prm-browse-search-bar, prm-journals-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark:after, prm-tags-search-bar {
+    background-color: #333333;
+}
+/*Browse drop down*/
+.classic-input .search-scope {
+    background-color: #dcf3fe;
+    border-color: #dcf3fe;
+}
+
+/*Hide Browse Main Menu Link*/
+/*div.custom-links-container md-card:last-of-type {display:none;}*/
+/*prm-main-menu div.top-nav-bar-links a:last-of-type {display:none;}*/
+div.custom-links-container md-card:nth-of-type(6) {display:none;}
+prm-main-menu div.top-nav-bar-links a:nth-of-type(6) {display:none;}
+
+/*For new display type icon multiple versions*/
+prm-search-result-thumbnail-container .fan-img:nth-of-type(1) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+}
+prm-search-result-thumbnail-container .fan-img:nth-of-type(2) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+}
+prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+}
+prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+}
+prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(2) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+}
+prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
 }
