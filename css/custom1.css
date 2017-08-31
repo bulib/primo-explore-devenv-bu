@@ -607,3 +607,7 @@ div[ng-if="$ctrl.showPcAvailability && !$ctrl.searchInProgress"] {display:none;}
   width: 90% !important;
 }
 }
+.s-lch-widget-float-load {
+  border: 1px solid #286090 !important;
+  box-shadow: 0.1em 0.1em 0.1em #286090 !important;
+}
