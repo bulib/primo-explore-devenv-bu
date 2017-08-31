@@ -7,6 +7,10 @@
 */
 var app = angular.module('viewCustom', ['angularLoad']);
 
+var lcjs = document.createElement('script');
+lcjs.src = "https://v2.libanswers.com/load_chat.php?hash=0b9beff60316d9b71b1de06909bdf5c1";
+document.head.appendChild(lcjs);
+
 angular.element(document).ready(function () {
   if (window.location.href.indexOf('.ezproxy.bu.edu') > 0) {
     var n = window.location.href.replace('.ezproxy.bu.edu', '');
@@ -28,18 +32,4 @@ app.run(['$rootScope', '$location', '$window', function ($rootScope, $location, 
     $window.ga('send', 'pageview', { location: $location.url() });
   });
 }]);
-
-app.controller('prmLogoAfterController', [function () {
-  var vm = this;
-  vm.getIconLink = getIconLink;
-  function getIconLink() {
-    return vm.parentCtrl.iconLink;
-  }
-}]);
-
-app.component('prmLogoAfter', {
-  bindings: { parentCtrl: '<' },
-  controller: 'prmLogoAfterController',
-  template: '<div class="product-logo product-logo-local" layout="row" layout-align="start center" layout-fill id="banner" tabindex="0" role="banner">\n  <a href="https://www.bu.edu/library/search">\n  <img class="logo-image" alt="{{::(\'nui.header.LogoAlt\' | translate)}}" ng-src="{{$ctrl.getIconLink()}}"/>\n  </a>\n  </div>'
-});
 })();
