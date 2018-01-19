@@ -149,6 +149,9 @@ prm-brief-result .item-title {
     cursor: pointer;
 }
 
+/*Brief Result*/
+div.list-item-wrapper {background-color: #f9f9f9;}
+
 /*Pin*/
 .prm-secondary-color.prm-hue1, .result-item-actions .custom-button.pin-button, prm-search-bookmark-filter .prm-hue1.md-button, prm-topbar .prm-hue1.top-nav-bar, prm-recomendation-item .media-on-hover .pin-button {
     color: #22647B;
@@ -250,7 +253,7 @@ span[ng-if="cur.patronGroup"] {display:none;}
 
 /*Background color*/
 .full-view-inner-container.flex {
-    background-color: #eeeeee;
+    background-color: #f1f1f1;
     border-right: 1px #999999 solid;
 }
 .full-view-spacer.flex-xl-30.flex-md-0.flex-lg-20.flex-0 {
@@ -260,11 +263,19 @@ span[ng-if="cur.patronGroup"] {display:none;}
 .flex-xl-20.flex-lgPlus-15 {
     background-color: #e0e0e0;
 }
+/*Hide bX cover images, text, icon*/
+div[ng-if="$ctrl.rec.image"] {display: none;}
+span[translate="nui.suggestion.bx.message"] {display:none;}
+img[ng-if="$ctrl.rec.suggestion == 'BX'"] {display:none;}
+
 .full-view-aside.flex-xl-20.flex-md-25.flex-lg-25.flex {
     background-color: #e0e0e0;
 }
 .full-view-section .section-title {
     font-weight: 400;
+}
+.full-view-section .section-body {
+    padding-bottom: 0em;
 }
 
 /*Hide Virtual Browse
@@ -610,4 +621,16 @@ div[ng-if="$ctrl.showPcAvailability && !$ctrl.searchInProgress"] {display:none;}
 .s-lch-widget-float-load {
   border: 1px solid #286090 !important;
   box-shadow: 0.1em 0.1em 0.1em #286090 !important;
+}
+
+/*iOS11 workaround until Nov 2017 SP*/
+.md-dialog-container {
+  height: 100% !important;
+  position: fixed !important;
+  top: 0px !important;
+}
+
+/*Hide Collection nav from Full Display*/
+prm-record-collection-paths {
+    display: none;
 }
