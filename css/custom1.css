@@ -603,8 +603,7 @@ button[aria-label="Virtual Browse"]{
 
 
 /*Hide PCI toggle*/
-div[ng-if="$ctrl.showPcAvailability "] {display:none;}
-div[ng-if="$ctrl.showPcAvailability && !$ctrl.searchInProgress"] {display:none;}
+div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNewspapersSearch && !$ctrl.searchInProgress)"] {display:none;}
 
 /*LibChat*/
 /*Move for tablets and mobile*/
@@ -633,4 +632,43 @@ div[ng-if="$ctrl.showPcAvailability && !$ctrl.searchInProgress"] {display:none;}
 /*Hide Collection nav from Full Display*/
 prm-record-collection-paths {
     display: none;
+}
+/*Resource Recommender*/
+/*ResRec Brief results*/
+prm-resource-recommender .resource-image .resource-image-inner {
+    overflow: hidden;
+    max-width: 50px;
+    max-height: 50px;
+    margin-left: 0.5em;
+    float: left;
+}
+
+prm-resource-recommender md-card {
+  background-color: #ffffff;
+}
+
+prm-resource-recommender div.layout-sm-column div.layout-align-center-end {padding: 6px;}
+span[translate="nui.resRecomm.brief.fullviewLink"]{font-size: 1.1em; color: #257ABE;}
+
+/*ResRec full view*/
+md-card-title-text[translate="nui.resRecomm.type.label.library_information"] {
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: .75em;
+}
+.padding-large.prm-recommendations-fullview.layout-column {
+    background-color: #ffffff;
+}
+
+.prm-recommendations-fullview .resource-image {
+    float: left;
+}
+.prm-recommendations-fullview .resource-image .resource-image-inner img {
+    width: auto;
+}
+
+/*Clear button conflict on mobile*/
+@media (max-width: 599px){
+button[aria-label="Clear search text"] {display:none;}
 }
