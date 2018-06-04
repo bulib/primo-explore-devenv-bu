@@ -149,8 +149,11 @@ prm-brief-result .item-title {
     cursor: pointer;
 }
 
-/*Brief Result*/
-div.list-item-wrapper {background-color: #f9f9f9;}
+/*Brief Results - make lighter and blue on hover*/
+div.list-item-wrapper {background-color: #ffffff;}
+.md-button.arrow-link-button md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>.button-content:focus+._md-list-item-inner, .md-button.arrow-link-button md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>.button-content:focus+.md-list-item-inner, .md-button.arrow-link-button md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>.button-content:hover+._md-list-item-inner, .md-button.arrow-link-button md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>.button-content:hover+.md-list-item-inner, .prm-hover-list-element-bg, md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item>.md-button>.button-content:focus+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item>.md-button>.button-content:focus+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item>.md-button>.button-content:hover+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item>.md-button>.button-content:hover+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title.hover>span.md-button>span+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title.hover>span.md-button>span+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title:hover>span.md-button>span+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title:hover>span.md-button>span+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:focus+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:focus+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:hover+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:hover+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips .md-chip .md-chip-content:hover md-list-item>.md-button>strong+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips .md-chip .md-chip-content:hover md-list-item>.md-button>strong+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips md-chip .md-chip-content:hover md-list-item>.md-button>strong+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips md-chip .md-chip-content:hover md-list-item>.md-button>strong+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips .md-chip .md-chip-content:hover md-list-item>.md-button>strong+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips .md-chip .md-chip-content:hover md-list-item>.md-button>strong+.md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips md-chip .md-chip-content:hover md-list-item>.md-button>strong+._md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips md-chip .md-chip-content:hover md-list-item>.md-button>strong+.md-list-item-inner, prm-brief-result-container .list-item-primary-content:before, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:focus+._md-list-item-inner, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:focus+.md-list-item-inner, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:hover+._md-list-item-inner, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:hover+.md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+._md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+.md-list-item-inner, prm-tags-list .md-chips md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+._md-list-item-inner, prm-tags-list .md-chips md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+.md-list-item-inner, prm-tags-list md-chips .md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+._md-list-item-inner, prm-tags-list md-chips .md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+.md-list-item-inner, prm-tags-list md-chips md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+._md-list-item-inner, prm-tags-list md-chips md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>strong+.md-list-item-inner, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:focus+._md-list-item-inner, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:focus+.md-list-item-inner, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:hover+._md-list-item-inner, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item>.md-button>a:hover+.md-list-item-inner {
+    background-color: rgba(37, 122, 190, 0.05);
+}
 
 /*Pin*/
 .prm-secondary-color.prm-hue1, .result-item-actions .custom-button.pin-button, prm-search-bookmark-filter .prm-hue1.md-button, prm-topbar .prm-hue1.top-nav-bar, prm-recomendation-item .media-on-hover .pin-button {
@@ -190,9 +193,9 @@ prm-search-result-availability-line {
   padding-bottom: .2em;
 }
 
-/*Results background make lighter from #f1f1f1 to #f8f8f8*/
+/*Results count section background make lighter*/
 .prm-background.prm-hue2, html.prm-hue2, body.prm-hue2, .line-clamp-1::after, .line-clamp-2::after, .line-clamp-3::after, .line-clamp-4::after, .line-clamp-5::after, prm-search-result-list .results-title, prm-search-result-list .results-footer, prm-search-result-list md-list-item, prm-search-bar .simple-search-wrapper .prm-hue2.search-options::after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, .prm-full-view-dialog, .full-view-inner-container, .__xs prm-facet.prm-hue2, .__sm prm-facet.prm-hue2, .__sm .prm-hue2.sidebar, .__xs .prm-hue2.sidebar, .__xs prm-full-view-cont .recommendations-wrapper, .__sm prm-full-view-cont .recommendations-wrapper, prm-recomendation-item .media-on-hover .pin-button, prm-recomendation-item .media-on-hover .pin-button:hover, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue2.pin-button, .recommendations-title::after, prm-full-view-cont .prm-hue2.recommendations-title::after, .__xs prm-full-view-cont .recommendations-title::after, .__sm prm-full-view-cont .recommendations-title::after, .recommendations-title prm-icon, prm-full-view-cont .recommendations-title prm-icon.prm-hue2, .__xs prm-full-view-cont .recommendations-title prm-icon, .__sm prm-full-view-cont .recommendations-title prm-icon, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue2, md-grid-tile, .tiles-grid-tile, md-grid-tile md-list prm-spinner.overlay-cover::after, md-grid-tile .tile-content prm-spinner.overlay-cover::after, .tiles-grid-tile md-list prm-spinner.overlay-cover::after, .tiles-grid-tile .tile-content prm-spinner.overlay-cover::after, md-card.default-card, md-card .prm-hue2.card-content-block {
-    background-color: #f8f8f8;
+    background-color: #fdfdfd;
 }
 
 /*Results see all*/
@@ -224,6 +227,14 @@ a, .md-button.arrow-link-button .button-content {
 .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link {
     color: #3398BB;
 }
+.section-title-header, .sidebar-header {
+  color: #222222;
+}
+.section-content .md-chips .md-chip .facet-title {
+  color: #292929;
+}
+/*Primarily for facets background*/
+html, body {background-color: #f3f3f3;}
 
 /*Filter coloring*/
 .section-content .md-chips .md-chip .md-chip-content._md-focused:not([disabled]), .section-content .md-chips .md-chip .md-chip-content.hovered:not([disabled]), .section-content .md-chips .md-chip .md-chip-content.md-focused:not([disabled]), .section-content .md-chips .md-chip .md-chip-content:focus:not([disabled]), .section-content .md-chips .md-chip .md-chip-content:hover:not([disabled]) {
@@ -248,12 +259,10 @@ a, .md-button.arrow-link-button .button-content {
 span[ng-if="cur.expiryDate"] {display:none;}
 span[ng-if="cur.patronGroup"] {display:none;}
 
-
 /*Full Display*/
-
 /*Background color*/
 .full-view-inner-container.flex {
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
     border-right: 1px #999999 solid;
 }
 .full-view-spacer.flex-xl-30.flex-md-0.flex-lg-20.flex-0 {
@@ -346,7 +355,6 @@ body.md-dialog-is-showing  {
 }
 
 /*Citation trails*/
-
 /*Selected text highlighting*/
 ::selection {
     background: rgba(0, 188, 212, 0.25);
@@ -379,12 +387,6 @@ button[aria-label="Tags"] {display:none;}
     border-color: #dcf3fe;
 }
 
-/*Hide Browse Main Menu Link*/
-/*div.custom-links-container md-card:last-of-type {display:none;}*/
-/*prm-main-menu div.top-nav-bar-links a:last-of-type {display:none;}*/
-/*div.custom-links-container md-card:nth-of-type(6) {display:none;}
-prm-main-menu div.top-nav-bar-links a:nth-of-type(6) {display:none;}*/
-
 /*For new display type icon multiple versions*/
 prm-search-result-thumbnail-container .fan-img:nth-of-type(1) {
     transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
@@ -408,22 +410,26 @@ prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:
 /*For scoping and design changes Spring 2017*/
 /*Search bar background*/
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
-    background-color: #3f3f3f;
+    background-color: #2f2f2f;
 }
 
 /*Magnifying glass*/
-/*.md-button.button-confirm {
+.md-button.button-confirm {
     color: #ffffff;
-    background-color: rgba(51, 152, 187, 0.9);
+    background-color: rgba(37, 122, 190, 0.9);
+    border-top-right-radius: 2px;
     border-top-left-radius: 0px;
+    border-bottom-right-radius: 2px;
     border-bottom-left-radius: 0px;
+/*    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);*/
 }
 .md-button.button-confirm:hover:not([disabled]), .md-button.button-confirm:focus:not([disabled]), .md-button.button-confirm.hovered:not([disabled]), .md-button.button-confirm.md-focused:not([disabled]), .md-button.button-confirm._md-focused:not([disabled]) {
     color: #ffffff;
-    background-color: #3398BB;
-    border-top-left-radius: 0px;
+    background-color: #257abe;
+/*    border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-}*/
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+}
 /*Adv search mag glass*/
 button.button-confirm.button-large.button-with-icon.md-button.md-primoExplore-theme.md-ink-ripple {
     color: #ffffff;
@@ -433,7 +439,7 @@ button.button-confirm.button-large.button-with-icon.md-button.md-primoExplore-th
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-/*Advanced Search button blue bg*/
+/*Advanced Search button blue bg
 prm-search-bar .search-switch-buttons .md-button.switch-to-advanced {
     color: #ffffff;
     background-color: #257abe;
@@ -441,14 +447,10 @@ prm-search-bar .search-switch-buttons .md-button.switch-to-advanced {
     padding-left: 8px;
     padding-right: 8px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-prm-search-bar .search-switch-buttons .md-button.switch-to-advanced:hover {
+}*/
+prm-search-bar .search-switch-buttons .md-button.switch-to-advanced:hover, prm-search-bar .search-switch-buttons .md-button.switch-to-advanced:focus {
     color: #ffffff;
-    background-color: rgba(37, 122, 190, 0.9);
-    font-weight: 600;
-    padding-left: 8px;
-    padding-right: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: rgba(79, 79, 79, 0.9);
 }
 
 /*Dark Adv search radio button bar*/
@@ -601,9 +603,11 @@ button[aria-label="Virtual Browse"]{
   order: 5;
 }
 
-
 /*Hide PCI toggle*/
 div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNewspapersSearch && !$ctrl.searchInProgress)"] {display:none;}
+/*Hide PCI toggle for Mobile width*/
+md-checkbox[ng-model="$ctrl.pcAvailability"] {display:none;}
+span[translate="expandresults"]{display:none;}
 
 /*LibChat*/
 /*Move for tablets and mobile*/
@@ -643,6 +647,7 @@ prm-resource-recommender .resource-image .resource-image-inner {
     float: left;
 }
 
+h3.resource-title {font-weight: 600;}
 prm-resource-recommender md-card {
   background-color: #ffffff;
 }
@@ -668,7 +673,19 @@ md-card-title-text[translate="nui.resRecomm.type.label.library_information"] {
     width: auto;
 }
 
-/*Clear button conflict on mobile*/
-@media (max-width: 599px){
-button[aria-label="Clear search text"] {display:none;}
+/*May 2018 SP*/
+/*Basic Search Drop Downs*/
+prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
+  color: #257ABE;
+}
+
+/*Link to Online Resource - esp. for Open Access articles*/
+prm-view-online div{
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  font-weight: 600;
+  font-size: 110%;
+  border-radius: 6px;
 }
