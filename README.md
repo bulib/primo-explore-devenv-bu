@@ -50,7 +50,8 @@ $ git clone https://github.com/bulib/primo-explore-bu.git ./
 $ gulp create-package --view VIEW_NAME
 ``` 
 2] To make these changes public, you'll have to use the [primo back office](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/060Back_Office_Guide/060Configuring_Primo%E2%80%99s_Front_End/020Views_Wizard) 
-  and upload the package there. 
+  and upload the package there ([prod](http://buprimo.hosted.exlibrisgroup.com:1601/primo_publishing/admin/acegilogin.jsp), 
+  [stage](http://bu-primostage.hosted.exlibrisgroup.com:1601/primo_publishing/admin/acegilogin.jsp)). 
 
 Note: **Be very careful which site you're uploading it to**, since environment is determined by the URL and isn't overly 
   visible in the UI itself. 
