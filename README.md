@@ -1,6 +1,6 @@
 # `primo-explore-bu`
 
-A set of views to for Boston University Libraries' primo customization packages.
+Boston University Libraries' customization packages for the for the new Primo UI.
 
 ## Background
 
@@ -38,19 +38,19 @@ $ git clone https://github.com/bulib/primo-explore-bu.git ./
 
 ### Running a Particular View
 
-1. You can run the server via `gulp run`, and you can specify the view directly by adding `--view VIEW_NAME`. The views 
-  list is determined by the folders you have in the `primo-explore/custom` folder.
+1. You should be able to run the server via `gulp run`, and you can specify the view directly by adding `--view VIEW_NAME`. 
+  The views list is determined by the folders you have in the `primo-explore/custom` folder.
 2. To access your running instance, go to [localhost:8003/primo-explore/search?vid=BU](http://localhost:8003/primo-explore/search?vid=BU&sortby=rank&lang=en_US)
 
 ### Deploying your updated View
 
-1] When you're satisfied with your changes and wish to deploy them to test or deploy them to prod, run the following to 
-  create a new `.zip` in `packages/VIEW_NAME.zip`. You can specify your view by the previously mentioned method.
+1] When you're satisfied with your changes and wish to deploy them to one of the environments, run the following to 
+  create a new `.zip` in `packages/VIEW_NAME.zip`. 
 ```bash 
-$ gulp create-package
+$ gulp create-package --view VIEW_NAME
 ``` 
-2] To make these changes public, you'll have to use the [primo administrative site]() and upload the package. 
+2] To make these changes public, you'll have to use the [primo back office](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/060Back_Office_Guide/060Configuring_Primo%E2%80%99s_Front_End/020Views_Wizard) 
+  and upload the package there. 
 
 Note: **Be very careful which site you're uploading it to**, since environment is determined by the URL and isn't overly 
-  visible in the UI itself 
-   
+  visible in the UI itself. 
