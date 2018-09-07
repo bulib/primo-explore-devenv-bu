@@ -8,7 +8,7 @@ Below are some brief descriptions of each view as of 2018-09-04.
 
 |env |name|description|
 |:---|:---|:----------|
-|prod|`BU`|main default view|
+|prod|`BU`|main default view, running in [production](http://buprimo.hosted.exlibrisgroup.com/primo-explore/search?vid=BU) since January 2017|
 |prod|`journals`|secondary view scoped to journals/newspapers from alma only|
 |prod|`BULAW`|Law Library's custom view|
 |prod|`london`|London library scoped to only their resources|
@@ -54,3 +54,10 @@ $ gulp create-package --view VIEW_NAME
 
 Note: **Be very careful which site you're uploading it to**, since environment is determined by the URL and isn't overly 
   visible in the UI itself. 
+
+## External Links
+
+Further documentation can be found at:
+- ExLibrisGroup's template/[example view](https://github.com/ExLibrisGroup/primo-explore-package)
+- ExLibrisGroup's [best practices documentation](http://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_Interface/New_UI_Customization_-_Best_Practices)
+- ExLibrisGroup's [back office configuration docs](http://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_Interface/Back_Office_Configuration_for_New_UI) 
