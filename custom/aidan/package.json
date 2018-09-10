@@ -1,0 +1,10 @@
+{
+  "name": "aidan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "primo-explore-wrlc-announce": "^1.1.0"
+  }
+}
