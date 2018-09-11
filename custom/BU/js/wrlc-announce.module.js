@@ -46,7 +46,7 @@ angular.module('wrlcAnnounce', ['ngAnimate'])
           // get message info using configured functions
           self.message = config.getMessage(data);
           self.link = config.getLink(data);
-          self.severity = config.getSeverity(data);
+          self.severity = (config.getSeverity)? config.getSeverity(data) : 'info';
         });
 
       //respond to user exing out of the banner
