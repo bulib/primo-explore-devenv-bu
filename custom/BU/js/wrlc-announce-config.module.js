@@ -1,6 +1,3 @@
-//load app 'viewCustom' as a module with [] dependencies
-var app = angular.module('viewCustom',['angularLoad', 'wrlcAnnounce']);
-
 // - helper code for announcement banner for [`primo-explore-wrlc-announce` package](https://www.npmjs.com/package/primo-explore-wrlc-announce) - //
 app.constant('announceConfig', {
 
