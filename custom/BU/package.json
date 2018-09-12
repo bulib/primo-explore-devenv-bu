@@ -1,0 +1,8 @@
+{
+  "name": "BU",
+  "description": "default view for http://bu.edu/library running in production since January 2017",
+  "dependencies": {},
+  "devDependencies": {
+    "primo-explore-oadoi-link": "^1.0.1"
+  }
+}
