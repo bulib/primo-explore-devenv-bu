@@ -23,18 +23,15 @@ prm-search-bar {
   margin-right: 12px;
 }
 
-#wrlc-announce-banner.warn  {
-  background: lightyellow !important;
-}
-
 #wrlc-announce-banner.success {
-  background: mediumaquamarine !important;
+  background: #B0E0E6 !important;
 }
 
-#wrlc-announce-banner.alert {
-  background: lightcoral !important;
+#wrlc-announce-banner.warn, #wrlc-announce-banner.alert {
+  background: lightsalmon !important;
+  font-weight: 600;
 }
 
 #wrlc-announce-banner.info {
-  background: lightblue !important;
+  background: #E0FFFF !important;
 }
