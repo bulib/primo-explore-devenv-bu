@@ -1,0 +1,5 @@
+{
+  "name": "BU",
+  "description": "default view for http://bu.edu/library running in production since January 2017",
+  "dependencies": {}
+}

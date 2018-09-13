@@ -1,2 +1,8 @@
 .DS_Store
 *.idea/*
+*node_modules/*
+
+# primo-explore specific built files
+*/js/custom.js
+*/css/custom1.css
+custom/BU/js/custom.js
