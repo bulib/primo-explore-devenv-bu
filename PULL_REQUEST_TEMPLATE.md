@@ -1,9 +1,8 @@
-### Background 
+- Primo Project Spec: [name of project](link_to_sharepoint_doc)
 
-
-### Description of Changes
-
+### Background
+- ...
 
 ### Screenshots
 
-### Considerations/Concerns 
+### Description of Changes
