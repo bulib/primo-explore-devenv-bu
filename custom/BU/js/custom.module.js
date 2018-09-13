@@ -1,5 +1,5 @@
 //load app 'viewCustom' as a module with [] dependencies
-var app = angular.module('viewCustom', ['angularLoad', 'oadoi', 'wrlcAnnounce']);
+var app = angular.module('viewCustom', ['angularLoad', 'bu-unpaywall', 'oadoi', 'wrlcAnnounce']);
 
 // unpaywall
 app.constant('oadoiOptions', {
