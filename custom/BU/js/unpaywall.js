@@ -1,37 +1,40 @@
 // specify module name and its dependency
 angular
-  .module('bu-unpaywall', [])
-  .component('prmBriefResultAfter', {
+  .module('buUnpaywall', [])
+  .component('prmSearchResultAvailabilityLineAfter', {
     bindings: { parentCtrl: '<'},
     template: `
-      <oa-access>
-        <table>
-          <tr><td><strong>doi</strong></td><td>{{$ctrl.doi}}</td></tr>
-          <tr><td><strong>fulltext</strong></td><td>{{$ctrl.fulltext}}</td>
-          <tr><td><strong>linktorsrc</strong></td><td>{{$ctrl.linktorsrc}}</td></tr>
-          <tr><td><strong>best_oa_link</strong></td><td>{{$ctrl.best_oa_link}}</td></tr>
-        </table>
-      </oa-access>`,
+      <bu-unpaywall>
+        <div layout="flex" ng-if="$ctrl.best_oa_link" class="layout-row" style="margin-top: 5px;">
+          <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_lock_open_24px"></prm-icon>
+          <a class="arrow-link-button md-primoExplore-theme md-ink-ripple" style="margin-left: 3px; margin-top: 3px;"
+             target="_blank" href="{{$ctrl.best_oa_link}}"><strong>Open Access</strong> available via unpaywall</a>
+          <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-right"></prm-icon>
+        </div>
+        <div class="layout-row">
+          <table ng-if="$ctrl.debug">
+            <tr><td><strong>doi</strong></td><td>{{$ctrl.doi}}</td></tr>
+            <tr><td><strong>is_OA</strong></td><td>{{$ctrl.is_oa}}</td>
+            <tr><td><strong>best_oa_link</strong></td><td>{{$ctrl.best_oa_link}}</td></tr>
+          </table>
+        </div>
+      </bu-unpaywall>`,
     controller:
-      function unpaywallController($scope, $http) {
+      function unpaywallController(oadoiOptions, $scope, $element, $http) {
         var self = this;
-        var item = this.parentCtrl.item;
+        var item = this.parentCtrl.result;
+        self.debug = oadoiOptions.debug;
         try{
-          // set known conditional data
-          this.fulltext = item.pnx.delivery.fulltext[0];
-          if(item.pnx.links.linktorsrc){
-            // get the link out of "$$Uhttps://doaj.org/article/bb99cd21e1144744a75b1502e4affaf1$$E..."
-            var str = item.pnx.links.linktorsrc[0];
-            this.linktorsrc = str.substring("$$U".length, str.lastIndexOf("$$E"));
-          }
-
           //get at the doi
           var addata = item.pnx.addata;
-          if(addata.hasOwnProperty("doi")){
-            this.doi = addata.doi[0];
-            $http.get("https://api.oadoi.org/v2/"+this.doi+"?email=aidans@bu.edu")
+          if(addata){
+            this.doi = addata.hasOwnProperty("doi")? addata.doi[0] : null;
+            this.is_oa = addata.hasOwnProperty("oa");
+          }
+          if(this.doi && !this.is_oa){
+            $http.get("https://api.oadoi.org/v2/"+this.doi+"?email="+oadoiOptions.email)
               .then(function(response){
-                self.best_oa_link = response.data.best_oa_location.url;
+                self.best_oa_link = (response.data.best_oa_location)? response.data.best_oa_location.url : "";
               }, function(error){
                 console.log(error);
               });
