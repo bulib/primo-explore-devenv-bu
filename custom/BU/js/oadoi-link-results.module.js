@@ -3,7 +3,7 @@ angular
   .component('prmSearchResultAvailabilityLineAfter', {
     bindings: { parentCtrl: '<'},
     template: `
-      <oadoi-results>
+      <oadoi-results  ng-if="$ctrl.show">
         <div layout="flex" ng-if="$ctrl.best_oa_link" class="layout-row" style="margin-top: 5px;">
           <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_lock_open_24px"></prm-icon>
           <a class="arrow-link-button md-primoExplore-theme md-ink-ripple" style="margin-left: 3px; margin-top: 3px;"
@@ -22,7 +22,9 @@ angular
       function unpaywallController(oadoiOptions, $scope, $element, $http) {
         var self = this;
         var item = this.parentCtrl.result;
+        var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
         self.debug = oadoiOptions.debug;
+        self.show = oadoiOptions.showOnResultsPage && !onFullView;
         try{
 
           // obtain doi and open access information from the item PNX (metadata)

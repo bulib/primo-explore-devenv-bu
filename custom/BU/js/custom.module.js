@@ -5,5 +5,6 @@ var app = angular.module('viewCustom', ['angularLoad', 'oadoiResults', 'oadoi', 
 app.constant('oadoiOptions', {
   "email":"aidans@bu.edu",
   "imagePath":"custom/BU/img/resRec_launch_blue_2x.png",
+  "showOnResultsPage":true,
   "debug":false
 });
