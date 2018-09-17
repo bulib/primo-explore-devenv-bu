@@ -10,8 +10,8 @@ angular
              target="_blank" href="{{$ctrl.best_oa_link}}"><strong>Open Access</strong> available via unpaywall</a>
           <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-right"></prm-icon>
         </div>
-        <div class="layout-row">
-          <table ng-if="$ctrl.debug">
+        <div ng-if="$ctrl.debug" class="layout-row">
+          <table>
             <tr><td><strong>doi</strong></td><td>{{$ctrl.doi}}</td></tr>
             <tr><td><strong>is_OA</strong></td><td>{{$ctrl.is_oa}}</td>
             <tr><td><strong>best_oa_link</strong></td><td>{{$ctrl.best_oa_link}}</td></tr>
