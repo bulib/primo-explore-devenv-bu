@@ -7,7 +7,10 @@ angular
         <div layout="flex" ng-if="$ctrl.best_oa_link" class="layout-row" style="margin-top: 5px;">
           <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_lock_open_24px"></prm-icon>
           <a class="arrow-link-button md-primoExplore-theme md-ink-ripple" style="margin-left: 3px; margin-top: 3px;"
-             target="_blank" href="{{$ctrl.best_oa_link}}"><strong>Open Access</strong> available via unpaywall</a>
+             target="_blank" href="{{$ctrl.best_oa_link}}">
+             <strong>Open Access</strong> available via unpaywall
+             <span ng-if="$ctrl.showVersionLabel && $ctrl.best_oa_version">&nbsp({{$ctrl.best_oa_version}} version)</span>
+          </a>
           <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-right"></prm-icon>
         </div>
         <div ng-if="$ctrl.debug" class="layout-row">
@@ -15,6 +18,7 @@ angular
             <tr><td><strong>doi</strong></td><td>{{$ctrl.doi}}</td></tr>
             <tr><td><strong>is_OA</strong></td><td>{{$ctrl.is_oa}}</td>
             <tr><td><strong>best_oa_link</strong></td><td>{{$ctrl.best_oa_link}}</td></tr>
+            <tr><td><strong>best_oa_version</strong></td><td>{{$ctrl.best_oa_version}}</td></tr>
           </table>
         </div>
       </oadoi-results>`,
@@ -25,6 +29,7 @@ angular
         var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
         self.debug = oadoiOptions.debug;
         self.show = oadoiOptions.showOnResultsPage && !onFullView;
+        self.showVersionLabel = oadoiOptions.showVersionLabel;
         try{
 
           // obtain doi and open access information from the item PNX (metadata)
@@ -38,8 +43,20 @@ angular
           if(this.doi && !this.is_oa){
             $http.get("https://api.oadoi.org/v2/"+this.doi+"?email="+oadoiOptions.email)
               .then(function(response){
-                // if there is a link, save it so it can be used in the template above
-                self.best_oa_link = (response.data.best_oa_location)? response.data.best_oa_location.url : "";
+                // if there is a "best open access location", save it so it can be used in the template above
+                var best_oa_location = response.data.best_oa_location;
+                if(!best_oa_location){ return; /* can't get what we want from unpaywall. returning with nothing*/ }
+
+                // get the "best" content link
+                self.best_oa_link = best_oa_location.url || "";
+
+                // optionally display whether the link to to a published, submitted, or accepted version
+                var best_oa_version = best_oa_location.version || "";
+                if(best_oa_version.includes("publish")){
+                  self.best_oa_version = "";
+                }else{
+                  self.best_oa_version = (best_oa_version.includes("submit"))? "Submitted" : "Accepted";
+                }
               }, function(error){
                 if(self.debug){
                   console.log(error);

@@ -6,5 +6,6 @@ app.constant('oadoiOptions', {
   "email":"aidans@bu.edu",
   "imagePath":"custom/BU/img/resRec_launch_blue_2x.png",
   "showOnResultsPage":true,
+  "showVersionLabel":true,
   "debug":false
 });
