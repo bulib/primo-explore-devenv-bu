@@ -1,3 +1,12 @@
+/*
+* NOTE: this is based entirely off of [`alliance-pcsg/primo-explore-oadoi-link`](https://github.com/alliance-pcsg/primo-explore-oadoi-link)
+*  and their associated [npm package](https://www.npmjs.com/package/primo-explore-oadoi-link).
+*
+* All credit goes to them, and this file is only here until BU-Lib specific functionality can be added to the
+*   existing repo (e.g. until [our PR](https://github.com/alliance-pcsg/primo-explore-oadoi-link/pull/4)
+*   is merged and the npm package is versioned to where we can use that instead).
+*/
+
 angular
   .module('oadoi', [])
   .component('prmFullViewServiceContainerAfter', {
