@@ -15,7 +15,7 @@ app.run(['$rootScope', '$location', '$window', function($rootScope, $location, $
 }]);
 
 app.service('gaEventLogger', function(){
-  this.logEvent = function(category="", action="", label="", debug=true){
+  this.logEvent = function(category="", action="", label="", debug=false){
     var eventMessage = "cat:"+category + " act:"+action + " label:"+label;
     if(window.ga){
       if(debug){ console.log("logging '" + eventMessage + "' event to google analytics."); }
