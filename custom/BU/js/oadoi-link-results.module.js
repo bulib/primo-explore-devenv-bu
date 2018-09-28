@@ -7,7 +7,7 @@ angular
         <div layout="flex" ng-if="$ctrl.best_oa_link" class="layout-row" style="margin-top: 5px;">
           <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_lock_open_24px"></prm-icon>
           <a class="arrow-link-button md-primoExplore-theme md-ink-ripple" style="margin-left: 3px; margin-top: 3px;"
-             target="_blank" href="{{$ctrl.best_oa_link}}">
+             ng-click="$ctrl.trackLinkClick($ctrl.doi)" target="_blank" href="{{$ctrl.best_oa_link}}">
              <strong>Open Access</strong> available via unpaywall
              <span ng-if="$ctrl.showVersionLabel && $ctrl.best_oa_version">&nbsp({{$ctrl.best_oa_version}} version)</span>
           </a>
@@ -30,6 +30,16 @@ angular
         self.debug = oadoiOptions.debug;
         self.show = oadoiOptions.showOnResultsPage && !onFullView;
         self.showVersionLabel = oadoiOptions.showVersionLabel;
+        self.trackLinkClick = function(doi){
+          if(!window.ga){
+            if(self.debug){ console.log("tried to log click but couldn't access window!"); }
+            return;
+          }
+
+          //ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
+          if(self.debug){ console.log("logging unpaywall-usage event for doi: " + doi); }
+          window.ga('send', 'event', 'unpaywall', 'usage', 'list');
+        };
         try{
 
           // obtain doi and open access information from the item PNX (metadata)
@@ -41,6 +51,12 @@ angular
 
           // if there's a doi and it's not already open access, ask the oadoi.org for an OA link
           if(this.doi && !this.is_oa){
+            if(window.ga){
+              //ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
+              if(self.debug){ console.log("logging 'unpaywall-api' event for " + this.doi); }
+              window.ga('send', 'event', 'unpaywall', 'api-call', 'list');
+            }
+
             $http.get("https://api.oadoi.org/v2/"+this.doi+"?email="+oadoiOptions.email)
               .then(function(response){
                 // if there is a "best open access location", save it so it can be used in the template above

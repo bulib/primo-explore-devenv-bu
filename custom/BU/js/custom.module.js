@@ -1,5 +1,5 @@
 //load app 'viewCustom' as a module with [] dependencies
-var app = angular.module('viewCustom', ['angularLoad', 'oadoiResults', 'oadoi', 'wrlcAnnounce']);
+var app = angular.module('viewCustom', ['angularLoad', 'oadoiResults', 'oadoi', 'wrlcAnnounce'/*, 'angular-google-analytics'*/]);
 
 // - unpaywall - //
 app.constant('oadoiOptions', {
@@ -7,18 +7,5 @@ app.constant('oadoiOptions', {
   "imagePath":"custom/BU/img/resRec_launch_blue_2x.png",
   "showOnResultsPage":true,
   "showVersionLabel":true,
-  "debug":false
+  "debug":true
 });
-
-/*
-import * as $ from "jquery";
-$('oadoi-results ~ a').on('click', function() {
-  console.log("oadoi-results click event");
-  _gaq.push(['_trackEvent', 'Unpaywall Brief Result', 'Clicked']);
-});
-
-$('oadoi ~ a').on('click', function() {
-  console.log("oadoi-full click event");
-  _gaq.push(['_trackEvent', 'Unpaywall Full Result', 'Clicked']);
-});
-*/

@@ -3,8 +3,7 @@
   "description": "default view for http://bu.edu/library running in production since January 2017",
   "devDependencies": {
     "@types/jquery": "^3.3.10",
-    "primo-explore-dom": "0.0.10",
-    "primo-explore-oadoi-link": "^1.0.1"
+    "primo-explore-dom": "0.0.10"
   },
   "dependencies": {
     "jquery": "^3.3.1"
