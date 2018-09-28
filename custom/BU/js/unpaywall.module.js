@@ -59,7 +59,7 @@ angular
                 gaEventLogger.logEvent('unpaywall', 'api-success', self.listOrFullViewLabel);
 
                 // optionally display whether the link to to a published, submitted, or accepted version
-                var best_oa_version = best_oa_location.version || "";
+                var best_oa_version = best_oa_location.version.toLowerCase() || "";
                 if(best_oa_version.includes("publish")){
                   self.best_oa_version = "";
                 }else{
