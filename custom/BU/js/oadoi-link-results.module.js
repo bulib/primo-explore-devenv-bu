@@ -57,7 +57,7 @@ angular
               window.ga('send', 'event', 'unpaywall', 'api-call', 'list');
             }
 
-            $http.get("https://api.oadoi.org/v2/"+this.doi+"?email="+oadoiOptions.email)
+            $http.get("https://api.oadoi.org/v2/"+self.doi+"?email="+oadoiOptions.email)
               .then(function(response){
                 // if there is a "best open access location", save it so it can be used in the template above
                 var best_oa_location = response.data.best_oa_location;
@@ -65,6 +65,11 @@ angular
 
                 // get the "best" content link
                 self.best_oa_link = best_oa_location.url || "";
+                if(window.ga){
+                  //ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
+                  if(self.debug){ console.log("logging 'unpaywall-api-success' event for " + self.doi); }
+                  window.ga('send', 'event', 'unpaywall', 'api-success', 'list');
+                }
 
                 // optionally display whether the link to to a published, submitted, or accepted version
                 var best_oa_version = best_oa_location.version || "";

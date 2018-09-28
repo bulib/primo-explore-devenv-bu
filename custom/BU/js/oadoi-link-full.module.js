@@ -57,6 +57,12 @@ angular
                   $scope.oaClass="ng-hide";
                 }
                 else{
+                  if(window.ga){
+                    //ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
+                    if(self.debug){ console.log("logging 'unpaywall-api-success' event for " + this.doi); }
+                    window.ga('send', 'event', 'unpaywall', 'api-success', 'full');
+                  }
+
                   if(debug){ console.log("oalink from response: " + oalink); }
                   $scope.oalink=oalink;
                   $scope.oaDisplay=true;
