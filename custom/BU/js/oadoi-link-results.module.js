@@ -1,9 +1,9 @@
 angular
-  .module('oadoiResults', [])
+  .module('unpaywall', [])
   .component('prmSearchResultAvailabilityLineAfter', {
     bindings: { parentCtrl: '<'},
     template: `
-      <oadoi-results  ng-if="$ctrl.show">
+      <unpaywall ng-if="$ctrl.show">
         <div layout="flex" ng-if="$ctrl.best_oa_link" class="layout-row" style="margin-top: 5px;">
           <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_lock_open_24px"></prm-icon>
           <a class="arrow-link-button md-primoExplore-theme md-ink-ripple" style="margin-left: 3px; margin-top: 3px;"
@@ -21,14 +21,15 @@ angular
             <tr><td><strong>best_oa_version</strong></td><td>{{$ctrl.best_oa_version}}</td></tr>
           </table>
         </div>
-      </oadoi-results>`,
+      </unpaywall>`,
     controller:
       function unpaywallController(oadoiOptions, gaEventLogger, $scope, $element, $http) {
         var self = this;
         var item = this.parentCtrl.result;
         var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
+        self.listOrFullViewLabel = onFullView? 'full' : 'list';
         self.debug = oadoiOptions.debug;
-        self.show = oadoiOptions.showOnResultsPage && !onFullView;
+        self.show = onFullView || oadoiOptions.showOnResultsPage;
         self.showVersionLabel = oadoiOptions.showVersionLabel;
         self.trackLinkClick = function(doi){
           console.log("tracking link click via gaEventLogger for doi:"+doi);
