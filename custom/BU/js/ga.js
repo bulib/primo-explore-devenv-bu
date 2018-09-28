@@ -13,3 +13,17 @@ app.run(['$rootScope', '$location', '$window', function($rootScope, $location, $
     $window.ga('send', 'pageview', {location: $location.url()});
   });
 }]);
+
+app.service('gaEventLogger', function(){
+  this.logEvent = function(category="", action="", label="", debug=true){
+    var eventMessage = "cat:"+category + " act:"+action + " label:"+label;
+    if(window.ga){
+      if(debug){ console.log("logging '" + eventMessage + "' event to google analytics."); }
+      window.ga('send', 'event', category, action, label);
+    }else{
+      if(debug){
+        console.log("window.ga not found! cannot log message: '" + eventMessage + "'.");
+      }
+    }
+  }
+});

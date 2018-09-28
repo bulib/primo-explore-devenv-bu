@@ -23,7 +23,7 @@ angular
         </div>
       </oadoi-results>`,
     controller:
-      function unpaywallController(oadoiOptions, $scope, $element, $http) {
+      function unpaywallController(oadoiOptions, gaEventLogger, $scope, $element, $http) {
         var self = this;
         var item = this.parentCtrl.result;
         var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
@@ -31,14 +31,8 @@ angular
         self.show = oadoiOptions.showOnResultsPage && !onFullView;
         self.showVersionLabel = oadoiOptions.showVersionLabel;
         self.trackLinkClick = function(doi){
-          if(!window.ga){
-            if(self.debug){ console.log("tried to log click but couldn't access window!"); }
-            return;
-          }
-
-          //ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
-          if(self.debug){ console.log("logging unpaywall-usage event for doi: " + doi); }
-          window.ga('send', 'event', 'unpaywall', 'usage', 'list');
+          console.log("tracking link click via gaEventLogger for doi:"+doi);
+          gaEventLogger.logEvent("unpaywall", "usage", self.listOrFullViewLabel);
         };
         try{
 
@@ -51,11 +45,7 @@ angular
 
           // if there's a doi and it's not already open access, ask the oadoi.org for an OA link
           if(this.doi && !this.is_oa){
-            if(window.ga){
-              //ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
-              if(self.debug){ console.log("logging 'unpaywall-api' event for " + this.doi); }
-              window.ga('send', 'event', 'unpaywall', 'api-call', 'list');
-            }
+            gaEventLogger.logEvent('unpaywall', 'api-call', self.listOrFullViewLabel);
 
             $http.get("https://api.oadoi.org/v2/"+self.doi+"?email="+oadoiOptions.email)
               .then(function(response){
@@ -65,11 +55,7 @@ angular
 
                 // get the "best" content link
                 self.best_oa_link = best_oa_location.url || "";
-                if(window.ga){
-                  //ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
-                  if(self.debug){ console.log("logging 'unpaywall-api-success' event for " + self.doi); }
-                  window.ga('send', 'event', 'unpaywall', 'api-success', 'list');
-                }
+                gaEventLogger.logEvent('unpaywall', 'api-success', self.listOrFullViewLabel);
 
                 // optionally display whether the link to to a published, submitted, or accepted version
                 var best_oa_version = best_oa_location.version || "";
