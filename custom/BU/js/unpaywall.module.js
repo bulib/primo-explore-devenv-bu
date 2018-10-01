@@ -38,8 +38,8 @@ angular.module('unpaywall', [])
           if(self.debug){ console.log("tracking link click via gaEventLogger for doi: "+doi); }
           gaEventLogger.logEvent("unpaywall", "usage", self.listOrFullViewLabel);
         };
-        try{
 
+        try{
           // obtain doi and open access information from the item PNX (metadata)
           var addata = item.pnx.addata;
           if(addata){
@@ -77,6 +77,7 @@ angular.module('unpaywall', [])
                 }
               });
           }
+
         }catch(e){
           if(self.debug){
             console.log("error caught in unpaywallController: " + e.message);
