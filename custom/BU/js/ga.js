@@ -11,3 +11,20 @@ app.run(['$rootScope', '$location', '$window', function($rootScope, $location, $
     $window.ga('send', 'pageview', {location: $location.url()});
   });
 }]);
+
+// helper function for sending event data to google analytics
+app.service('gaEventLogger', function(){
+  this.logEvent = function(category="", action="", label="", debug=false){
+    var eventMessage = "cat:"+category + " act:"+action + " label:"+label;
+    if(window.ga){
+      if(debug){ console.log("logging '" + eventMessage + "' event to google analytics."); }
+      
+      // send pageview event --- ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
+      window.ga('send', 'event', category, action, label);
+    }else{
+      if(debug){
+        console.log("window.ga not found! cannot log message: '" + eventMessage + "'.");
+      }
+    }
+  }
+});
