@@ -5,12 +5,12 @@ angular.module('unpaywall', [])
       <unpaywall ng-if="$ctrl.show">
         <div layout="flex" ng-if="$ctrl.best_oa_link" class="layout-row" style="margin-top: 5px;">
           <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_lock_open_24px" style="color: #f68212;"></prm-icon>
-          <a class="arrow-link-button md-primoExplore-theme md-ink-ripple" style="margin-left: 3px; margin-top: 3px;"
-             ng-click="$ctrl.trackLinkClick($ctrl.doi)" target="_blank" href="{{$ctrl.best_oa_link}}" rel="noreferrer">
+          <a ng-click="$ctrl.trackLinkClick($ctrl.doi)" target="_blank" href="{{$ctrl.best_oa_link}}"
+             style="margin-left: 3px; margin-top: 3px;" rel="noreferrer">
              <strong>Open Access</strong> available via unpaywall
              <span ng-if="$ctrl.showVersionLabel && $ctrl.best_oa_version">&nbsp({{$ctrl.best_oa_version}} version)</span>
+             <prm-icon external-link icon-type="svg" svg-icon-set="primo-ui" icon-definition="open-in-new"></prm-icon>
           </a>
-          <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="open-in-new" style="padding-left: 5px;"></prm-icon>
         </div>
         <div ng-if="$ctrl.debug" class="layout-row">
           <table>
