@@ -11,6 +11,5 @@ app.constant('oadoiOptions', {
 
 // - secondary-banner - //
 app.constant('secondaryBannerOptions', {
-  "titleFragment":"Industry Survey Locator",
-  "htmlToInsert":"<h1>Industry Survey Locator</h1>"
+  "title":"Industry Survey Locator"
 });
