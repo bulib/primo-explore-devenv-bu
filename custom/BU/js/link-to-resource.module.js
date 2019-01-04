@@ -1,9 +1,9 @@
 let debug = true;
 
-app.service('linkToResourceLogger', function(gaEventLogger){
+app.service('linkToResourceHelper', function(gaEventLogger){
   this.logLinkToResource = function(fullViewOrMore, urlClicked){
     if(debug){
-      console.log(`link-to-resource: calling gaEvent logger with category:'link-to-resource', action:'${fullViewOrMore}', label:'${urlClicked}'`);
+      console.log(`link-to-resource: calling gaEventLogger with category:'link-to-resource', action:'${fullViewOrMore}', label:'${urlClicked}'`);
     }else{
       gaEventLogger.logEvent("link-to-resource", fullViewOrMore, urlClicked);
     }
@@ -12,7 +12,22 @@ app.service('linkToResourceLogger', function(gaEventLogger){
 
 angular.module('l2rMoreLinks', [])
   .component('prmServiceLinksAfter', {
-    controller: function l2rMoreLinks(linkToResourceLogger){
-      linkToResourceLogger.logLinkToResource("more-links","https://bu.edu/library");
+    bindings: { parentCtrl: '<'},
+    controller: function l2rMoreLinks(linkToResourceHelper){
+      let links = this.parentCtrl.getLinks();
+      if(debug){ console.log(links); }
+
+      let i, link, url, linkText;
+      for(i=0; i<links.length; i++){
+        link = links[i];
+        url = link.linkURL;
+        linkText = link.displayLabel.replace("$$E","");
+
+        if(debug){
+          console.log("l2rMoreLinks: logging link: '" + linkText + "' to url: '" + url + "'");
+        }else{
+          linkToResourceHelper.logLinkToResource("more-links",url);
+        }
+      }
     }
   });
