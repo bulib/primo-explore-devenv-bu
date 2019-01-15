@@ -95,6 +95,15 @@ md-dialog.light-on-dark-dialog {
 prm-main-menu[menu-type=full] md-card-title md-card-title-text:only-child .md-subhead {
     display: none;
 }
+.md-subhead[translate*="nui.mainmenu.description"] {
+  display:none;
+}
+
+/*Main menu links on mobile*/
+prm-main-menu[menu-type=full] .md-button .md-headline, prm-main-menu[menu-type=full] .overlay-menu-item .md-headline {
+    font-weight: 400;
+    color: #3398BB;
+}
 
 /*Advanced Search text*/
 prm-search-bar .search-switch-buttons .md-button.switch-to-advanced {
@@ -228,11 +237,16 @@ a, .md-button.arrow-link-button .button-content {
     color: #3398BB;
 }
 .section-title-header, .sidebar-header {
-  color: #222222;
+    text-transform: none;
+    font-weight: 600;
+    font-size: 1.10rem;
+    color: #3a3a3a;
+    margin-bottom: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-right: .5em;
 }
-.section-content .md-chips .md-chip .facet-title {
-  color: #292929;
-}
+
 /*Primarily for facets background*/
 html, body {background-color: #f3f3f3;}
 
@@ -316,10 +330,9 @@ md-card.default-card._md.md-primoExplore-theme {
     background-color: #ffffff;
     border-radius: 2px;
 }
-
-.md-headline {
-    font-weight: 400;
-    color: #4d6b82;
+span.md-headline {
+  color: #4d6b82;
+  font-weight: 600;
 }
 
 /*Home Page Images*/
@@ -616,6 +629,11 @@ span[translate="expandresults"]{display:none;}
   bottom: 60px !important;
 }
 }
+@media (max-width:500px) {
+.s-lch-widget-float {
+  bottom: 120px !important;
+}
+}
 @media (max-width:600px) {
 .s-lch-widget-float.open {
   width: 90% !important;
@@ -625,7 +643,18 @@ span[translate="expandresults"]{display:none;}
   border: 1px solid #286090 !important;
   box-shadow: 0.1em 0.1em 0.1em #286090 !important;
 }
-
+/*start and minimize buttons*/
+.s-la-widget .btn-chat {
+    color: #EEEEEE;
+    background-color: #286090;
+    border-color: #286090;
+}
+.s-la-widget .btn-chat:hover, .s-la-widget .btn-chat:active, .s-la-widget .btn-chat:focus, .s-la-widget .btn-chat[disabled] {
+    color: #FFFFFF;
+    background-color: #286090;
+    border-color: #286090;
+}
+/*end LibChat*/
 /*iOS11 workaround until Nov 2017 SP*/
 .md-dialog-container {
   height: 100% !important;
