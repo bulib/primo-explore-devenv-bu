@@ -2,7 +2,7 @@ angular.module('bulibwcFooter', [])
   .component('prmExploreFooterAfter', {
     bindings: { parentCtrl: '<'},
     template: `
-    <bulibwc-footer>
+    <bulibwc-footer ng-if="$ctrl.showFooter">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@common-v1.0/assets/css/common.min.css">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@footer-v2.6.6/src/footer/footer.min.css">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@locoso-v1.3/src/locoso/locoso.min.css">
@@ -76,9 +76,10 @@ angular.module('bulibwcFooter', [])
     <bulibwc-footer>
     `,
     controller: function footerController() {
-      console.log("Successfully loaded the footer at path: '" + window.location.pathname + "'.");
       let currentPath = window.location.pathname;
-      this.showFooter = currentPath === "/primo-explore/openurl";
+      let hrefArgs = window.location.search;
+      this.showFooter = currentPath === "/primo-explore/openurl" || !hrefArgs.includes("query=");
+
       let message = "footer.module) showFooter: " + this.showFooter + " for path: " + currentPath;
       console.log(message);
     },
