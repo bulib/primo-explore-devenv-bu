@@ -9,7 +9,7 @@ angular.module('bulibwcFooter', [])
       <style>
         #address-list > li { padding-left: 0px; }
       </style>
-      <div class="footer-wrapper">
+      <div class="footer-wrapper big-text">
       <footer class="pam">
         <div class="ftr-left">
           <div id="bu-content">
@@ -84,5 +84,5 @@ angular.module('bulibwcFooter', [])
 
       let message = "footer.module) showFooter: " + this.showFooter + " for path: " + currentPath;
       console.log(message);
-    },
+    }
   });
