@@ -9,7 +9,8 @@ angular.module('bulibwcFooter', [])
       <style>
         #address-list > li { padding-left: 0px; }
       </style>
-      <footer class="pam footer-wrapper">
+      <div class="footer-wrapper">
+      <footer class="pam">
         <div class="ftr-left">
           <div id="bu-content">
             <div class="left txtc bu-logo">
@@ -73,6 +74,7 @@ angular.module('bulibwcFooter', [])
           </div>
         </div>
       </footer>
+      </div>
     <bulibwc-footer>
     `,
     controller: function footerController() {
