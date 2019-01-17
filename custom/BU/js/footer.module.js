@@ -5,7 +5,7 @@ angular.module('bulibwcFooter', [])
     <bulibwc-footer ng-if="$ctrl.showFooter">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@common-v1.0/assets/css/common.min.css">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@footer-v2.6.6/src/footer/footer.min.css">
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@locoso-v1.3/src/locoso/locoso.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@locoso-v1.4/src/locoso/locoso.min.css">
       <style>
         #address-list > li { padding-left: 0px; }
       </style>
