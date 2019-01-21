@@ -1,4 +1,4 @@
-let debug = true;
+let debugFooter = true;
 let footerContent = `
   <style>
     #address-list > li { padding-left: 0px; }
@@ -71,25 +71,32 @@ let footerContent = `
   </div>`;
 
 app.constant("footerHelper", {
-  populateFooter: function() {
-    if(debug){ console.log("footerHelper called."); }
+  populateFooter: function($timeout) {
+    if(debugFooter){ console.log("footerHelper called."); }
     let currentPath = window.location.pathname;
     let hrefArgs = window.location.search;
-    if(debug){
+    let showFooter = (currentPath === "/primo-explore/openurl") || !hrefArgs.includes("query=");
+    if(debugFooter){
       console.log("currentPath: " + currentPath);
       console.log("hrefArgs: " + hrefArgs);
+      console.log("footerHelper) showFooter: " + showFooter + " for path: " + currentPath);
     }
-    let showFooter = (currentPath === "/primo-explore/openurl") || !hrefArgs.includes("query=");
-    console.log("footerHelper) showFooter: " + showFooter + " for path: " + currentPath);
 
     let elem = document.getElementById("footer-wrapper");
-    elem.innerHTML = showFooter? footerContent : "";
+    elem.innerHTML = "";
+    if(showFooter){
+      if(debugFooter){ console.log("footerHelper) awaiting timeout before loading footer"); }
+      let timeout_duration = currentPath.includes("openurl")? 2250 : 500;
+      $timeout(function(){
+        elem.innerHTML = footerContent;
+        if(debugFooter){ console.log("footerHelper) footer loaded after " + timeout_duration + "ms."); }
+      }, timeout_duration);
+    }
   }
 });
 
 angular.module('bulibwcFooter', [])
   .component('prmExploreFooterAfter', {
-    bindings: { parentCtrl: '<'},
     template: `
     <bulibwc-footer>
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bulib/bulib-wc@common-v1.0/assets/css/common.min.css">
@@ -99,8 +106,8 @@ angular.module('bulibwcFooter', [])
     <bulibwc-footer>`,
     controller: function($rootScope, footerHelper, $timeout) {
       $rootScope.$on('$locationChangeSuccess', function(event){
-        if(debug){ console.log("-------- $locationChangeSuccess: " + window.location.href + " ----------"); }
-        footerHelper.populateFooter();
+        if(debugFooter){ console.log("-------- $locationChangeSuccess: " + window.location.href + " ----------"); }
+        footerHelper.populateFooter($timeout);
       });
     }
   });
