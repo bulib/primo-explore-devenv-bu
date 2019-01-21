@@ -1,4 +1,3 @@
-let debugFooter = true;
 let footerContent = `
   <style>
     #address-list > li { padding-left: 0px; }
@@ -71,25 +70,30 @@ let footerContent = `
   </div>`;
 
 app.constant("footerHelper", {
+  debugFooter: true,
+  logFooterMessage: function(message){
+    if(this.debugFooter){ console.log("footerHelper) " + message); }
+  },
   populateFooter: function($timeout) {
-    if(debugFooter){ console.log("footerHelper called."); }
-    let currentPath = window.location.pathname;
-    let hrefArgs = window.location.search;
-    let showFooter = (currentPath === "/primo-explore/openurl") || !hrefArgs.includes("query=");
-    if(debugFooter){
-      console.log("currentPath: " + currentPath);
-      console.log("hrefArgs: " + hrefArgs);
-      console.log("footerHelper) showFooter: " + showFooter + " for path: " + currentPath);
-    }
 
+    // determine whether to display the footer based on current page
+    let currentPath = window.location.pathname;  // want to show on the openurl page (and maybe others)
+    let hrefArgs = window.location.search;  // want to show on home page, but not results
+    let showFooter = (currentPath === "/primo-explore/openurl") || !hrefArgs.includes("query=");
+    this.logFooterMessage(`showFooter: '${showFooter}' for path '${currentPath}' with hrefArgs '${hrefArgs}'.`);
+
+    // based on this information, populate the '<bulibwc-footer>' component defined below
     let elem = document.getElementById("footer-wrapper");
     elem.innerHTML = "";
     if(showFooter){
-      if(debugFooter){ console.log("footerHelper) awaiting timeout before loading footer"); }
+      this.logFooterMessage("awaiting timeout before loading footer");
+
+      // wait to load the footer until we're reasonably sure the rest of the page has loaded
       let timeout_duration = currentPath.includes("openurl")? 2250 : 500;
+      self = this;  // quick copy 'this' for access within $timeout TODO: fix this
       $timeout(function(){
         elem.innerHTML = footerContent;
-        if(debugFooter){ console.log("footerHelper) footer loaded after " + timeout_duration + "ms."); }
+        self.logFooterMessage("footer loaded after " + timeout_duration + "ms.");
       }, timeout_duration);
     }
   }
@@ -105,8 +109,8 @@ angular.module('bulibwcFooter', [])
       <div id="footer-wrapper"></div>
     <bulibwc-footer>`,
     controller: function($rootScope, footerHelper, $timeout) {
-      $rootScope.$on('$locationChangeSuccess', function(event){
-        if(debugFooter){ console.log("-------- $locationChangeSuccess: " + window.location.href + " ----------"); }
+      $rootScope.$on("$locationChangeSuccess", function(event){
+        footerHelper.logFooterMessage("$locationChangeSuccess emitted for " + window.location.pathname + " calling footerHelper!");
         footerHelper.populateFooter($timeout);
       });
     }
