@@ -15,7 +15,7 @@ app.constant('outboundLinksHelper', {
   },
   getHrefArgFromSearch: function(hrefArgs, key="docid=", fallback="[unknown]"){
     let source = fallback;
-    if(hrefArgs.includes(key)){
+    if(hrefArgs && key && hrefArgs.includes(key)){
       let start_index = hrefArgs.indexOf(key) + key.length;
       let end_index = hrefArgs.indexOf("&", start_index);
       if(end_index == "-1"){ end_index = hrefArgs.length; }
