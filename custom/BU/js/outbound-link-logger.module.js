@@ -6,7 +6,7 @@ app.constant('outboundLinksHelper', {
       console.log("outboundLinksLogger) " + message);
     }
   },
-  logOutboundLinkEvent: function(category, action, urlClicked){
+  logOutboundLinkEvent: function(gaEventLogger, category, action, urlClicked){
     this.logOutboundLinkMessage(`calling gaEventLogger with category:'${category}', action: '${action}', label:'${urlClicked}'.`);
 
     if(this.sendGAEvent){
@@ -28,7 +28,7 @@ app.constant('outboundLinksHelper', {
 
 angular.module('outboundLinksLogger', [])
   .component('prmServiceLinksAfter', {
-    controller: function outboundLinksController(outboundLinksHelper, $timeout){
+    controller: function outboundLinksController(outboundLinksHelper, gaEventLogger, $timeout){
       $timeout(function(){
         // find the associated 'More Links' using the querySelectorAll
         outboundLinksHelper.logOutboundLinkMessage("using the querySelectorAll to grab outbound links in 'More Links'...");
@@ -42,7 +42,7 @@ angular.module('outboundLinksLogger', [])
           let linkText = anchorLinkElem.querySelector("span").innerHTML;
           anchorLinkElem.addEventListener("click", function(event){
             event.preventDefault();
-            outboundLinksHelper.logOutboundLinkEvent("outbound-link", linkText, url);
+            outboundLinksHelper.logOutboundLinkEvent(gaEventLogger, "outbound-link", linkText, url);
             window.open(url, '_blank');
           });
         }
@@ -67,7 +67,7 @@ angular.module('outboundLinksLogger', [])
 
           anchorLinkElem.addEventListener("click", function(event){
             event.preventDefault();
-            outboundLinksHelper.logOutboundLinkEvent("link-to-resource",source, url);
+            outboundLinksHelper.logOutboundLinkEvent(gaEventLogger, "link-to-resource",source, url);
             window.open(url, '_blank');
           });
         }
