@@ -1,6 +1,6 @@
 app.constant('outboundLinksHelper', {
   debug: true,
-  sendGAEvent: false,
+  sendGAEvent: true,
   logOutboundLinkMessage: function(message){
     if(this.debug){
       console.log("outboundLinksLogger) " + message);
@@ -29,8 +29,7 @@ app.constant('outboundLinksHelper', {
 angular.module('outboundLinksLogger', [])
   .component('prmServiceLinksAfter', {
     controller: function outboundLinksController(outboundLinksHelper, $timeout){
-      $timeout(function(){ // wait for the links to be loaded into the page
-
+      $timeout(function(){
         // find the associated 'More Links' using the querySelectorAll
         outboundLinksHelper.logOutboundLinkMessage("using the querySelectorAll to grab outbound links in 'More Links'...");
         let outboundLinks = document.querySelectorAll("prm-service-links > div > div > a.arrow-link");
