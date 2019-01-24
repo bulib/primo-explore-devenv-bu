@@ -7,11 +7,10 @@ app.constant('outboundLinksHelper', {
     }
   },
   logOutboundLinkEvent: function(gaEventLogger, category, action, urlClicked){
-    this.logOutboundLinkMessage(`calling gaEventLogger with category:'${category}', action: '${action}', label:'${urlClicked}'.`);
+    this.logOutboundLinkMessage(`calling 'gaEventLogger' with category:'${category}', action: '${action}', label:'${urlClicked}'.`);
 
     if(this.sendGAEvent){
-      gaEventLogger.logEvent(category, action, urlClicked);
-      console.log("new '" + category + "' event sent to Google Analytics");
+      gaEventLogger.logEvent(category, action, urlClicked, this.debug);
     }
   },
   getHrefArgFromSearch: function(hrefArgs, key="docid=", fallback="[unknown]"){
