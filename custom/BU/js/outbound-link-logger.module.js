@@ -26,7 +26,7 @@ app.constant('outboundLinksHelper', {
 });
 
 angular.module('outboundLinksLogger', [])
-  .component('prmServiceLinksAfter', {
+  .component('prmFullViewAfter', {
     controller: function outboundLinksController(outboundLinksHelper, gaEventLogger, $timeout){
       outboundLinksHelper.logOutboundLinkMessage("component loaded.");
       $timeout(function(){
