@@ -2,7 +2,7 @@ let footerContent = `
   <style>
     #address-list > li { padding-left: 0px; }
   </style>
-  <div class="footer-wrapper big-text">
+  <div class="footer-wrapper">
   <footer class="pam">
     <div class="ftr-left">
       <div id="bu-content">
