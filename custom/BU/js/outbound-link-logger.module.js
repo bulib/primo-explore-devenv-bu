@@ -1,5 +1,5 @@
 app.constant('outboundLinksHelper', {
-  debug: true,
+  debug: false,
   sendGAEvent: true,
   logOutboundLinkMessage: function(message){
     if(this.debug){
