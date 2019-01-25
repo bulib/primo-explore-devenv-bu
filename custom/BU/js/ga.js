@@ -14,17 +14,17 @@ app.run(['$rootScope', '$location', '$window', function($rootScope, $location, $
 
 // helper function for sending event data to google analytics
 app.service('gaEventLogger', function(){
+  this.logAboutEvent = function(message, debug=false){
+    if(debug){ console.log("gaEventLogger) " + message); }
+  }
   this.logEvent = function(category="", action="", label="", debug=false){
-    var eventMessage = "cat:"+category + " act:"+action + " label:"+label;
+    var eventMessage = "cat:'"+category + "' act:'"+action + "' label:'"+label+"'";
     if(window.ga){
-      if(debug){ console.log("logging '" + eventMessage + "' event to google analytics."); }
-      
       // send pageview event --- ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue])
       window.ga('send', 'event', category, action, label);
+      this.logAboutEvent("new '" + category + "' event sent to Google Analytics", debug);
     }else{
-      if(debug){
-        console.log("window.ga not found! cannot log message: '" + eventMessage + "'.");
-      }
+      this.logAboutEvent("window.ga not found! cannot log message: '" + eventMessage + "'.", debug);
     }
   }
 });
