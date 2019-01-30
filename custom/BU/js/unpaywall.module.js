@@ -1,3 +1,4 @@
+
 angular.module('unpaywall', [])
   .component('prmSearchResultAvailabilityLineAfter', {
     bindings: { parentCtrl: '<'},
@@ -21,9 +22,18 @@ angular.module('unpaywall', [])
           </table>
         </div>
       </unpaywall>`,
-    controller: function unpaywallController(oadoiOptions, gaEventLogger, $scope, $element, $http) {
+    controller: function unpaywallController(oadoiOptions, gaEventLogger, outboundLinksHelper, $scope, $element, $http) {
       var self = this;  // 'this' changes scope inside of the $http.get(). 'self' is easier to track/trace
       var item = this.parentCtrl.result;  // item data is stored in 'prmSearchResultAvailability' (its parent)
+
+      /* -- cut-out section for outboundLinks -- */
+      outboundLinksHelper.logOutboundLinkMessage("smoke test");
+      console.log(this.parentCtrl);
+
+      if(this.parentCtrl.isDirectLink()){
+        outboundLinksHelper.logOutboundLinkMessage("direct external link found! ");
+      }
+      /* -- end outboundLinks section -- */
 
       // obtain configuration and contextual info affecting display
       var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;

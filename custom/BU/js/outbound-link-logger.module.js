@@ -1,5 +1,5 @@
 app.constant('outboundLinksHelper', {
-  debug: false,
+  debug: true,
   sendGAEvent: true,
   logOutboundLinkMessage: function(message){
     if(this.debug){
@@ -24,6 +24,13 @@ app.constant('outboundLinksHelper', {
     return source;
   }
 });
+
+angular.module('outboundLinksResults', [])
+  .component('prmSearchResultAvailabilityLineAfter', {
+    controller: function outboundLinksResultsController(outboundLinksHelper, gaEventLogger){
+      outboundLinksHelper.logOutboundLinkMessage("'search-result-availability-line-after' found.");
+    }
+  })
 
 angular.module('outboundLinksLogger', [])
   .component('prmFullViewAfter', {
