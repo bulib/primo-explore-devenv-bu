@@ -20,11 +20,14 @@ app.constant('helpSidebarHelper', {
       <form ng-cloak>
         <md-toolbar>
           <div class="md-toolbar-tools">
+            <a ng-if="$ctrl.showBackButton" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
+              <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
+            </a>
             <h2>Search Help</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="hide()">
-              <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-            </md-button>
+            <a class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="hide()">
+              <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px"></prm-icon>
+            </a>
           </div>
         </md-toolbar>
 
@@ -37,13 +40,6 @@ app.constant('helpSidebarHelper', {
             </ul>
           </div>
         </md-dialog-content>
-
-        <md-dialog-actions layout="row">
-          <md-button md-autofocus>Default Action</md-button>
-          <span flex></span>
-          <md-button>Option 2</md-button>
-          <md-button ng-click="hide()">Close</md-button>
-        </md-dialog-actions>
       </form>
     </md-dialog>
   `,
@@ -66,9 +62,11 @@ angular.module('helpSidebar', ['ngMaterial'])
           <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_help_24px"></prm-icon>
         </a>
         </div>
-       </help-sidebar>`,
-    controller: function(helpSidebarHelper, gaEventLogger, $mdDialog, $scope){
+      </help-sidebar>`,
+    controller: function(helpSidebarHelper, gaEventLogger, helpSidebarContent, $mdDialog, $scope){
       helpSidebarHelper.logMessage("loaded.");
+
+      self.showBackButton = false;
 
       this.openHelpMenu = function(ev){
         helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "opened", window.location.pathname);
@@ -93,8 +91,9 @@ angular.module('helpSidebar', ['ngMaterial'])
           $mdDialog.hide();
         };
 
-        $scope.answer = function(answer) {
-          $mdDialog.hide(answer);
+        $scope.back = function() {
+          // TODO implement back button functionality
+          helpSidebarHelper.logMessage("user pressed the back button");
         };
       }
     }
