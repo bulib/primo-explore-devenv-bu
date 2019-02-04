@@ -32,9 +32,13 @@ app.constant('helpSidebarHelper', {
         <md-dialog-content>
           <div class="md-dialog-content">
             <div id="search-help-dialog-content"></div>
-            <ul ng-if="!itemOpened">
-              <li ng-repeat="entry in helpContentList">
-                <a ng-click="openItem(entry.id, entry.htmlTemplate)">{{entry.title}}</a>
+            <ul ng-if="!itemOpened" style="list-style: none; width: 100%; padding-left: 0px;">
+              <li ng-repeat="entry in helpContentList" class="row">
+                <a ng-click="openItem(entry.id, entry.htmlTemplate)">
+                  <prm-icon svg-icon-set="{{entry.icon.group}}" icon-definition="ic_{{entry.icon.code}}_24px"
+                            icon-type="svg" style="padding-right: 10px;"></prm-icon>
+                  <span>{{entry.title}}</span>
+                </a>
               </li>
             </ul>
           </div>

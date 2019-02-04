@@ -1,6 +1,7 @@
 let getting_started = {
   "id":"getting-started",
   "title":"Getting Started",
+  "icon":{"code":"description","group":"action"},
   "htmlTemplate":`
     <p>BU Libraries Search contains articles, books, journals, databases, films, music, dissertations, and other scholarly materials for your research</p>
     <h2>Search Tips</h2>
@@ -15,6 +16,7 @@ let getting_started = {
 let list_element = {
   "id":"list-element",
   "title":"A Sample List Element",
+  "icon":{"code":"list","group":"action"},
   "htmlTemplate":`<ol><li>1</li><li><strong>2</strong></li><li><em>three</em></li></ol>`
 };
 
