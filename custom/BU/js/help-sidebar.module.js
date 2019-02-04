@@ -84,10 +84,7 @@ angular.module('helpSidebar', ['ngMaterial'])
 
       function helpSidebarDialogController(helpSidebarContent, $scope, $mdDialog) {
         $scope.helpContentList = helpSidebarContent.list_of_elements;
-        $scope.hide = function() {
-          helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "closed", window.location.pathname);
-          $mdDialog.hide();
-        };
+        $scope.hide = function() { $mdDialog.hide(); };
 
         $scope.back = function() {
           document.querySelector("#search-help-dialog-content").innerHTML = "";
