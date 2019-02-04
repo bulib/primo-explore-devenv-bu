@@ -33,11 +33,7 @@ app.constant('helpSidebarHelper', {
 
         <md-dialog-content>
           <div class="md-dialog-content">
-            <ul>
-              <li>First item in the list of helpers</li>
-              <li>Second item in that list</li>
-              <li>Third item</li>
-            </ul>
+            <ul><li ng-repeat="entry in helpContentList">{{entry.title}}</li></ul>
           </div>
         </md-dialog-content>
       </form>
@@ -63,7 +59,7 @@ angular.module('helpSidebar', ['ngMaterial'])
         </a>
         </div>
       </help-sidebar>`,
-    controller: function(helpSidebarHelper, gaEventLogger, helpSidebarContent, $mdDialog, $scope){
+    controller: function(helpSidebarHelper, helpSidebarContent, gaEventLogger, $mdDialog, $scope){
       helpSidebarHelper.logMessage("loaded.");
 
       self.showBackButton = false;
@@ -71,7 +67,7 @@ angular.module('helpSidebar', ['ngMaterial'])
       this.openHelpMenu = function(ev){
         helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "opened", window.location.pathname);
         $mdDialog.show({
-          controller: DialogController,
+          controller: helpSidebarDialogController,
           template: helpSidebarHelper.dialogTemplate,
           parent: angular.element(document.body),
           targetEvent: ev,
@@ -85,7 +81,8 @@ angular.module('helpSidebar', ['ngMaterial'])
         });
       };
 
-      function DialogController($scope, $mdDialog) {
+      function helpSidebarDialogController(helpSidebarContent, $scope, $mdDialog) {
+        $scope.helpContentList = helpSidebarContent.list_of_elements;
         $scope.hide = function() {
           helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "closed", window.location.pathname);
           $mdDialog.hide();
