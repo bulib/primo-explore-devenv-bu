@@ -6,9 +6,8 @@ app.constant('helpSidebarHelper', {
       console.log("helpSidebar) " + message);
     }
   },
-  logHelpSidebarEvent: function(gaEventLogger, action){
+  logHelpSidebarEvent: function(gaEventLogger, action, label=window.location.pathname){
     let category = "help-sidebar";
-    let label = window.location.pathname;
     this.logMessage(`calling 'gaEventLogger' with category:'${category}', action: '${action}', label:'${label}'.`);
 
     if(this.sendGAEvent){
@@ -20,7 +19,7 @@ app.constant('helpSidebarHelper', {
       <form ng-cloak>
         <md-toolbar>
           <div class="md-toolbar-tools">
-            <a ng-if="$ctrl.showBackButton" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
+            <a ng-if="itemOpened" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
               <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
             </a>
             <h2>Search Help</h2>
@@ -30,10 +29,14 @@ app.constant('helpSidebarHelper', {
             </a>
           </div>
         </md-toolbar>
-
         <md-dialog-content>
           <div class="md-dialog-content">
-            <ul><li ng-repeat="entry in helpContentList">{{entry.title}}</li></ul>
+            <div id="search-help-dialog-content"></div>
+            <ul ng-if="!itemOpened">
+              <li ng-repeat="entry in helpContentList">
+                <a ng-click="openItem(entry.id, entry.htmlTemplate)">{{entry.title}}</a>
+              </li>
+            </ul>
           </div>
         </md-dialog-content>
       </form>
@@ -53,16 +56,14 @@ angular.module('helpSidebar', ['ngMaterial'])
     template: `
       <help-sidebar>
         <div class="layout-align-center-center layout-row">
-        <a class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple"
-                  aria-label="Open Search Help Menu" ng-click="$ctrl.openHelpMenu($event)" href="#">
-          <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_help_24px"></prm-icon>
-        </a>
+          <a class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple"
+                    aria-label="Open Search Help Menu" ng-click="$ctrl.openHelpMenu($event)" href="#">
+            <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_help_24px"></prm-icon>
+          </a>
         </div>
       </help-sidebar>`,
     controller: function(helpSidebarHelper, helpSidebarContent, gaEventLogger, $mdDialog, $scope){
       helpSidebarHelper.logMessage("loaded.");
-
-      self.showBackButton = false;
 
       this.openHelpMenu = function(ev){
         helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "opened", window.location.pathname);
@@ -89,8 +90,13 @@ angular.module('helpSidebar', ['ngMaterial'])
         };
 
         $scope.back = function() {
-          // TODO implement back button functionality
-          helpSidebarHelper.logMessage("user pressed the back button");
+          document.querySelector("#search-help-dialog-content").innerHTML = "";
+          $scope.itemOpened = false;
+        };
+        $scope.openItem = function(id, htmlContent){
+          document.querySelector("#search-help-dialog-content").innerHTML = htmlContent;
+          helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "selected", id);
+          $scope.itemOpened = true;
         };
       }
     }
