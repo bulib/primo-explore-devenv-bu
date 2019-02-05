@@ -1,13 +1,13 @@
-app.constant('helpSidebarHelper', {
+app.constant('helpMenuHelper', {
   debug: true,
   sendGAEvent: false,
   logMessage: function(message){
     if(this.debug){
-      console.log("helpSidebar) " + message);
+      console.log("helpMenu) " + message);
     }
   },
   logHelpSidebarEvent: function(gaEventLogger, action, label=window.location.pathname){
-    let category = "help-sidebar";
+    let category = "help-menu";
     this.logMessage(`calling 'gaEventLogger' with category:'${category}', action: '${action}', label:'${label}'.`);
 
     if(this.sendGAEvent){
@@ -55,25 +55,25 @@ app.constant('helpSidebarHelper', {
 });
 
 
-angular.module('helpSidebar', ['ngMaterial'])
+angular.module('helpMenuTopbar', ['ngMaterial'])
   .component('prmSearchBookmarkFilterAfter', {
     template: `
-      <help-sidebar>
+      <help-menu-topbar>
         <div class="layout-align-center-center layout-row">
           <a class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple"
                     aria-label="Open Search Help Menu" ng-click="$ctrl.openHelpMenu($event)" href="#">
             <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_help_24px"></prm-icon>
           </a>
         </div>
-      </help-sidebar>`,
-    controller: function(helpSidebarHelper, helpSidebarContent, gaEventLogger, $mdDialog, $scope){
-      helpSidebarHelper.logMessage("loaded.");
+      </help-menu-topbar>`,
+    controller: function(helpMenuHelper, gaEventLogger, $mdDialog, $scope){
+      helpMenuHelper.logMessage("loaded.");
 
       this.openHelpMenu = function(ev){
-        helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "opened", window.location.pathname);
+        helpMenuHelper.logHelpSidebarEvent(gaEventLogger, "opened", window.location.pathname);
         $mdDialog.show({
           controller: helpSidebarDialogController,
-          template: helpSidebarHelper.dialogTemplate,
+          template: helpMenuHelper.dialogTemplate,
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose:true,
@@ -86,8 +86,8 @@ angular.module('helpSidebar', ['ngMaterial'])
         });
       };
 
-      function helpSidebarDialogController(helpSidebarContent, $scope, $mdDialog) {
-        $scope.helpContentList = helpSidebarContent.list_of_elements;
+      function helpSidebarDialogController(helpMenuContent, $scope, $mdDialog) {
+        $scope.helpContentList = helpMenuContent.list_of_elements;
         $scope.hide = function() { $mdDialog.hide(); };
 
         $scope.back = function() {
@@ -96,7 +96,7 @@ angular.module('helpSidebar', ['ngMaterial'])
         };
         $scope.openItem = function(id, htmlContent){
           document.querySelector("#search-help-dialog-content").innerHTML = htmlContent;
-          helpSidebarHelper.logHelpSidebarEvent(gaEventLogger, "selected", id);
+          helpMenuHelper.logHelpSidebarEvent(gaEventLogger, "selected", id);
           $scope.itemOpened = true;
         };
       }

@@ -20,6 +20,6 @@ let list_element = {
   "htmlTemplate":`<ol><li>1</li><li><strong>2</strong></li><li><em>three</em></li></ol>`
 };
 
-app.constant('helpSidebarContent', {
+app.constant('helpMenuContent', {
   list_of_elements:[getting_started, list_element]
 });
