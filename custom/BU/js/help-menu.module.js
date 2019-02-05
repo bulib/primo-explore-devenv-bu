@@ -32,14 +32,17 @@ app.constant('helpMenuHelper', {
         <md-dialog-content>
           <div class="md-dialog-content">
             <div id="search-help-dialog-content"></div>
-            <ul ng-if="!itemOpened" style="list-style: none; width: 100%; padding-left: 0px;">
+            <ul ng-hide="itemOpened" style="list-style: none; width: 100%; padding-left: 0px;">
+              <hr />
               <li ng-repeat="entry in helpContentList" class="row">
-                <a ng-click="openItem(entry.id, entry.htmlTemplate)">
+                <a ng-if="entry.id" ng-click="openItem(entry.id)">
                   <prm-icon svg-icon-set="{{entry.icon.group}}" icon-definition="ic_{{entry.icon.code}}_24px"
                             icon-type="svg" style="padding-right: 10px;"></prm-icon>
                   <span>{{entry.title}}</span>
                 </a>
+                <hr ng-if="!entry.id"/>
               </li>
+              <hr />
             </ul>
           </div>
         </md-dialog-content>
@@ -89,7 +92,10 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
           document.querySelector("#search-help-dialog-content").innerHTML = "";
           $scope.itemOpened = false;
         };
-        $scope.openItem = function(id, htmlContent){
+        $scope.openItem = function(id){
+          let entry = helpMenuContent.get_entry_by_id(id);
+          let htmlContent = "";
+          if(entry){ htmlContent = (entry.template)? entry.template : `<em>${entry.description}</em>`; }
           document.querySelector("#search-help-dialog-content").innerHTML = htmlContent;
           helpMenuHelper.logHelpEvent(gaEventLogger, "selected", id);
           $scope.itemOpened = true;
