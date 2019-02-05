@@ -15,14 +15,14 @@ app.constant('helpMenuHelper', {
     }
   },
   dialogTemplate: `
-    <md-dialog aria-label="Search Help Menu Dialog">
+    <md-dialog aria-label="Search Help Menu Dialog" style="width: 450px;">
       <form ng-cloak>
         <md-toolbar>
           <div class="md-toolbar-tools">
-            <a ng-if="itemOpened" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
+            <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
               <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
             </a>
-            <h2>Search Help</h2>
+            <h2><span ng-hide="entry">Search Help</span><span ng-hide="!entry">{{entry.title}}</span></h2>
             <span flex></span>
             <a class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="hide()">
               <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px"></prm-icon>
@@ -31,16 +31,19 @@ app.constant('helpMenuHelper', {
         </md-toolbar>
         <md-dialog-content>
           <div class="md-dialog-content">
-            <div id="search-help-dialog-content"></div>
-            <ul ng-hide="itemOpened" style="list-style: none; width: 100%; padding-left: 0px;">
+            <div ng-if="entry" id="search-help-dialog-content">
+              <p ng-if="!entry.template"><em>{{entry.description}}</em></p>
+              <div ng-bind-html="entry.template"></div>
+            </div>
+            <ul ng-hide="entry" style="list-style: none; width: 100%; padding-left: 0px;">
               <hr />
-              <li ng-repeat="entry in helpContentList" class="row">
-                <a ng-if="entry.id" ng-click="openItem(entry.id)">
-                  <prm-icon svg-icon-set="{{entry.icon.group}}" icon-definition="ic_{{entry.icon.code}}_24px"
+              <li ng-repeat="item in helpContentList" class="row">
+                <a ng-if="item.id" ng-click="openItem(item.id)">
+                  <prm-icon svg-icon-set="{{item.icon.group}}" icon-definition="ic_{{item.icon.code}}_24px"
                             icon-type="svg" style="padding-right: 10px;"></prm-icon>
-                  <span>{{entry.title}}</span>
+                  <span>{{item.title}}</span>
                 </a>
-                <hr ng-if="!entry.id"/>
+                <hr ng-if="!item.id"/>
               </li>
               <hr />
             </ul>
@@ -87,18 +90,13 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
       function helpMenuDialogController(helpMenuContent, $scope, $mdDialog) {
         $scope.helpContentList = helpMenuContent.list_of_elements;
         $scope.hide = function() { $mdDialog.hide(); };
-
         $scope.back = function() {
           document.querySelector("#search-help-dialog-content").innerHTML = "";
-          $scope.itemOpened = false;
+          $scope.entry = null;
         };
         $scope.openItem = function(id){
-          let entry = helpMenuContent.get_entry_by_id(id);
-          let htmlContent = "";
-          if(entry){ htmlContent = (entry.template)? entry.template : `<em>${entry.description}</em>`; }
-          document.querySelector("#search-help-dialog-content").innerHTML = htmlContent;
+          $scope.entry = helpMenuContent.get_entry_by_id(id);
           helpMenuHelper.logHelpEvent(gaEventLogger, "selected", id);
-          $scope.itemOpened = true;
         };
       }
     }
