@@ -6,7 +6,7 @@ app.constant('helpMenuHelper', {
       console.log("helpMenu) " + message);
     }
   },
-  logHelpSidebarEvent: function(gaEventLogger, action, label=window.location.pathname){
+  logHelpEvent: function(gaEventLogger, action, label=window.location.pathname){
     let category = "help-menu";
     this.logMessage(`calling 'gaEventLogger' with category:'${category}', action: '${action}', label:'${label}'.`);
 
@@ -70,23 +70,18 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
       helpMenuHelper.logMessage("loaded.");
 
       this.openHelpMenu = function(ev){
-        helpMenuHelper.logHelpSidebarEvent(gaEventLogger, "opened", window.location.pathname);
+        helpMenuHelper.logHelpEvent(gaEventLogger, "opened", window.location.pathname);
         $mdDialog.show({
-          controller: helpSidebarDialogController,
+          controller: helpMenuDialogController,
           template: helpMenuHelper.dialogTemplate,
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose:true,
           fullscreen: $scope.customFullscreen
-        })
-        .then(function(answer) {
-          $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          $scope.status = 'You cancelled the dialog.';
         });
       };
 
-      function helpSidebarDialogController(helpMenuContent, $scope, $mdDialog) {
+      function helpMenuDialogController(helpMenuContent, $scope, $mdDialog) {
         $scope.helpContentList = helpMenuContent.list_of_elements;
         $scope.hide = function() { $mdDialog.hide(); };
 
@@ -96,7 +91,7 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
         };
         $scope.openItem = function(id, htmlContent){
           document.querySelector("#search-help-dialog-content").innerHTML = htmlContent;
-          helpMenuHelper.logHelpSidebarEvent(gaEventLogger, "selected", id);
+          helpMenuHelper.logHelpEvent(gaEventLogger, "selected", id);
           $scope.itemOpened = true;
         };
       }
