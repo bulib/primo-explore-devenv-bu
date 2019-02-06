@@ -21,67 +21,66 @@ angular.module('unpaywall', [])
           </table>
         </div>
       </unpaywall>`,
-    controller:
-      function unpaywallController(oadoiOptions, gaEventLogger, $scope, $element, $http) {
-        var self = this;  // 'this' changes scope inside of the $http.get(). 'self' is easier to track/trace
-        var item = this.parentCtrl.result;  // item data is stored in 'prmSearchResultAvailability' (its parent)
+    controller: function unpaywallController(oadoiOptions, gaEventLogger, $scope, $element, $http) {
+      var self = this;  // 'this' changes scope inside of the $http.get(). 'self' is easier to track/trace
+      var item = this.parentCtrl.result;  // item data is stored in 'prmSearchResultAvailability' (its parent)
 
-        // obtain configuration and contextual info affecting display
-        var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
-        self.listOrFullViewLabel = onFullView? 'full' : 'list';
-        self.debug = oadoiOptions.debug;
-        self.show = onFullView || oadoiOptions.showOnResultsPage;
-        self.showVersionLabel = oadoiOptions.showVersionLabel;
+      // obtain configuration and contextual info affecting display
+      var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
+      self.listOrFullViewLabel = onFullView? 'full' : 'list';
+      self.debug = oadoiOptions.debug;
+      self.show = onFullView || oadoiOptions.showOnResultsPage;
+      self.showVersionLabel = oadoiOptions.showVersionLabel;
 
-        // ng-click response that logs data to google analytics
-        self.trackLinkClick = function(doi){
-          if(self.debug){ console.log("tracking link click via gaEventLogger for doi: "+doi); }
-          gaEventLogger.logEvent("unpaywall", "usage", self.listOrFullViewLabel);
-        };
+      // ng-click response that logs data to google analytics
+      self.trackLinkClick = function(doi){
+        if(self.debug){ console.log("tracking link click via gaEventLogger for doi: "+doi); }
+        gaEventLogger.logEvent("unpaywall", "usage", self.listOrFullViewLabel);
+      };
 
-        try{
-          // obtain doi and open access information from the item PNX (metadata)
-          var addata = item.pnx.addata;
-          if(addata){
-            this.doi = addata.hasOwnProperty("doi")? addata.doi[0] : null; //default to first doi (list)
-            this.is_oa = addata.hasOwnProperty("oa"); //true if property is present at all (regardless of value)
-          }
+      try{
+        // obtain doi and open access information from the item PNX (metadata)
+        var addata = item.pnx.addata;
+        if(addata){
+          this.doi = addata.hasOwnProperty("doi")? addata.doi[0] : null; //default to first doi (list)
+          this.is_oa = addata.hasOwnProperty("oa"); //true if property is present at all (regardless of value)
+        }
 
-          // if there's a doi and it's not already open access, ask the oadoi.org for an OA link
-          if(this.doi && !this.is_oa){
-            gaEventLogger.logEvent('unpaywall', 'api-call', self.listOrFullViewLabel);
+        // if there's a doi and it's not already open access, ask the oadoi.org for an OA link
+        if(this.doi && !this.is_oa){
+          gaEventLogger.logEvent('unpaywall', 'api-call', self.listOrFullViewLabel);
 
-            // make the actual call to unpaywall API
-            $http.get("https://api.oadoi.org/v2/"+self.doi+"?email="+oadoiOptions.email)
-              .then(function(successResponse){
-                // if there is a "best open access location", save it so it can be used in the template above
-                var best_oa_location = successResponse.data.best_oa_location;
-                if(!best_oa_location){
-                  return; // can't get what we want from unpaywall. returning with nothing
-                }
+          // make the actual call to unpaywall API
+          $http.get("https://api.oadoi.org/v2/"+self.doi+"?email="+oadoiOptions.email).then(
+            function(successResponse){
+              // if there is a "best open access location", save it so it can be used in the template above
+              var best_oa_location = successResponse.data.best_oa_location;
+              if(!best_oa_location){
+                return; // can't get what we want from unpaywall. returning with nothing
+              }
 
-                // get the "best" content link from this "best_oa_location"
-                self.best_oa_link = best_oa_location.url || "";
-                gaEventLogger.logEvent('unpaywall', 'api-success', self.listOrFullViewLabel);
+              // get the "best" content link from this "best_oa_location"
+              self.best_oa_link = best_oa_location.url || "";
+              gaEventLogger.logEvent('unpaywall', 'api-success', self.listOrFullViewLabel);
 
-                // optionally display whether the link is to a published, submitted, or accepted version
-                var best_oa_version = best_oa_location.version.toLowerCase() || "";
-                if(best_oa_version.includes("publish")){
-                  self.best_oa_version = "";
-                }else{
-                  self.best_oa_version = (best_oa_version.includes("submit"))? "Submitted" : "Accepted";
-                }
-              }, function(errorResponse){
-                if(self.debug){
-                  console.log(errorResponse.status + " error calling unpaywall API: " +  errorResponse.statusText);
-                }
-              });
-          }
+              // optionally display whether the link is to a published, submitted, or accepted version
+              var best_oa_version = best_oa_location.version.toLowerCase() || "";
+              if(best_oa_version.includes("publish")){
+                self.best_oa_version = "";
+              }else{
+                self.best_oa_version = (best_oa_version.includes("submit"))? "Submitted" : "Accepted";
+              }
+            }, function(errorResponse){
+              if(self.debug){
+                console.log(errorResponse.status + " error calling unpaywall API: " +  errorResponse.statusText);
+              }
+            });
+        }
 
-        }catch(e){
-          if(self.debug){
-            console.log("error caught in unpaywallController: " + e.message);
-          }
+      }catch(e){
+        if(self.debug){
+          console.log("error caught in unpaywallController: " + e.message);
         }
       }
+    }
   });
