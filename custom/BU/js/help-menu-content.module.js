@@ -42,7 +42,7 @@ app.constant('helpMenuContent', {
       "id":"guides",
       "title":"Guides",
       "description":`info about research, subject, course, and how to guides; how to find in BULS by way of search and related more info links; link out to LibGuides home`,
-      "icon":{"code":"explore","group":"action"}
+      "icon":{"code":"directions","group":"maps"}
     },
     {
       "id":"glossary",
