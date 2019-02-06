@@ -22,7 +22,7 @@ app.constant('helpMenuContent', {
       "id":"tutorials",
       "title":"Tutorials",
       "description":"at a minimum, links to individual videos and a playlist of existing BULS video tutorials (tbd if in Kaltura, WordPress, or youtube); if possible and desired, embed using Kaltura embed code",
-      "icon":{"code":"video_library","group":"av"},
+      "icon":{"code":"shop_two","group":"action"},
     },
     {}, // DIVIDER, // search-specific
     {
@@ -35,27 +35,27 @@ app.constant('helpMenuContent', {
       "id":"didnt-find",
       "title":"Didn't find it?",
       "description":`TBD info about ILL, scope of collections, and problem cases`,
-      "icon":{"code":"compare_arrows","group":"action"},
+      "icon":{"code":"swap_horiz","group":"action"},
     },
     {}, //DIVIDER, // conceptual 
     {
       "id":"guides",
       "title":"Guides",
       "description":`info about research, subject, course, and how to guides; how to find in BULS by way of search and related more info links; link out to LibGuides home`,
-      "icon":{"code":"directions","group":"action"}
+      "icon":{"code":"explore","group":"action"}
     },
     {
       "id":"glossary",
       "title":"Glossary",
       "description":"list of common terms (jargon) and definitions",
-      "icon":{"code":"notes","group":"editor"}
+      "icon":{"code":"view_list","group":"action"}
     },
     {}, //DIVIDER, 
     {
       "id":"query-builder",
       "title":"Query Builder",
       "description":`placeholder for this, tbd functionality for future development; interim step may just be to have text demonstrating adv query syntax`,
-      "icon":{"code":"build","group":"action"}
+      "icon":{"code":"find_in_page","group":"action"}
     }, 
     {}, //DIVIDER, Search Help
     {
@@ -94,7 +94,7 @@ app.constant('helpMenuContent', {
       "id":"feedback",
       "title":"Feedback",
       "description":`directs to a new form to send feedback in the format of specific questions, e.g. "rate your experience", "did you find what you're looking for?", "send us your thoughts on improving search"; will want to clearly differentiate from Ask and reference help, so that patrons who need help soon can get it`,
-      "icon":{"code":"feedback","group":"action"}
+      "icon":{"code":"chat","group":"communication"}
     }
   ],
   get_entry_by_id: function(id){
