@@ -15,9 +15,11 @@ app.constant('helpMenuHelper', {
     }
   },
   dialogTemplate: `
-    <md-dialog aria-label="Search Help Menu Dialog" style="width: 450px;">
-      <form ng-cloak>
-        <md-toolbar>
+    <md-dialog id="search-help-dialog" aria-label="Search Help Menu Dialog" ng-mouseleave=dragMouseUp()
+               style="width: 450px;">
+      <form>
+        <md-toolbar id="search-help-dialog-header" style="cursor: move;" 
+                    ng-mousedown=dragMouseDown(ev) ng-mousemove=elementDrag(ev)>
           <div class="md-toolbar-tools">
             <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
               <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
@@ -82,13 +84,25 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
           template: helpMenuHelper.dialogTemplate,
           parent: angular.element(document.body),
           targetEvent: ev,
-          clickOutsideToClose:true,
-          fullscreen: $scope.customFullscreen
+          hasBackdrop: false,
+          clickOutsideToClose:false,
+          fullscreen: false,
+          focusOnOpen: true
         });
+        
       };
 
       function helpMenuDialogController(helpMenuContent, $scope, $mdDialog) {
+
+        // data
         $scope.helpContentList = helpMenuContent.list_of_elements;
+        $scope.selected = false;
+        $scope.pos1 = 0;
+        $scope.pos2 = 0;
+        $scope.pos3 = 0;
+        $scope.pos4 = 0;
+        
+        // modal navigation
         $scope.hide = function() { $mdDialog.hide(); };
         $scope.back = function() {
           document.querySelector("#search-help-dialog-content").innerHTML = "";
@@ -98,6 +112,36 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
           $scope.entry = helpMenuContent.get_entry_by_id(id);
           helpMenuHelper.logHelpEvent(gaEventLogger, "selected", id);
         };
+
+        // dragging modal
+        $scope.dragMouseDown = function(ev){
+          ev = ev || window.event;
+          helpMenuHelper.logMessage("dragMouseDown");
+          $scope.selected = true; 
+          $scope.pos3 = ev.clientX;
+          $scope.pos4 = ev.clientY;
+        }
+        $scope.elementDrag = function(e){
+          if(!$scope.selected){ return; }
+          console.log("elementDrag");
+          e = e || window.event;
+          // e.preventDefault();
+          // calculate the new cursor position:
+          $scope.pos1 = $scope.pos3 - e.clientX;
+          $scope.pos2 = $scope.pos4 - e.clientY;
+          $scope.pos3 = e.clientX;
+          $scope.pos4 = e.clientY;
+          // set the element's new position:
+          let elmntHeader = document.getElementById("search-help-dialog-header");
+          let elmnt = document.getElementById("search-help-dialog");
+          elmnt.style.top = (elmntHeader.offsetTop - $scope.pos2) + "px";
+          elmnt.style.left = (elmntHeader.offsetLeft - $scope.pos1) + "px";
+          elmnt.onmouseup = $scope.dragMouseUp;
+        };
+        $scope.dragMouseUp = function(ev){
+          $scope.selected = false;
+          helpMenuHelper.logMessage("dragMouseUp");
+        }
       }
     }
   });
