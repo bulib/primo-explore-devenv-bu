@@ -1,7 +1,7 @@
 app.constant('helpMenuHelper', {
   debug: true,
   sendGAEvent: false,
-  helpMenuWidth: 450,
+  helpMenuWidth: 500,
   logMessage: function(message){
     if(this.debug){
       console.log("helpMenu) " + message);
@@ -15,7 +15,7 @@ app.constant('helpMenuHelper', {
       gaEventLogger.logEvent(category, action, label, this.debug);
     }
   },
-  helpContentBody:`
+  helpContentBody: `
     <div class="md-dialog-content">
       <div ng-if="entry" id="search-help-dialog-content">
         <p ng-if="!entry.template"><em>{{entry.description}}</em></p>
@@ -53,7 +53,6 @@ app.constant('helpMenuHelper', {
   }
 });
 
-
 angular.module('helpMenuTopbar', ['ngMaterial'])
   .component('prmSearchBookmarkFilterAfter', {
     template: `
@@ -73,15 +72,13 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
         $mdDialog.show({
           controller: helpMenuDialogController,
           template: `
-            <md-dialog id="search-help-dialog" aria-label="Search Help Menu Dialog" ng-mouseleave=dragMouseUp()
-                      style="width: ${helpMenuHelper.helpMenuWidth}px;">
+            <md-dialog id="search-help-dialog" aria-label="Search Help Menu Dialog"
+                       style="width: ${helpMenuHelper.helpMenuWidth}px;">
               <form>
-              <md-toolbar ng-mousedown=dragMouseDown(ev) ng-mousemove=elementDrag(ev)>
-                <div id="search-help-dialog-header" class="md-toolbar-tools">
-                  ${helpMenuHelper.helpContentHeader}
-                </div>
+              <md-toolbar>
+                ${helpMenuHelper.helpContentHeader}
               </md-toolbar>
-              <md-dialog-content id="help-dialog-content">
+              <md-dialog-content>
                 ${helpMenuHelper.helpContentBody}
               </md-dialog-content>
                 <md-dialog-actions layout="row">
@@ -89,19 +86,15 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
                 </md-dialog-actions>
               </form>
             </md-dialog>`,
-          parent: angular.element(document.body),
           targetEvent: ev,
           hasBackdrop: true,
           clickOutsideToClose:true,
           fullscreen: false,
           focusOnOpen: true
         });
-        document.querySelector("#search-help-dialog-header").innerHTML = helpMenuHelper.helpContentHeader;
-        document.querySelector("#md-dialog-content").innerHTML = helpMenuHelper.helpContentBody;
       };
 
       function helpMenuDialogController(helpMenuContent, $scope, $mdDialog) {
-
         // data
         $scope.helpContentList = helpMenuContent.list_of_elements;
         
@@ -116,8 +109,10 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
           helpMenuHelper.logHelpEvent(gaEventLogger, "selected", id);
         };
         $scope.openHelpInNewWindow = function(){
-          let params=`width=500,height=800,resizable=0,location=0,menubar=0,scrollbar=1`;
+          let params=`width=${helpMenuHelper.helpMenuWidth},height=800,resizable=0,location=0,menubar=0,scrollbars=yes`;
           open('/primo-explore/search?vid=BU', 'BULibraries Help Menu', params);
+          helpMenuHelper.logHelpEvent(gaEventLogger, "new-window");
+          $scope.hide();
         }
       }
     }
