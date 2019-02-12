@@ -1,6 +1,6 @@
 //load app 'viewCustom' as a module with [] dependencies
 var app = angular.module('viewCustom', 
-  ['angularLoad',  'helpMenuTopbar', 'outboundLinksLogger', 'unpaywall', 'wrlcAnnounce']
+  ['angularLoad',  'helpMenuContent', 'helpMenuTopbar', 'outboundLinksLogger', 'unpaywall', 'wrlcAnnounce']
 );
 
 // - unpaywall - //

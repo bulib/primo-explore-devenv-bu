@@ -3,9 +3,7 @@ app.constant('helpMenuHelper', {
   sendGAEvent: false,
   helpMenuWidth: 500,
   logMessage: function(message){
-    if(this.debug){
-      console.log("helpMenu) " + message);
-    }
+    if(this.debug){ console.log("helpMenu) " + message); }
   },
   logHelpEvent: function(gaEventLogger, action, label=window.location.pathname){
     let category = "help-menu";
@@ -57,18 +55,18 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
   .component('prmSearchBookmarkFilterAfter', {
     template: `
       <help-menu-topbar>
-        <div class="layout-align-center-center layout-row">
+        <div class="layout-align-center layout-row">
           <a class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple"
                     aria-label="Open Search Help Menu" ng-click="$ctrl.openHelpMenu($event)" href="#">
             <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_help_24px"></prm-icon>
           </a>
         </div>
       </help-menu-topbar>`,
-    controller: function(helpMenuHelper, gaEventLogger, $mdDialog, $scope){
+    controller: function(helpMenuHelper, gaEventLogger, $mdDialog){
       helpMenuHelper.logMessage("loaded.");
 
       this.openHelpMenu = function(ev){
-        helpMenuHelper.logHelpEvent(gaEventLogger, "opened", window.location.pathname);
+        helpMenuHelper.logHelpEvent(gaEventLogger, "open-dialog", window.location.pathname);
         $mdDialog.show({
           controller: helpMenuDialogController,
           template: `
@@ -111,7 +109,7 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
         $scope.openHelpInNewWindow = function(){
           let params=`width=${helpMenuHelper.helpMenuWidth},height=800,resizable=0,location=0,menubar=0,scrollbars=yes`;
           open('/primo-explore/search?vid=BU', 'BULibraries Help Menu', params);
-          helpMenuHelper.logHelpEvent(gaEventLogger, "new-window");
+          helpMenuHelper.logHelpEvent(gaEventLogger, "open-window");
           $scope.hide();
         }
       }
