@@ -13,36 +13,6 @@ app.constant('helpMenuHelper', {
       gaEventLogger.logEvent(category, action, label, this.debug);
     }
   },
-  helpContentBody: `
-    <div class="md-dialog-content">
-      <div ng-if="entry" id="search-help-dialog-content">
-        <p ng-if="!entry.template"><em>{{entry.description}}</em></p>
-        <div ng-bind-html="entry.template"></div>
-      </div>
-      <ul ng-hide="entry" style="list-style: none; width: 100%; padding-left: 0px;">
-        <hr />
-        <li ng-repeat="item in helpContentList" class="row">
-          <a ng-if="item.id" ng-click="openItem(item.id)">
-            <prm-icon svg-icon-set="{{item.icon.group}}" icon-definition="ic_{{item.icon.code}}_24px"
-                      icon-type="svg" style="padding-right: 10px;"></prm-icon>
-            <span>{{item.title}}</span>
-          </a>
-          <hr ng-if="!item.id"/>
-        </li>
-        <hr />
-      </ul>
-    </div>`,
-  helpContentHeader: `
-    <div class="md-toolbar-tools">
-      <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
-        <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
-      </a>
-      <h2><span ng-hide="entry">Search Help</span><span ng-hide="!entry">{{entry.title}}</span></h2>
-      <span flex></span>
-      <a class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="hide()">
-        <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px"></prm-icon>
-      </a>
-    </div>`,
   openDialogBox: function(){
     const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
     dialog.listen('MDCDialog:opened', () => {
@@ -50,6 +20,63 @@ app.constant('helpMenuHelper', {
     });
   }
 });
+
+angular.module('helpMenuContentDisplay', [])
+  .component('prmExploreMainAfter', {
+    template: `
+      <help-menu-content-display>
+        <div ng-if="showHelpMenu">
+          <style>
+            help-menu-content-display { font-size: 140%; margin-bottom: 5px;}
+            #help-header { background-color: lightgrey; }
+            #help-content { padding: 0px 25px; }
+            #s-lch-widget-8959 { display: none; }
+            prm-topbar { display: none; }
+            prm-search-bar { display: none; }
+            ui-view { display: none; }
+          </style>
+          <div id="help-header" class="md-toolbar-tools">
+            <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
+              <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
+            </a>
+            <h2><span ng-hide="entry">Search Help</span><span ng-hide="!entry">{{entry.title}}</span></h2>
+          </div>
+          <div id="help-content">
+            <div ng-if="entry" id="search-help-dialog-content">
+              <br />
+              <p ng-if="!entry.template"><em>{{entry.description}}</em></p>
+              <div ng-bind-html="entry.template"></div>
+            </div>
+            <ul ng-hide="entry" style="list-style: none; width: 100%; padding-left: 0px;">
+              <hr />
+              <li ng-repeat="item in helpContentList" class="big-text">
+                <a ng-if="item.id" ng-click="openContentItem(item.id)">
+                  <prm-icon svg-icon-set="{{item.icon.group}}" icon-definition="ic_{{item.icon.code}}_24px"
+                            icon-type="svg" style="padding-right: 10px;"></prm-icon>
+                  <span>{{item.title}}</span>
+                </a>
+                <hr ng-if="!item.id"/>
+              </li>
+              <hr />
+            </ul>
+          </div>
+        </div>
+      </help-menu-content-display>`,
+    controller: function(helpMenuHelper, helpMenuContent, gaEventLogger, $scope){     
+      let hrefArgs = window.location.search; 
+      $scope.showHelpMenu = hrefArgs.includes("help");
+      
+      // templates from helpMenuHelper
+      $scope.helpContentList = helpMenuContent.list_of_elements;
+      
+      // modal navigation
+      $scope.back = function() { $scope.entry = null; };
+      $scope.openContentItem = function(id){
+        $scope.entry = helpMenuContent.get_entry_by_id(id);
+        helpMenuHelper.logHelpEvent(gaEventLogger, "select-item", id);
+      };
+    },
+  });
 
 angular.module('helpMenuTopbar', ['ngMaterial'])
   .component('prmSearchBookmarkFilterAfter', {
@@ -74,10 +101,36 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
                        style="width: ${helpMenuHelper.helpMenuWidth}px;">
               <form>
               <md-toolbar>
-                ${helpMenuHelper.helpContentHeader}
+                <div class="md-toolbar-tools">
+                  <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
+                    <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
+                  </a>
+                  <h2><span ng-hide="entry">Search Help</span><span ng-hide="!entry">{{entry.title}}</span></h2>
+                  <span flex></span>
+                  <a class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="hide()">
+                    <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px"></prm-icon>
+                  </a>
+                </div>
               </md-toolbar>
               <md-dialog-content>
-                ${helpMenuHelper.helpContentBody}
+                <div class="md-dialog-content">
+                  <div ng-if="entry" id="search-help-dialog-content">
+                    <p ng-if="!entry.template"><em>{{entry.description}}</em></p>
+                    <div ng-bind-html="entry.template"></div>
+                  </div>
+                  <ul ng-hide="entry" style="list-style: none; width: 100%; padding-left: 0px;">
+                    <hr />
+                    <li ng-repeat="item in helpContentList" class="row">
+                      <a ng-if="item.id" ng-click="openItem(item.id)">
+                        <prm-icon svg-icon-set="{{item.icon.group}}" icon-definition="ic_{{item.icon.code}}_24px"
+                                  icon-type="svg" style="padding-right: 10px;"></prm-icon>
+                        <span>{{item.title}}</span>
+                      </a>
+                      <hr ng-if="!item.id"/>
+                    </li>
+                    <hr />
+                  </ul>
+                </div>
               </md-dialog-content>
                 <md-dialog-actions layout="row">
                   <md-button ng-click="openHelpInNewWindow()">Open in New Window</md-button>
@@ -97,7 +150,9 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
         $scope.helpContentList = helpMenuContent.list_of_elements;
         
         // modal navigation
-        $scope.hide = function() { $mdDialog.hide(); };
+        $scope.hide = function() { 
+          $mdDialog.hide(); 
+        };
         $scope.back = function() {
           document.querySelector("#search-help-dialog-content").innerHTML = "";
           $scope.entry = null;
@@ -108,7 +163,8 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
         };
         $scope.openHelpInNewWindow = function(){
           let params=`width=${helpMenuHelper.helpMenuWidth},height=800,resizable=0,location=0,menubar=0,scrollbars=yes`;
-          open('/primo-explore/search?vid=BU', 'BULibraries Help Menu', params);
+          let help_page_url = '/primo-explore/search?vid=BU&page=help'; // TODO: change from 'page=help' into help-url
+          open(help_page_url, 'BULibraries Help Menu', params);
           helpMenuHelper.logHelpEvent(gaEventLogger, "open-window");
           $scope.hide();
         }
