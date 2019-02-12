@@ -62,7 +62,7 @@ angular.module('helpMenuContentDisplay', [])
           </div>
         </div>
       </help-menu-content-display>`,
-    controller: function(helpMenuHelper, helpMenuContent, gaEventLogger, $scope){     
+    controller: function(helpMenuHelper, helpMenuContent, gaEventLogger, $scope, $timeout){     
       let hrefArgs = window.location.search; 
       $scope.showHelpMenu = hrefArgs.includes("help");
       
@@ -75,6 +75,22 @@ angular.module('helpMenuContentDisplay', [])
         $scope.entry = helpMenuContent.get_entry_by_id(id);
         helpMenuHelper.logHelpEvent(gaEventLogger, "select-item", id);
       };
+
+      $scope.checkUrlForEntryId = function(){
+        let helpOptionLocation = hrefArgs.indexOf("help-option");
+        if(helpOptionLocation != -1){
+          // get the end location from the next '&' or the end of the hrefArgs
+          let helpOptionEndLocation = hrefArgs.indexOf("&", helpOptionLocation);
+          if(helpOptionEndLocation == -1){ helpOptionEndLocation = hrefArgs.length; }
+
+          // grab, log, and send 'helpOptionId' from the hrefArgs
+          let helpOptionId = hrefArgs.substring(helpOptionLocation+"help-option=".length, helpOptionEndLocation);
+          helpMenuHelper.logMessage(`helpOptionId: '${helpOptionId}' grabbed from hrefArgs: '${hrefArgs}'`);
+          $scope.openContentItem(helpOptionId);
+        }
+      };
+
+      $timeout(function(){ $scope.checkUrlForEntryId(); }, 10);
     },
   });
 
@@ -133,7 +149,7 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
                 </div>
               </md-dialog-content>
                 <md-dialog-actions layout="row">
-                  <md-button ng-click="openHelpInNewWindow()">Open in New Window</md-button>
+                  <md-button ng-click="openHelpInNewWindow(entry.id)">Open in New Window</md-button>
                 </md-dialog-actions>
               </form>
             </md-dialog>`,
@@ -161,11 +177,19 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
           $scope.entry = helpMenuContent.get_entry_by_id(id);
           helpMenuHelper.logHelpEvent(gaEventLogger, "selected", id);
         };
-        $scope.openHelpInNewWindow = function(){
+        $scope.openHelpInNewWindow = function(item_id=""){
+          let help_event_label = window.location.pathname;
           let params=`width=${helpMenuHelper.helpMenuWidth},height=800,resizable=0,location=0,menubar=0,scrollbars=yes`;
           let help_page_url = '/primo-explore/search?vid=BU&page=help'; // TODO: change from 'page=help' into help-url
+          
+          // if present, send and log the 'help-option' instead of the url
+          if(item_id){ 
+            help_page_url += "&help-option="+item_id; 
+            help_event_label = item_id;
+          }
+
+          helpMenuHelper.logHelpEvent(gaEventLogger, "open-window", help_event_label);
           open(help_page_url, 'BULibraries Help Menu', params);
-          helpMenuHelper.logHelpEvent(gaEventLogger, "open-window");
           $scope.hide();
         }
       }
