@@ -39,7 +39,7 @@ angular.module('helpMenuContentDisplay', [])
             <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
               <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
             </a>
-            <h2><span ng-hide="entry">Search Help</span><span ng-hide="!entry">{{entry.title}}</span></h2>
+            <h2><strong>Search Help</strong><span ng-hide="!entry"> - {{entry.title}}</span></h2>
           </div>
           <div id="help-content">
             <div ng-if="entry" id="search-help-dialog-content">
@@ -64,7 +64,7 @@ angular.module('helpMenuContentDisplay', [])
       </help-menu-content-display>`,
     controller: function(helpMenuHelper, helpMenuContent, gaEventLogger, $scope, $timeout){     
       let hrefArgs = window.location.search; 
-      $scope.showHelpMenu = hrefArgs.includes("help");
+      $scope.showHelpMenu = hrefArgs.includes("page=help");
       
       // templates from helpMenuHelper
       $scope.helpContentList = helpMenuContent.list_of_elements;
