@@ -70,9 +70,9 @@ let footerContent = `
   </div>`;
 
 app.constant("footerHelper", {
-  debugFooter: true,
+  debug: true,
   logFooterMessage: function(message){
-    if(this.debugFooter){ console.log("footerHelper) " + message); }
+    if(this.debug){ console.log("footerHelper) " + message); }
   },
   populateFooter: function($timeout) {
 
