@@ -8,5 +8,5 @@ app.constant('oadoiOptions', {
   "email":"aidans@bu.edu",
   "showOnResultsPage":true,
   "showVersionLabel":true,
-  "debug":false
+  "debug":true
 });
