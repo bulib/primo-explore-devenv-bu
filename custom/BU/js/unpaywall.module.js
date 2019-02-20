@@ -12,7 +12,7 @@ angular.module('unpaywall', [])
              <prm-icon external-link icon-type="svg" svg-icon-set="primo-ui" icon-definition="open-in-new"></prm-icon>
           </a>
         </div>
-        <div ng-if="$ctrl.debug" class="layout-row">
+        <div ng-if="$ctrl.showDebugTable" class="layout-row">
           <table>
             <tr><td><strong>doi</strong></td><td>{{$ctrl.doi}}</td></tr>
             <tr><td><strong>is_OA</strong></td><td>{{$ctrl.is_oa}}</td>
@@ -21,7 +21,7 @@ angular.module('unpaywall', [])
           </table>
         </div>
       </unpaywall>`,
-    controller: function unpaywallController(oadoiOptions, gaEventLogger, $scope, $element, $http) {
+    controller: function unpaywallController(oadoiOptions, gaEventLogger, $http) {
       var self = this;  // 'this' changes scope inside of the $http.get(). 'self' is easier to track/trace
       var item = this.parentCtrl.result;  // item data is stored in 'prmSearchResultAvailability' (its parent)
 

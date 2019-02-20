@@ -6,7 +6,8 @@ var app = angular.module('viewCustom',
 // - unpaywall - //
 app.constant('oadoiOptions', {
   "email":"aidans@bu.edu",
-  "showOnResultsPage":true,
-  "showVersionLabel":true,
-  "debug":true
+  "showOnResultsPage": true,
+  "showVersionLabel": true,
+  "debug": true,
+  "showDebugTable": false
 });
