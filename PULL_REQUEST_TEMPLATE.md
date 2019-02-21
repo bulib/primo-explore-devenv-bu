@@ -1,4 +1,4 @@
-- Primo Project Spec: [name of project](link_to_sharepoint_doc)
+- [WEB-##](https://bulibrary.atlassian.net/browse/WEB-##)
 
 ### Background
 - ...
@@ -6,3 +6,4 @@
 ### Screenshots
 
 ### Description of Changes
+- 
