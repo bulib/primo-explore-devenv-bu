@@ -2,9 +2,10 @@
 var app = angular.module('viewCustom', ['angularLoad', 'outboundLinksLogger', 'unpaywall', 'wrlcAnnounce']);
 
 // - unpaywall - //
-app.constant('oadoiOptions', {
+app.constant('unpaywallConfig', {
   "email":"aidans@bu.edu",
   "showOnResultsPage":true,
   "showVersionLabel":true,
-  "debug":false
+  "debug":true,
+  "showDebugTable":true
 });

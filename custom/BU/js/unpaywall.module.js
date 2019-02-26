@@ -12,7 +12,7 @@ angular.module('unpaywall', [])
              <prm-icon external-link icon-type="svg" svg-icon-set="primo-ui" icon-definition="open-in-new"></prm-icon>
           </a>
         </div>
-        <div ng-if="$ctrl.debug" class="layout-row">
+        <div ng-if="$ctrl.showDebugTable" class="layout-row">
           <table>
             <tr><td><strong>doi</strong></td><td>{{$ctrl.doi}}</td></tr>
             <tr><td><strong>is_OA</strong></td><td>{{$ctrl.is_oa}}</td>
@@ -21,20 +21,21 @@ angular.module('unpaywall', [])
           </table>
         </div>
       </unpaywall>`,
-    controller: function unpaywallController(oadoiOptions, gaEventLogger, $scope, $element, $http) {
+    controller: function unpaywallController(unpaywallConfig, gaEventLogger, $http) {
       var self = this;  // 'this' changes scope inside of the $http.get(). 'self' is easier to track/trace
       var item = this.parentCtrl.result;  // item data is stored in 'prmSearchResultAvailability' (its parent)
 
       // obtain configuration and contextual info affecting display
       var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
-      self.listOrFullViewLabel = onFullView? 'full' : 'list';
-      self.debug = oadoiOptions.debug;
-      self.show = onFullView || oadoiOptions.showOnResultsPage;
-      self.showVersionLabel = oadoiOptions.showVersionLabel;
+      self.listOrFullViewLabel = onFullView ? 'full' : 'list';
+      self.debug = unpaywallConfig.debug;
+      self.show = onFullView || unpaywallConfig.showOnResultsPage;
+      self.showDebugTable = unpaywallConfig.showDebugTable || false;
+      self.showVersionLabel = unpaywallConfig.showVersionLabel;
 
       // ng-click response that logs data to google analytics
       self.trackLinkClick = function(doi){
-        if(self.debug){ console.log("tracking link click via gaEventLogger for doi: "+doi); }
+        if(self.debug){ console.log("unpaywall) tracking link click via gaEventLogger for doi: "+doi); }
         gaEventLogger.logEvent("unpaywall", "usage", self.listOrFullViewLabel);
       };
 
@@ -51,7 +52,7 @@ angular.module('unpaywall', [])
           gaEventLogger.logEvent('unpaywall', 'api-call', self.listOrFullViewLabel);
 
           // make the actual call to unpaywall API
-          $http.get("https://api.oadoi.org/v2/"+self.doi+"?email="+oadoiOptions.email).then(
+          $http.get("https://api.oadoi.org/v2/"+self.doi+"?email="+unpaywallConfig.email).then(
             function(successResponse){
               // if there is a "best open access location", save it so it can be used in the template above
               var best_oa_location = successResponse.data.best_oa_location;
@@ -61,6 +62,7 @@ angular.module('unpaywall', [])
 
               // get the "best" content link from this "best_oa_location"
               self.best_oa_link = best_oa_location.url || "";
+              if(self.debug){ console.log("unpaywall) best_oa_location found for doi '" + self.doi + "' at url: " + self.best_oa_link); }
               gaEventLogger.logEvent('unpaywall', 'api-success', self.listOrFullViewLabel);
 
               // optionally display whether the link is to a published, submitted, or accepted version
@@ -79,7 +81,7 @@ angular.module('unpaywall', [])
 
       }catch(e){
         if(self.debug){
-          console.log("error caught in unpaywallController: " + e.message);
+          console.log("unpaywall) error caught in unpaywallController: " + e.message);
         }
       }
     }
