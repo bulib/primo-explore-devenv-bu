@@ -6,6 +6,11 @@ app.constant('unpaywallConfig', {
   "email":"aidans@bu.edu",
   "showOnResultsPage":true,
   "showVersionLabel":true,
-  "debug":true,
-  "showDebugTable":true
+  "logToConsole":true,
+  "showDebugTable":false,
+  "publishGAEvents":true,
+  "logEvent":function(category, action, label, logToConsole=true, sendToGA=false){
+    if(logToConsole){ console.log("eventLogger) sending '" + category + "' event sent to Google Analytics [publish=" + sendToGA + "]."); }
+    if(sendToGA){ window.ga('send', 'event', category, action, label); }
+  }
 });

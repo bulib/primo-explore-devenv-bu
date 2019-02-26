@@ -21,22 +21,25 @@ angular.module('unpaywall', [])
           </table>
         </div>
       </unpaywall>`,
-    controller: function unpaywallController(unpaywallConfig, gaEventLogger, $http) {
+    controller: function unpaywallController(unpaywallConfig, $http) {
       var self = this;  // 'this' changes scope inside of the $http.get(). 'self' is easier to track/trace
       var item = this.parentCtrl.result;  // item data is stored in 'prmSearchResultAvailability' (its parent)
 
-      // obtain configuration and contextual info affecting display
+      // obtain contextual info on whether you're on the result list of the full item view
       var onFullView = this.parentCtrl.isFullView || this.parentCtrl.isOverlayFullView;
       self.listOrFullViewLabel = onFullView ? 'full' : 'list';
-      self.debug = unpaywallConfig.debug;
+
+      // obtain custom configuration information from 'unpaywallConfig' constant (with defaults)
       self.show = onFullView || unpaywallConfig.showOnResultsPage;
       self.showDebugTable = unpaywallConfig.showDebugTable || false;
-      self.showVersionLabel = unpaywallConfig.showVersionLabel;
+      self.logToConsole = unpaywallConfig.logToConsole || false;
+      self.showVersionLabel = unpaywallConfig.showVersionLabel || false;
+      self.publishGAEvents = unpaywallConfig.publishGAEvents || false;
 
       // ng-click response that logs data to google analytics
       self.trackLinkClick = function(doi){
-        if(self.debug){ console.log("unpaywall) tracking link click via gaEventLogger for doi: "+doi); }
-        gaEventLogger.logEvent("unpaywall", "usage", self.listOrFullViewLabel);
+        if(self.logToConsole){ console.log("unpaywall) tracking link click via gaEventLogger for doi: "+doi); }
+        unpaywallConfig.logEvent("unpaywall", "usage", self.listOrFullViewLabel, self.logToConsole, self.publishGAEvents);
       };
 
       try{
@@ -49,7 +52,7 @@ angular.module('unpaywall', [])
 
         // if there's a doi and it's not already open access, ask the oadoi.org for an OA link
         if(this.doi && !this.is_oa){
-          gaEventLogger.logEvent('unpaywall', 'api-call', self.listOrFullViewLabel);
+          unpaywallConfig.logEvent('unpaywall', 'api-call', self.listOrFullViewLabel, self.logToConsole, self.publishGAEvents);
 
           // make the actual call to unpaywall API
           $http.get("https://api.oadoi.org/v2/"+self.doi+"?email="+unpaywallConfig.email).then(
@@ -63,7 +66,7 @@ angular.module('unpaywall', [])
               // get the "best" content link from this "best_oa_location"
               self.best_oa_link = best_oa_location.url || "";
               if(self.debug){ console.log("unpaywall) best_oa_location found for doi '" + self.doi + "' at url: " + self.best_oa_link); }
-              gaEventLogger.logEvent('unpaywall', 'api-success', self.listOrFullViewLabel);
+              unpaywallConfig.logEvent('unpaywall', 'api-success', self.listOrFullViewLabel, self.logToConsole, self.publishGAEvents);
 
               // optionally display whether the link is to a published, submitted, or accepted version
               var best_oa_version = best_oa_location.version.toLowerCase() || "";
