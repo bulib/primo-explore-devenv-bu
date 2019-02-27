@@ -11,10 +11,5 @@ app.component('prmActionListAfter', {template: '<oca-report-problem />'})
 
 // - unpaywall - //
 app.constant('unpaywallConfig', {
-  "email":"aidans@bu.edu",
-  "showOnResultsPage":true,
-  "showVersionLabel":true,
-  "logToConsole":true,
-  "showDebugTable":false,
-  "publishEvents":true
+  "email":"aidans@bu.edu"
 });
