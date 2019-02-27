@@ -1,6 +1,6 @@
 .DS_Store
 *.idea/*
-*node_modules/*
+node_modules
 package-lock.json
 
 # primo-explore specific built files

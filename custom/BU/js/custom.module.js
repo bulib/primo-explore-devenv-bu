@@ -1,5 +1,13 @@
+// import our npm packages
+import 'primo-explore-unpaywall';
+
 //load app 'viewCustom' as a module with [] dependencies
-var app = angular.module('viewCustom', ['angularLoad', 'outboundLinksLogger', 'unpaywall', 'wrlcAnnounce']);
+var app = angular.module('viewCustom', 
+  ['angularLoad', 'bulibUnpaywall', 'outboundLinksLogger', 'reportProblem',  'wrlcAnnounce']
+);
+
+// - reportProblem - //
+app.component('prmActionListAfter', {template: '<oca-report-problem />'})
 
 // - unpaywall - //
 app.constant('unpaywallConfig', {
@@ -8,9 +16,5 @@ app.constant('unpaywallConfig', {
   "showVersionLabel":true,
   "logToConsole":true,
   "showDebugTable":false,
-  "publishGAEvents":true,
-  "logEvent":function(category, action, label, logToConsole=true, sendToGA=false){
-    if(logToConsole){ console.log("eventLogger) sending '" + category + "' event sent to Google Analytics [publish=" + sendToGA + "]."); }
-    if(sendToGA){ window.ga('send', 'event', category, action, label); }
-  }
+  "publishEvents":true
 });
