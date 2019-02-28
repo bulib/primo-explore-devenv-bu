@@ -26,6 +26,7 @@ let outboundLinksHelper = {
 };
 
 angular.module('outboundLinksLogger', [])
+  .constant('outboundLinksHelper', outboundLinksHelper)
   .controller('outboundLinksController', ['outboundLinksHelper', 'gaEventLogger', '$timeout',
     function(outboundLinksHelper, gaEventLogger, $timeout){
       outboundLinksHelper.logOutboundLinkMessage("component loaded.");

@@ -21,6 +21,7 @@ angular.module('wrlcAnnounce', ['ngAnimate'])
         var showFlagEnabled = config.getShow(data) == "TRUE";
         var isEmptyMessage = config.getMessage.length == 0;
         self.show = showFlagEnabled && !isEmptyMessage && !self.dismissed;
+        if(!self.show){ return; }
 
         // get message info using configured functions
         self.message = config.getMessage(data);
