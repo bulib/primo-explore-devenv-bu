@@ -1,5 +1,18 @@
 // import helpers
+import {gaRunList, gaEventLogger} from './ga';
 import './load-helpers';
+
+let INCLUDE_GOOGLE_ANALYTICS = true;
+if(INCLUDE_GOOGLE_ANALYTICS){
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-5204430-3', 'auto');
+  ga('send', 'pageview');
+}
+
 // import npm packages
 import 'primo-explore-report-problem';
 import 'primo-explore-unpaywall';
@@ -13,6 +26,10 @@ import './wrlc-announce.module';
 angular.module('viewCustom', 
     ['angularLoad', 'bulibUnpaywall', 'outboundLinksLogger', 'reportProblem', 'wrlcAnnounce']
   )
+
+  // google analytics
+  .run(gaRunList)
+  .service('gaEventLogger', gaEventLogger)
 
   // configure bulibUnpaywall
   .constant('unpaywallConfig', {
