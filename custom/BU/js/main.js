@@ -1,3 +1,5 @@
+// import helpers
+import './load-helpers';
 // import npm packages
 import 'primo-explore-report-problem';
 import 'primo-explore-unpaywall';
