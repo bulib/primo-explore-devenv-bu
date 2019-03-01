@@ -50,7 +50,7 @@ angular.module('viewCustom',
   // configure bulibUnpaywall
   .constant('unpaywallConfig', {
     "email":"aidans@bu.edu",
-    "logToConsole":true,
+    "logToConsole":false,
     "publishEvents":true
   })
 

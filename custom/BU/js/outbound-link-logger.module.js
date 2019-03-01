@@ -1,5 +1,5 @@
 let outboundLinksHelper = {
-  debug: true,
+  debug: false,
   sendGAEvent: true,
   logOutboundLinkMessage: function(message){
     if(this.debug){ console.log("outboundLinksLogger) " + message); }
@@ -29,7 +29,6 @@ angular.module('outboundLinksLogger', [])
   .constant('outboundLinksHelper', outboundLinksHelper)
   .controller('outboundLinksController', ['outboundLinksHelper', 'gaEventLogger', '$timeout',
     function(outboundLinksHelper, gaEventLogger, $timeout){
-      outboundLinksHelper.logOutboundLinkMessage("component loaded.");
       $timeout(function(){
         // find the associated 'More Links' using the querySelectorAll
         outboundLinksHelper.logOutboundLinkMessage("using the querySelectorAll to grab outbound links in 'More Links'...");

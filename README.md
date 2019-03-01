@@ -33,13 +33,16 @@ _Note: This will give you a number of our views to test out locally_
 ```bash 
 $ cd primo-explore/
 $ rm -rf custom/ tmp/
-$ git clone https://github.com/bulib/primo-explore-bu.git ./
+$ git clone https://github.com/bulib/primo-explore-devenv-bu.git ./
 ```
 
 ### Running a Particular View
 
 1. You should be able to run the server via `gulp run`, and you can specify the view directly by adding `--view VIEW_NAME`. 
   The views list is determined by the folders you have in the `primo-explore/custom` folder.
+```bash
+$ gulp run --view BU --browserify
+```
 2. To access your running instance, go to [localhost:8003/primo-explore/search?vid=BU](http://localhost:8003/primo-explore/search?vid=BU&sortby=rank&lang=en_US)
 
 ### Making Changes to the View
