@@ -1,13 +1,13 @@
-app.constant('outboundLinksHelper', {
-  debug: true,
+let outboundLinksHelper = {
+  debug: false,
   sendGAEvent: true,
   logOutboundLinkMessage: function(message){
-    if(this.debug){
-      console.log("outboundLinksLogger) " + message);
-    }
+    if(this.debug){ console.log("outboundLinksLogger) " + message); }
   },
   logOutboundLinkEvent: function(gaEventLogger, category, action, urlClicked){
-    this.logOutboundLinkMessage(`calling 'gaEventLogger' with category:'${category}', action: '${action}', label:'${urlClicked}'.`);
+    this.logOutboundLinkMessage(
+      `calling 'gaEventLogger' with category:'${category}', action: '${action}', label:'${urlClicked}'.`
+    );
 
     if(this.sendGAEvent){
       gaEventLogger.logEvent(category, action, urlClicked, this.debug);
@@ -23,12 +23,12 @@ app.constant('outboundLinksHelper', {
     }
     return source;
   }
-});
+};
 
 angular.module('outboundLinksLogger', [])
-  .component('prmFullViewAfter', {
-    controller: function outboundLinksController(outboundLinksHelper, gaEventLogger, $timeout){
-      outboundLinksHelper.logOutboundLinkMessage("component loaded.");
+  .constant('outboundLinksHelper', outboundLinksHelper)
+  .controller('outboundLinksController', ['outboundLinksHelper', 'gaEventLogger', '$timeout',
+    function(outboundLinksHelper, gaEventLogger, $timeout){
       $timeout(function(){
         // find the associated 'More Links' using the querySelectorAll
         outboundLinksHelper.logOutboundLinkMessage("using the querySelectorAll to grab outbound links in 'More Links'...");
@@ -82,10 +82,12 @@ angular.module('outboundLinksLogger', [])
             });
           }
 
-          // if no links are found..
-          }else{
-            outboundLinksHelper.logOutboundLinkMessage("no 'link-to-resource' found in 'Find/View Online'.")
-          }
+        // if no links are found..
+        }else{
+          outboundLinksHelper.logOutboundLinkMessage("no 'link-to-resource' found in 'Find/View Online'.")
+        }
       }, 2500); // code above executes 2.5 seconds after the component first loads
     }
-  });
+  ])
+  .component('prmFullViewAfter', { controller: 'outboundLinksController' })
+;
