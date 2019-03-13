@@ -1,7 +1,10 @@
 import {sample_list_of_elements} from './help-menu-content';
 import {helpMenuContentDisplayTemplate, helpMenuDialogTemplate} from './help-menu-templates';
 
-const logEventToGoogleAnalytics = function(category, action, label){ wiondw.ga('send','event',category, action, label);}
+const optionalConfigName = 'helpMenuConfig';
+const logEventToGoogleAnalytics = function(category, action, label){ 
+  window.ga('send','event',category, action, label);
+}
 
 let helpMenuHelper = {
   logToConsole: true,
