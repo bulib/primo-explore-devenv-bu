@@ -31,84 +31,70 @@ let helpMenuHelper = {
   }
 };
 
+let mainHelpMenuController = function(helpMenuHelper, $scope, $timeout, $mdDialog){     
+  let hrefArgs = window.location.search; 
+  $scope.showHelpMenu = hrefArgs.includes("page=help");
+  
+  // templates from helpMenuHelper
+  $scope.helpContentList = helpMenuHelper.list_of_elements;
+  
+  // modal navigation
+  $scope.hide = function() { 
+    $mdDialog.hide(); 
+  };
+  $scope.back = function() { $scope.entry = null; };
+  $scope.openItem = function(id){
+    $scope.entry = helpMenuHelper.get_entry_by_id(id);
+    helpMenuHelper.logHelpEvent("select-item", id);
+  };
+
+  $scope.checkUrlForEntryId = function(){
+    let helpOptionLocation = hrefArgs.indexOf("help-option");
+    if(helpOptionLocation != -1){
+      // get the end location from the next '&' or the end of the hrefArgs
+      let helpOptionEndLocation = hrefArgs.indexOf("&", helpOptionLocation);
+      if(helpOptionEndLocation == -1){ helpOptionEndLocation = hrefArgs.length; }
+
+      // grab, log, and send 'helpOptionId' from the hrefArgs
+      let helpOptionId = hrefArgs.substring(helpOptionLocation+"help-option=".length, helpOptionEndLocation);
+      helpMenuHelper.logMessage(`helpOptionId: '${helpOptionId}' grabbed from hrefArgs: '${hrefArgs}'`);
+      $scope.openItem(helpOptionId);
+    }
+  };
+
+  $scope.openHelpInNewWindow = function(item_id=""){
+    let help_event_label = window.location.pathname;
+    let params=`width=${helpMenuHelper.helpMenuWidth},height=800,resizable=0,location=0,menubar=0,scrollbars=yes`;
+    let help_page_url = '/primo-explore/search?vid=BU&page=help'; // TODO: change from 'page=help' into help-url
+    
+    // if present, send and log the 'help-option' instead of the url
+    if(item_id){ 
+      help_page_url += "&help-option="+item_id; 
+      help_event_label = item_id;
+    }
+
+    // helpMenuHelper.logHelpEvent(gaEventLogger, "open-window", help_event_label);
+    open(help_page_url, 'BULibraries Help Menu', params);
+    $scope.hide();
+  }
+
+  $timeout(function(){ $scope.checkUrlForEntryId(); }, 10);
+}
+
 angular.module('helpMenuContentDisplay', [])
   .constant('helpMenuHelper', helpMenuHelper)
-  .controller('helpMenuContentDisplayController', ['helpMenuHelper', '$scope', '$timeout', 
-  function(helpMenuHelper, $scope, $timeout){     
-    let hrefArgs = window.location.search; 
-    $scope.showHelpMenu = hrefArgs.includes("page=help");
-    
-    // templates from helpMenuHelper
-    $scope.helpContentList = helpMenuHelper.list_of_elements;
-    
-    // modal navigation
-    $scope.back = function() { $scope.entry = null; };
-    $scope.openContentItem = function(id){
-      $scope.entry = helpMenuHelper.get_entry_by_id(id);
-      helpMenuHelper.logHelpEvent("select-item", id);
-    };
-  
-    $scope.checkUrlForEntryId = function(){
-      let helpOptionLocation = hrefArgs.indexOf("help-option");
-      if(helpOptionLocation != -1){
-        // get the end location from the next '&' or the end of the hrefArgs
-        let helpOptionEndLocation = hrefArgs.indexOf("&", helpOptionLocation);
-        if(helpOptionEndLocation == -1){ helpOptionEndLocation = hrefArgs.length; }
-  
-        // grab, log, and send 'helpOptionId' from the hrefArgs
-        let helpOptionId = hrefArgs.substring(helpOptionLocation+"help-option=".length, helpOptionEndLocation);
-        helpMenuHelper.logMessage(`helpOptionId: '${helpOptionId}' grabbed from hrefArgs: '${hrefArgs}'`);
-        $scope.openContentItem(helpOptionId);
-      }
-    };
-  
-    $timeout(function(){ $scope.checkUrlForEntryId(); }, 10);
-  }
-  ])
+  .controller('helpMenuPopupController', ['helpMenuHelper', '$scope', '$timeout', '$mdDialog', mainHelpMenuController])
   .component('prmExploreMainAfter', {
     template: `
       <help-menu-content-display>
         <div ng-if="showHelpMenu">${helpMenuContentDisplayTemplate}</div>
       </help-menu-content-display>`,
-    controller: 'helpMenuContentDisplayController'
+    controller: 'helpMenuPopupController'
   });
 
 angular.module('helpMenuTopbar', ['ngMaterial'])
   .constant('helpMenuHelper', helpMenuHelper)
-  .controller('helpMenuDialogController', ['helpMenuHelper', '$scope', '$mdDialog',
-    function(helpMenuHelper, $scope, $mdDialog) {
-      // data
-      $scope.helpContentList = helpMenuHelper.list_of_elements;
-      
-      // modal navigation
-      $scope.hide = function() { 
-        $mdDialog.hide(); 
-      };
-      $scope.back = function() {
-        document.querySelector("#search-help-dialog-content").innerHTML = "";
-        $scope.entry = null;
-      };
-      $scope.openItem = function(id){
-        $scope.entry = helpMenuHelper.get_entry_by_id(id);
-        // helpMenuHelper.logHelpEvent(gaEventLogger, "selected", id);
-      };
-      $scope.openHelpInNewWindow = function(item_id=""){
-        let help_event_label = window.location.pathname;
-        let params=`width=${helpMenuHelper.helpMenuWidth},height=800,resizable=0,location=0,menubar=0,scrollbars=yes`;
-        let help_page_url = '/primo-explore/search?vid=BU&page=help'; // TODO: change from 'page=help' into help-url
-        
-        // if present, send and log the 'help-option' instead of the url
-        if(item_id){ 
-          help_page_url += "&help-option="+item_id; 
-          help_event_label = item_id;
-        }
-    
-        // helpMenuHelper.logHelpEvent(gaEventLogger, "open-window", help_event_label);
-        open(help_page_url, 'BULibraries Help Menu', params);
-        $scope.hide();
-      }
-    }
-  ])
+  .controller('helpMenuDialogController', ['helpMenuHelper', '$scope', '$timeout', '$mdDialog', mainHelpMenuController])
   .controller('helpMenuTopbarController', ['helpMenuHelper', '$mdDialog',
     function(helpMenuHelper, $mdDialog){
       helpMenuHelper.logMessage("loaded.");
