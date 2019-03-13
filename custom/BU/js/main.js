@@ -18,10 +18,11 @@ import 'primo-explore-unpaywall';
 // import other custom modules
 import './outbound-link-logger.module';
 import './wrlc-announce.module';
+import './help-menu.module';
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
 angular.module('viewCustom', 
-    ['angularLoad', 'bulibUnpaywall', 'outboundLinksLogger', 'wrlcAnnounce']
+    ['angularLoad', 'bulibUnpaywall',  'helpMenuContentDisplay',  'helpMenuTopbar','outboundLinksLogger', 'wrlcAnnounce']
   )
 
   // google analytics 

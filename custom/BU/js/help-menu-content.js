@@ -1,4 +1,4 @@
-let sample_list_of_elements = [
+export const sample_list_of_elements = [
   {
     "id":"getting-started",
     "title":"Getting Started",
@@ -93,13 +93,3 @@ let sample_list_of_elements = [
     "icon":{"code":"chat","group":"communication"}
   }
 ];
-
-app.constant('helpMenuContent', {
-  list_of_elements:sample_list_of_elements,
-  get_entry_by_id: function(id){
-    for(let i=0; i<this.list_of_elements.length; i++){
-      if(this.list_of_elements[i].id === id){ return this.list_of_elements[i]; }
-    }
-    return {}
-  }
-});

@@ -1,6 +1,6 @@
 let outboundLinksHelper = {
-  debug: false,
-  sendGAEvent: true,
+  debug: true,
+  sendGAEvent: false,
   logOutboundLinkMessage: function(message){
     if(this.debug){ console.log("outboundLinksLogger) " + message); }
   },
