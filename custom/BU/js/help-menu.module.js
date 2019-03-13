@@ -30,10 +30,24 @@ let helpMenuHelper = {
       if(this.list_of_elements[i].id === id){ return this.list_of_elements[i]; }
     }
     return {}
+  },
+  override_with_config: function(config){
+    if(!config || !Object.keys(config)){ return; }
+    if(config.logToConsole){ this.debug = config.logToConsole; }
+    if(config.publishEvents){ this.publishEvents = config.publishEvents; }
+    if(config.helpMenuWidth){ this.helpMenuWidth = config.helpMenuWidth; }
+    if(config.logEventToAnalytics){ this.logEventToAnalytics = config.logEventToAnalytics; }
+    if(config.list_of_elements){ this.list_of_elements = config.list_of_elements; }
   }
 };
 
-const mainHelpMenuController = function(helpMenuHelper, $scope, $timeout, $mdDialog){     
+const mainHelpMenuController = function(helpMenuHelper, $injector, $scope, $timeout, $mdDialog){     
+  // look for the optional 'helpMenuConfig' if present
+  if($injector.has(optionalConfigName)){
+    let config = $injector.get(optionalConfigName);
+    helpMenuHelper.override_with_config(config);
+  }
+  
   let hrefArgs = window.location.search; 
   $scope.showHelpMenu = hrefArgs.includes("page=help");
   
@@ -85,7 +99,7 @@ const mainHelpMenuController = function(helpMenuHelper, $scope, $timeout, $mdDia
 
 angular.module('helpMenuContentDisplay', [])
   .constant('helpMenuHelper', helpMenuHelper)
-  .controller('helpMenuPopupController', ['helpMenuHelper', '$scope', '$timeout', '$mdDialog', mainHelpMenuController])
+  .controller('helpMenuPopupController', ['helpMenuHelper', '$injector', '$scope', '$timeout', '$mdDialog', mainHelpMenuController])
   .component('prmExploreMainAfter', {
     template: `
       <help-menu-content-display>
@@ -96,10 +110,16 @@ angular.module('helpMenuContentDisplay', [])
 
 angular.module('helpMenuTopbar', ['ngMaterial'])
   .constant('helpMenuHelper', helpMenuHelper)
-  .controller('helpMenuDialogController', ['helpMenuHelper', '$scope', '$timeout', '$mdDialog', mainHelpMenuController])
-  .controller('helpMenuTopbarController', ['helpMenuHelper', '$mdDialog',
-    function(helpMenuHelper, $mdDialog){
+  .controller('helpMenuDialogController', ['helpMenuHelper', '$injector', '$scope', '$timeout', '$mdDialog', mainHelpMenuController])
+  .controller('helpMenuTopbarController', ['helpMenuHelper', '$injector', '$mdDialog',
+    function(helpMenuHelper, $injector, $mdDialog){
       helpMenuHelper.logMessage("loaded.");
+
+      // look for the optional 'helpMenuConfig' if present
+      if($injector.has(optionalConfigName)){
+        let config = $injector.get(optionalConfigName);
+        helpMenuHelper.override_with_config(config);
+      }
 
       this.openHelpMenu = function(ev){
         helpMenuHelper.logHelpEvent( "open-dialog", window.location.pathname);
