@@ -8,7 +8,7 @@ const logEventToGoogleAnalytics = function(category, action, label){
 
 let helpMenuHelper = {
   logToConsole: true,
-  publishEvents: false,
+  publishEvents: true,
   helpMenuWidth: 500,
   list_of_elements: sample_list_of_elements,
   logMessage: function(message){
