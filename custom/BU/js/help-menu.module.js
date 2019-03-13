@@ -1,27 +1,26 @@
 import {sample_list_of_elements} from './help-menu-content';
 import {helpMenuContentDisplayTemplate, helpMenuDialogTemplate} from './help-menu-templates';
 
+const logEventToGoogleAnalytics = function(category, action, label){ wiondw.ga('send','event',category, action, label);}
+
 let helpMenuHelper = {
-  debug: true,
-  sendGAEvent: false,
+  logToConsole: true,
+  publishEvents: false,
   helpMenuWidth: 500,
   list_of_elements: sample_list_of_elements,
   logMessage: function(message){
-    if(this.debug){ console.log("helpMenu) " + message); }
+    if(this.logToConsole){ console.log("helpMenu) " + message); }
   },
-  logHelpEvent: function(gaEventLogger, action, label=window.location.pathname){
+  logEventToAnalytics: function(category, action, label){
+    logEventToGoogleAnalytics(category, action, label);
+  },
+  logHelpEvent: function(action, label=window.location.pathname){
     let category = "help-menu";
-    this.logMessage(`calling 'gaEventLogger' with category:'${category}', action: '${action}', label:'${label}'.`);
+    this.logMessage(`logging '${category}' event with action: '${action}', label:'${label}'. [publish: ${this.publishEvents}]`);
 
-    if(this.sendGAEvent){
-      gaEventLogger.logEvent(category, action, label, this.debug);
+    if(this.publishEvents){
+      this.logEventToAnalytics(category, action, label);
     }
-  },
-  openDialogBox: function(){
-    const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
-    dialog.listen('MDCDialog:opened', () => {
-      list.layout();
-    });
   },
   get_entry_by_id: function(id){
     for(let i=0; i<this.list_of_elements.length; i++){
@@ -31,7 +30,7 @@ let helpMenuHelper = {
   }
 };
 
-let mainHelpMenuController = function(helpMenuHelper, $scope, $timeout, $mdDialog){     
+const mainHelpMenuController = function(helpMenuHelper, $scope, $timeout, $mdDialog){     
   let hrefArgs = window.location.search; 
   $scope.showHelpMenu = hrefArgs.includes("page=help");
   
@@ -73,7 +72,7 @@ let mainHelpMenuController = function(helpMenuHelper, $scope, $timeout, $mdDialo
       help_event_label = item_id;
     }
 
-    // helpMenuHelper.logHelpEvent(gaEventLogger, "open-window", help_event_label);
+    helpMenuHelper.logHelpEvent("open-window", help_event_label);
     open(help_page_url, 'BULibraries Help Menu', params);
     $scope.hide();
   }
@@ -100,7 +99,7 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
       helpMenuHelper.logMessage("loaded.");
 
       this.openHelpMenu = function(ev){
-        // helpMenuHelper.logHelpEvent(gaEventLogger, "open-dialog", window.location.pathname);
+        helpMenuHelper.logHelpEvent( "open-dialog", window.location.pathname);
         $mdDialog.show({
           controller: 'helpMenuDialogController',
           template: helpMenuDialogTemplate(helpMenuHelper.helpMenuWidth),
