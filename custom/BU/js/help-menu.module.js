@@ -41,51 +41,36 @@ let helpMenuHelper = {
   }
 };
 
-const mainHelpMenuController = function(helpMenuHelper, $injector, $scope, $timeout, $mdDialog){     
+const mainHelpMenuController = function(helpMenuHelper, $injector, $scope, $timeout, $mdDialog){  
   // look for the optional 'helpMenuConfig' if present
   if($injector.has(optionalConfigName)){
     let config = $injector.get(optionalConfigName);
     helpMenuHelper.override_with_config(config);
   }
-  
+
+  // determine whether to show the help menu (separate window)
   let hrefArgs = window.location.search; 
   $scope.showHelpMenu = hrefArgs.includes("page=help");
   
-  // templates from helpMenuHelper
+  // gather items in list from helpMenuHelper
   $scope.helpContentList = helpMenuHelper.list_of_elements;
   
   // modal navigation
-  $scope.hide = function() { 
-    $mdDialog.hide(); 
-  };
+  $scope.hide = function() { $mdDialog.hide(); };
   $scope.back = function() { $scope.entry = null; };
   $scope.openItem = function(id){
     $scope.entry = helpMenuHelper.get_entry_by_id(id);
     helpMenuHelper.logHelpEvent("select-item", id);
   };
 
-  $scope.checkUrlForEntryId = function(){
-    let helpOptionLocation = hrefArgs.indexOf("help-option");
-    if(helpOptionLocation != -1){
-      // get the end location from the next '&' or the end of the hrefArgs
-      let helpOptionEndLocation = hrefArgs.indexOf("&", helpOptionLocation);
-      if(helpOptionEndLocation == -1){ helpOptionEndLocation = hrefArgs.length; }
-
-      // grab, log, and send 'helpOptionId' from the hrefArgs
-      let helpOptionId = hrefArgs.substring(helpOptionLocation+"help-option=".length, helpOptionEndLocation);
-      helpMenuHelper.logMessage(`helpOptionId: '${helpOptionId}' grabbed from hrefArgs: '${hrefArgs}'`);
-      $scope.openItem(helpOptionId);
-    }
-  };
-
   $scope.openHelpInNewWindow = function(item_id=""){
     let help_event_label = window.location.pathname;
     let params=`width=${helpMenuHelper.helpMenuWidth},height=800,resizable=0,location=0,menubar=0,scrollbars=yes`;
-    let help_page_url = '/primo-explore/search?vid=BU&page=help'; // TODO: change from 'page=help' into help-url
+    let help_page_url = window.location.pathname + window.location.search + '&page=help'; // TODO: change from 'page=help' into help-url
     
     // if present, send and log the 'help-option' instead of the url
     if(item_id){ 
-      help_page_url += "&help-option="+item_id; 
+      help_page_url += "#"+item_id; 
       help_event_label = item_id;
     }
 
@@ -94,7 +79,11 @@ const mainHelpMenuController = function(helpMenuHelper, $injector, $scope, $time
     $scope.hide();
   }
 
-  $timeout(function(){ $scope.checkUrlForEntryId(); }, 10);
+  // set currently selected item from the anchor/hash (#___) right after load
+  $timeout(function(){
+    let helpOptionId = window.top.location.hash.substring(1);
+    if(helpOptionId){ $scope.openItem(helpOptionId); }
+  }, 10);
 }
 
 angular.module('helpMenuContentDisplay', [])
@@ -128,6 +117,7 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
           template: helpMenuDialogTemplate(helpMenuHelper.helpMenuWidth),
           targetEvent: ev,
           hasBackdrop: true,
+          multiple: false,
           clickOutsideToClose:true,
           fullscreen: false,
           focusOnOpen: true
@@ -140,7 +130,8 @@ angular.module('helpMenuTopbar', ['ngMaterial'])
       <help-menu-topbar>
         <div class="layout-align-center layout-row">
           <a class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple"
-                    aria-label="Open Search Help Menu" ng-click="$ctrl.openHelpMenu($event)" href="#">
+                    aria-label="Open Search Help Menu" ng-click="$ctrl.openHelpMenu($event)" 
+                    href="#" title="open help menu">
             <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_help_24px"></prm-icon>
           </a>
         </div>

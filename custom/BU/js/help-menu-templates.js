@@ -1,20 +1,28 @@
+const helpMenuHeadContent = `
+  <md-button ng-hide="!entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
+    <prm-icon icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"
+              aria-label="return to help content list" ></prm-icon>
+  </md-button>
+  <h2><strong>Search Help</strong><span ng-hide="!entry"> - {{entry.title}}</span></h2>
+`;
+
 const helpMenuMainContent = `
-  <div ng-if="entry" id="search-help-dialog-content">
+  <div ng-if="entry" id="search-help-menu-content" tabindex="-1">
     <br />
     <p ng-if="!entry.template"><em>{{entry.description}}</em></p>
     <div ng-bind-html="entry.template"></div>
   </div>
   <ul ng-hide="entry" style="list-style: none; width: 100%; padding-left: 0px;">
-    <hr />
+    <hr aria-hidden="true" />
     <li ng-repeat="item in helpContentList" class="row">
-      <a ng-if="item.id" ng-click="openItem(item.id)">
+      <a ng-if="item.id" ng-click="openItem(item.id)" href="#{{item.id}}">
         <prm-icon svg-icon-set="{{item.icon.group}}" icon-definition="ic_{{item.icon.code}}_24px"
                   icon-type="svg" style="padding-right: 10px;"></prm-icon>
-        <span>{{item.title}}</span>
+        {{item.title}}
       </a>
-      <hr ng-if="!item.id"/>
+      <hr ng-if="!item.id" aria-hidden="true" />
     </li>
-    <hr />
+    <hr aria-hidden="true" />
   </ul>`;
 
 export const helpMenuContentDisplayTemplate = `
@@ -23,16 +31,12 @@ export const helpMenuContentDisplayTemplate = `
     #help-header { background-color: lightgrey; }
     #help-content { padding: 0px 25px; }
     #s-lch-widget-8959 { display: none; }
+    
     prm-topbar { display: none; }
     prm-search-bar { display: none; }
     ui-view { display: none; }
   </style>
-  <div id="help-header" class="md-toolbar-tools">
-    <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
-      <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
-    </a>
-    <h2><strong>Search Help</strong><span ng-hide="!entry"> - {{entry.title}}</span></h2>
-  </div>
+  <div id="help-header" class="md-toolbar-tools">${helpMenuHeadContent}</div>
   <div id="help-content">${helpMenuMainContent}</div>`;
 
 export const helpMenuDialogTemplate = (width) => `
@@ -41,14 +45,11 @@ export const helpMenuDialogTemplate = (width) => `
     <form>
       <md-toolbar>
         <div class="md-toolbar-tools">
-          <a ng-if="entry" class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="back()">
-            <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_arrow_back_24px"></prm-icon>
-          </a>
-          <h2><span ng-hide="entry">Search Help</span><span ng-hide="!entry">{{entry.title}}</span></h2>
+          ${helpMenuHeadContent}
           <span flex></span>
-          <a class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="hide()">
+          <md-button class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" ng-click="hide()">
             <prm-icon aria-label="Close dialog" icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px"></prm-icon>
-          </a>
+          </md-button>
         </div>
       </md-toolbar>
       <md-dialog-content>
