@@ -2,6 +2,7 @@
   "name": "BU",
   "description": "default view for http://bu.edu/library running in production since January 2017",
   "devDependencies": {
+    "primo-explore-help-menu": "0.9.0",
     "primo-explore-report-problem": "^3.0.0",
     "primo-explore-unpaywall": "1.0.1"
   }
