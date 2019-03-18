@@ -8,6 +8,33 @@
 */
 
 angular.module('wrlcAnnounce', ['ngAnimate'])
+  .controller('announceController', ['announceConfig', '$http', 
+    function(announceConfig, $http){
+      var self = this;
+      var config = announceConfig;
+
+      // interact with announceAPI helper to set values
+      $http.get(config.announceAPI).then(function(response){
+        var data = (config.getData)? config.getData(response) : response;
+
+        // check if we want to show the banner or not
+        var showFlagEnabled = config.getShow(data) == "TRUE";
+        var isEmptyMessage = config.getMessage.length == 0;
+        self.show = showFlagEnabled && !isEmptyMessage && !self.dismissed;
+        if(!self.show){ return; }
+
+        // get message info using configured functions
+        self.message = config.getMessage(data);
+        self.link = config.getLink(data);
+        self.severity = (config.getSeverity)? config.getSeverity(data) : 'info';
+      });
+
+      //respond to user exing out of the banner
+      self.wrDismiss = function() {
+        self.dismissed = true;
+      }
+    }
+  ])
   .component('prmSearchBarAfter', {
     template: `
       <wrlc-announce ng-show="!$ctrl.dismissed" ng-if="$ctrl.show">
@@ -19,35 +46,11 @@ angular.module('wrlcAnnounce', ['ngAnimate'])
           <span ng-if="$ctrl.link" id="message"><a target="_blank" href="{{$ctrl.link}}">{{ $ctrl.message }}</a></span>
           <span ng-if="!$ctrl.link" ng-bind-html=$ctrl.message id="message"></span>
           <button id="dismiss-announcement" area-label="dismiss announcement" type="button" ng-click="$ctrl.wrDismiss()"
-                class="dismiss-alert-button zero-margin md-button md-primoExplore-theme md-ink-ripple button-with-icon">
+                  class="dismiss-alert-button zero-margin md-button md-primoExplore-theme md-ink-ripple button-with-icon">
             <prm-icon icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px" class="material-icons gray"></prm-icon>
           </button>
         </div>
       </wrlc-announce>
     `,
-    controller:
-      function announceController(announceConfig, $http) {
-        var self = this;
-        var config = announceConfig;
-
-        // interact with announceAPI helper to set values
-        $http.get(config.announceAPI).then(function(response){
-          var data = (config.getData)? config.getData(response) : response;
-
-          // check if we want to show the banner or not
-          var showFlagEnabled = config.getShow(data) == "TRUE";
-          var isEmptyMessage = config.getMessage.length == 0;
-          self.show = showFlagEnabled && !isEmptyMessage && !self.dismissed;
-
-          // get message info using configured functions
-          self.message = config.getMessage(data);
-          self.link = config.getLink(data);
-          self.severity = (config.getSeverity)? config.getSeverity(data) : 'info';
-        });
-
-        //respond to user exing out of the banner
-        self.wrDismiss = function() {
-          self.dismissed = true;
-        }
-      }
+    controller: 'announceController'
   });
