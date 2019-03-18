@@ -49,10 +49,16 @@ angular.module('viewCustom',
   })
 
   // configure bulibUnpaywall
-  .constant('unpaywallConfig', {
+  .constant('primoExploreUnpaywallStudioConfig', {
     "email":"aidans@bu.edu",
     "logToConsole":false,
-    "publishEvents":true
+    "publishEvents":false
+  })
+
+  // configure helpMenuConfig
+  .constant('primoExploreHelpMenuStudioConfig', {
+    "logToConsole":true,
+    "publishEvents":false
   })
 
   // configure wrlc announce
