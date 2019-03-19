@@ -54,6 +54,12 @@ angular.module('viewCustom',
     "publishEvents":true
   })
 
+  // configure outboundLinksConfig
+  .constant('outboundLinksConfig', {
+    "logToConsole": true,
+    "publishEvents": false
+  })
+
   // configure wrlc announce
   .constant('announceConfig', {
 
