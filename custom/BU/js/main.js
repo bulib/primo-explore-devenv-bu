@@ -14,9 +14,9 @@ if(INCLUDE_GOOGLE_ANALYTICS){
 
 // import npm packages
 import 'primo-explore-unpaywall';
+import 'primo-explore-outbound-links';
 
 // import other custom modules
-import './outbound-link-logger.module';
 import './wrlc-announce.module';
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
