@@ -13,15 +13,16 @@ if(INCLUDE_GOOGLE_ANALYTICS){
 }
 
 // import npm packages
-import 'primo-explore-unpaywall';
+import 'primo-explore-help-menu';
 import 'primo-explore-outbound-links';
+import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './wrlc-announce.module';
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
 angular.module('viewCustom', 
-    ['angularLoad', 'bulibUnpaywall', 'outboundLinksLogger', 'wrlcAnnounce']
+    ['angularLoad', 'bulibUnpaywall',  'helpMenuContentDisplay',  'helpMenuTopbar', 'outboundLinksLogger', 'wrlcAnnounce']
   )
 
   // google analytics 
@@ -47,17 +48,23 @@ angular.module('viewCustom',
     }
   })
 
-  // configure bulibUnpaywall
-  .constant('unpaywallConfig', {
-    "email":"aidans@bu.edu",
-    "logToConsole":false,
-    "publishEvents":true
+  // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
+  .constant('helpMenuConfig', {
+    "logToConsole":true,
+    "publishEvents":false
   })
 
   // configure outboundLinksConfig
   .constant('outboundLinksConfig', {
     "logToConsole": true,
     "publishEvents": false
+  })
+  
+  // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
+  .constant('unpaywallConfig', {
+    "email":"aidans@bu.edu",
+    "logToConsole":true,
+    "publishEvents":false
   })
 
   // configure wrlc announce
