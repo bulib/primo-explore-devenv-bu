@@ -48,15 +48,15 @@ angular.module('viewCustom',
     }
   })
 
-  // configure bulibUnpaywall
-  .constant('primoExploreUnpaywallStudioConfig', {
+  // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
+  .constant('unpaywallConfig', {
     "email":"aidans@bu.edu",
-    "logToConsole":false,
+    "logToConsole":true,
     "publishEvents":false
   })
 
-  // configure helpMenuConfig
-  .constant('primoExploreHelpMenuStudioConfig', {
+  // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
+  .constant('helpMenuConfig', {
     "logToConsole":true,
     "publishEvents":false
   })
