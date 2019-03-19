@@ -22,7 +22,7 @@ import './wrlc-announce.module';
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
 angular.module('viewCustom', 
-    ['angularLoad', 'bulibUnpaywall',  'helpMenuContentDisplay',  'helpMenuTopbar', 'outboundLinksLogger', 'wrlcAnnounce']
+    ['angularLoad', 'bulibUnpaywall', 'outboundLinksLogger', 'wrlcAnnounce']
   )
 
   // google analytics 
