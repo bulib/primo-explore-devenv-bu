@@ -1,14 +1,15 @@
 // grab the html files as js variables
-import {citing_sources} from './citingSources1.html';
-import {didnt_find} from './didntFindIt1.html';
-import {getting_started} from './gettingStarted1.html';
-import {guides} from './guides1.html';
+import {citing_sources} from './citingSources.html';
+import {didnt_find} from './didntFindIt.html';
+import {getting_started} from './gettingStarted.html';
+import {guides} from './guides.html';
 import {library_locations} from './libraryLocations.html'
-import {saving_results} from './savingResults1.html';
-import {video_tutorials} from './videoTutorials1.html';
-import {whats_in_search} from './whatsInSearch1.html';
+import {saving_results} from './savingResults.html';
+import {video_tutorials} from './videoTutorials.html';
+import {whats_in_search} from './whatsInSearch.html';
 
 
+// form into a list
 export const ls_help_menu_items = [
   {
     "id":"citing-sources",
