@@ -20,9 +20,12 @@ import 'primo-explore-unpaywall';
 // import other custom modules
 import './wrlc-announce.module';
 
+// import additional content
+import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
+
 // create the main primo-explore module and load in its local and npm-imported dependencies 
 angular.module('viewCustom', 
-    ['angularLoad', 'bulibUnpaywall', 'outboundLinksLogger', 'wrlcAnnounce']
+    ['angularLoad', 'bulibUnpaywall', 'helpMenuContentDisplay',  'helpMenuTopbar', 'outboundLinksLogger', 'wrlcAnnounce']
   )
 
   // google analytics 
@@ -51,7 +54,8 @@ angular.module('viewCustom',
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
     "logToConsole":true,
-    "publishEvents":false
+    "publishEvents":false,
+    "list_of_elements":ls_help_menu_items
   })
 
   // configure outboundLinksConfig
