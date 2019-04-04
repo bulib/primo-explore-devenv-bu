@@ -1,21 +1,24 @@
 <h2>Video Tutorials</h2>
-<a class="arrow-link md-primoExplore-theme" href="https://mymedia.bu.edu/media/BU+Libraries+Search+Quick+Start/1_hotognl5" 
-   target="_blank"><span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" 
-                         ng-bind-html="link.displayLabel">Quick Start Guide</span><!--
---></a>
-<br>
-
-<a class="arrow-link md-primoExplore-theme" href="https://mymedia.bu.edu/media/BU+Libraries+Search+-+Refining+Your+Search/1_xelc77l5" 
-   target="_blank"><!----><span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" 
-   ng-bind-html="link.displayLabel">Refining Your Search</span></a>
-<br>
-
-<a class="arrow-link md-primoExplore-theme" href="https://mymedia.bu.edu/media/BU+Libraries+Search+-+Advanced+Search/1_napql4ph" 
-   target="_blank"><!----><span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" 
-   ng-bind-html="link.displayLabel">Advanced Search</span></a>
-<br>
-
-<a class="arrow-link md-primoExplore-theme" href="http://www.bu.edu/library/help/bu-libraries-search/" 
-   target="_blank"><!----><span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" 
-   ng-bind-html="link.displayLabel">View a playlist of all videos</span></a>
-<br>
+<style>.no-bullet { list-style: none; }</style>
+<ul class="no-bullet">
+  <li>
+    <a class="arrow-link md-primoExplore-theme" href="https://mymedia.bu.edu/media/BU+Libraries+Search+Quick+Start/1_hotognl5" target="_blank">
+      <span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" ng-bind-html="link.displayLabel">Quick Start Guide</span>
+    </a>
+  </li>
+  <li>
+    <a class="arrow-link md-primoExplore-theme" href="https://mymedia.bu.edu/media/BU+Libraries+Search+-+Refining+Your+Search/1_xelc77l5" target="_blank">
+      <span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" g-bind-html="link.displayLabel">Refining Your Search</span>
+    </a>
+  </li>
+  <li>
+    <a class="arrow-link md-primoExplore-theme" href="https://mymedia.bu.edu/media/BU+Libraries+Search+-+Advanced+Search/1_napql4ph" target="_blank">
+      <span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" ng-bind-html="link.displayLabel">Advanced Search</span>
+    </a>
+  </li>
+  <li>
+    <a class="arrow-link md-primoExplore-theme" href="http://www.bu.edu/library/help/bu-libraries-search/" target="_blank">
+      <span ng-if="link.linkURL.length > 0 &amp;&amp; link.displayLabel.indexOf('$$E') != 0" ng-bind-html="link.displayLabel">View a playlist of all videos</span>
+    </a>
+  </li>
+</ul>

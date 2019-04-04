@@ -55,7 +55,8 @@ angular.module('viewCustom',
   .constant('helpMenuConfig', {
     "logToConsole":true,
     "publishEvents":false,
-    "list_of_elements":ls_help_menu_items
+    "list_of_elements":ls_help_menu_items,
+    "helpMenuWidth":550
   })
 
   // configure outboundLinksConfig
