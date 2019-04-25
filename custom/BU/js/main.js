@@ -1,12 +1,12 @@
 // import helpers
-import {module_dependencies} from './load-helpers';
+import {module_dependencies, default_config} from './load-helpers';
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-let INCLUDE_GOOGLE_ANALYTICS = true;
+const INCLUDE_GOOGLE_ANALYTICS = true;
 if(INCLUDE_GOOGLE_ANALYTICS){
   ga('create', 'UA-5204430-3', 'auto');
   ga('send', 'pageview');
@@ -47,16 +47,10 @@ angular.module('viewCustom', module_dependencies)
   })
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
-  .constant('helpMenuConfig', {
-    "logToConsole":true,
-    "publishEvents":false
-  })
+  .constant('helpMenuConfig', default_config)
 
   // configure outboundLinksConfig
-  .constant('outboundLinksConfig', {
-    "logToConsole": true,
-    "publishEvents": false
-  })
+  .constant('outboundLinksConfig', default_config)
   
   // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
   .constant('unpaywallConfig', {
