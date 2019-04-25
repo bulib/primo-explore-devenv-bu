@@ -1,6 +1,10 @@
 // configuration options
-let INCLUDE_LIBCHAT_WIDGET = true;
-let INCLUDE_EZPROXY = true;
+const INCLUDE_LIBCHAT_WIDGET = true;
+const INCLUDE_EZPROXY = true;
+const INCLUDE_UNPAYWALL = true;
+const INCLUDE_OUTBOUND_LINKS = true;
+const INCLUDE_HELP_MENU = false;
+const INCLUDE_ANNOUNCE_BANNER = true;
 
 // - ez proxy - //
 if(INCLUDE_EZPROXY){
@@ -18,3 +22,10 @@ if(INCLUDE_LIBCHAT_WIDGET){
   libChatWidgetElement.src = "https://v2.libanswers.com/load_chat.php?hash=0b9beff60316d9b71b1de06909bdf5c1";
   document.head.appendChild(libChatWidgetElement);
 }
+
+// - module dependencies - //
+export let module_dependencies = ['angularLoad'];
+if(INCLUDE_UNPAYWALL){ module_dependencies.push('bulibUnpaywall'); }
+if(INCLUDE_OUTBOUND_LINKS){ module_dependencies.push('outboundLinksLogger'); }
+if(INCLUDE_HELP_MENU){ module_dependencies.push('helpMenuContentDisplay',  'helpMenuTopbar'); }
+if(INCLUDE_ANNOUNCE_BANNER){ module_dependencies.push('wrlcAnnounce'); }

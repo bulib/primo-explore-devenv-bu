@@ -1,5 +1,5 @@
 // import helpers
-import './load-helpers';
+import {module_dependencies} from './load-helpers';
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,9 +21,7 @@ import 'primo-explore-unpaywall';
 import './wrlc-announce.module';
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
-angular.module('viewCustom', 
-    ['angularLoad', 'bulibUnpaywall', 'outboundLinksLogger', 'wrlcAnnounce']
-  )
+angular.module('viewCustom', module_dependencies)
 
   // google analytics 
   .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
