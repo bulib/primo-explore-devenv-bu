@@ -1,12 +1,12 @@
 // import helpers
-import './load-helpers';
+import {module_dependencies, default_config} from './load-helpers';
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-let INCLUDE_GOOGLE_ANALYTICS = true;
+const INCLUDE_GOOGLE_ANALYTICS = true;
 if(INCLUDE_GOOGLE_ANALYTICS){
   ga('create', 'UA-5204430-3', 'auto');
   ga('send', 'pageview');
@@ -24,9 +24,7 @@ import './wrlc-announce.module';
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
-angular.module('viewCustom', 
-    ['angularLoad', 'bulibUnpaywall', 'helpMenuContentDisplay',  'helpMenuTopbar', 'outboundLinksLogger', 'wrlcAnnounce']
-  )
+angular.module('viewCustom', module_dependencies)
 
   // google analytics 
   .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
@@ -60,10 +58,7 @@ angular.module('viewCustom',
   })
 
   // configure outboundLinksConfig
-  .constant('outboundLinksConfig', {
-    "logToConsole": true,
-    "publishEvents": false
-  })
+  .constant('outboundLinksConfig', default_config)
   
   // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
   .constant('unpaywallConfig', {
