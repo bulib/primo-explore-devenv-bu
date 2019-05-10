@@ -53,6 +53,9 @@ angular.module('viewCustom', module_dependencies)
   .constant('outboundLinksConfig', default_config)
   
   // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
+  .component('prmSearchResultAvailabilityLineAfter', {
+    template: '<bulib-unpaywall></bulib-unpaywall>'
+  })
   .constant('unpaywallConfig', {
     "email":"aidans@bu.edu",
     "logToConsole":true,
