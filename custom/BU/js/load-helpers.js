@@ -8,8 +8,8 @@ const INCLUDE_ANNOUNCE_BANNER = true;
 
 // - production vs staging - //
 const ENV_PRODUCTION = false;
-const config_staging    = { "logToConsole":true,  "publishEvents":false }
-const config_production = { "logToConsole":false, "publishEvents":true }
+const config_staging    = { "logToConsole":true,  "publishEvents":false };
+const config_production = { "logToConsole":false, "publishEvents":true  };
 export const default_config = ENV_PRODUCTION ? config_production : config_staging;
 
 // - ez proxy - //
