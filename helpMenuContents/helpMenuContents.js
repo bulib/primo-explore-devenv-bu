@@ -7,7 +7,7 @@ import {getting_started} from './gettingStarted.html';
 import {guides} from './guides.html';
 import {library_locations} from './libraryLocations.html'
 import {saving_results} from './savingResults.html';
-import {tell_us} from './tellUsWhatYouThink.html';
+//import {tell_us} from './tellUsWhatYouThink.html';
 import {video_tutorials} from './videoTutorials.html';
 import {whats_in_search} from './whatsInSearch.html';
 
@@ -82,11 +82,5 @@ export const ls_help_menu_items = [
     "title":"Ask Us",
     "template":ask_us,
     "icon":{"code":"forum","group":"communication"}
-  },  
-  {
-    "id":"tell-us",
-    "title":"Tell Us What You Think",
-    "template":tell_us,
-    "icon":{"code":"comment","group":"communication"}
   }
 ];

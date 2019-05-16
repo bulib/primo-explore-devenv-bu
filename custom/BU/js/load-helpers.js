@@ -3,7 +3,7 @@ const INCLUDE_LIBCHAT_WIDGET = true;
 const INCLUDE_EZPROXY = true;
 const INCLUDE_UNPAYWALL = true;
 const INCLUDE_OUTBOUND_LINKS = true;
-const INCLUDE_HELP_MENU = false;
+const INCLUDE_HELP_MENU = true;
 const INCLUDE_ANNOUNCE_BANNER = true;
 
 // - production vs staging - //
