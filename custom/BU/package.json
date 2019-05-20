@@ -5,7 +5,7 @@
     "primo-explore-help-menu": "^1.1.1",
     "primo-explore-outbound-links": "^0.6.0",
     "primo-explore-report-problem": "^3.0.0",
-    "primo-explore-unpaywall": "^1.1.7"
+    "primo-explore-unpaywall": "^1.2.0"
   },
   "scripts": {
     "watch": "gulp run --view BU --browserify",
