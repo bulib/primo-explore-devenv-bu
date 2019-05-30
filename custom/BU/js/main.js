@@ -1,5 +1,5 @@
 // import helpers
-import {module_dependencies, default_config} from './load-helpers';
+import {module_dependencies, default_config, ENV_PRODUCTION} from './load-helpers';
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -51,8 +51,8 @@ angular.module('viewCustom', module_dependencies)
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
-    "logToConsole":true,
-    "publishEvents":false,
+    "logToConsole":!ENV_PRODUCTION,
+    "publishEvents":ENV_PRODUCTION,
     "list_of_elements":ls_help_menu_items,
     "helpMenuWidth":550
   })
@@ -66,8 +66,9 @@ angular.module('viewCustom', module_dependencies)
   })
   .constant('unpaywallConfig', {
     "email":"aidans@bu.edu",
-    "logToConsole":true,
-    "publishEvents":false
+    "logToConsole":!ENV_PRODUCTION,
+    "publishEvents":ENV_PRODUCTION,
+    "overrideOACheck":false
   })
 
   // configure wrlc announce
