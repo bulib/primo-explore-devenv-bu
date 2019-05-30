@@ -20,6 +20,9 @@ import 'primo-explore-unpaywall';
 // import other custom modules
 import './wrlc-announce.module';
 
+// import additional content
+import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
+
 // create the main primo-explore module and load in its local and npm-imported dependencies 
 angular.module('viewCustom', module_dependencies)
 
@@ -47,7 +50,12 @@ angular.module('viewCustom', module_dependencies)
   })
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
-  .constant('helpMenuConfig', default_config)
+  .constant('helpMenuConfig', {
+    "logToConsole":true,
+    "publishEvents":false,
+    "list_of_elements":ls_help_menu_items,
+    "helpMenuWidth":550
+  })
 
   // configure outboundLinksConfig
   .constant('outboundLinksConfig', default_config)
