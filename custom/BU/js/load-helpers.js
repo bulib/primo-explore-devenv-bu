@@ -7,7 +7,7 @@ const INCLUDE_HELP_MENU = true;
 const INCLUDE_ANNOUNCE_BANNER = true;
 
 // - production vs staging - //
-const ENV_PRODUCTION = false;
+export const ENV_PRODUCTION = true;
 const config_staging    = { "logToConsole":true,  "publishEvents":false };
 const config_production = { "logToConsole":false, "publishEvents":true  };
 export const default_config = ENV_PRODUCTION ? config_production : config_staging;
