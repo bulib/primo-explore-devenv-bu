@@ -1,4 +1,4 @@
-# `primo-explore-bu`
+# `primo-explore-devenv-bu`
 
 Boston University Libraries' customization packages for the for the new Primo UI.
 
