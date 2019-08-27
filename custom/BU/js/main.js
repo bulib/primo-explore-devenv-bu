@@ -19,6 +19,7 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './wrlc-announce.module';
+import '../node_modules/bulib-wc/dist/legacy/index';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
@@ -39,7 +40,7 @@ angular.module('viewCustom', module_dependencies)
       if(debug){ console.log("gaEventLogger) " + message); }
     }
     this.logEvent = function(category="", action="", label="", debug=false){
-      var eventMessage = "cat:'"+category + "' act:'"+action + "' label:'"+label+"'";
+      var eventMessage = "cat:'"+category+"' act:'"+action+"' label:'"+label+"'";
       if(window.ga){
         window.ga('send', 'event', category, action, label);
         this.logAboutEvent("new '" + category + "' event sent to Google Analytics", debug);
@@ -48,6 +49,10 @@ angular.module('viewCustom', module_dependencies)
       }
     }
   })
+
+  // add footer to each page
+  .component('prmServicesPageAfter', { template: '<bulib-footer></bulib-footer>'})
+  .component('prmExploreMainAfter',  { template: '<bulib-footer></bulib-footer>'})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
