@@ -19,7 +19,7 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './wrlc-announce.module';
-import '../node_modules/bulib-wc/dist/legacy/index';
+import './header-imports';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
