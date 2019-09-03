@@ -49,12 +49,11 @@ angular.module('wrlcAnnounce', ['ngAnimate'])
           <prm-icon ng-if="$ctrl.severity=='alert'" icon-type="svg" svg-icon-set="action" icon-definition="ic_announcement_24px"></prm-icon>
           <prm-icon ng-if="$ctrl.severity=='warn'" icon-type="svg" svg-icon-set="action" icon-definition="ic_report_problem_24px"></prm-icon>
           <prm-icon ng-if="$ctrl.severity=='success'" icon-type="svg" svg-icon-set="action" icon-definition="ic_check_circle_24px"></prm-icon>
-          <span ng-if="$ctrl.link" id="message"><a target="_blank" href="{{$ctrl.link}}">{{ $ctrl.message }}</a></span>
+          <span ng-if="$ctrl.link" id="message"><a target="_blank" href="{{$ctrl.link}}" tabindex="0">{{ $ctrl.message }}</a></span>
           <span ng-if="!$ctrl.link" ng-bind-html=$ctrl.message id="message"></span>
-          <button id="dismiss-announcement" area-label="dismiss announcement" type="button" ng-click="$ctrl.wrDismiss()"
-                  class="dismiss-alert-button zero-margin md-button md-primoExplore-theme md-ink-ripple button-with-icon">
-            <prm-icon icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px" class="material-icons gray"></prm-icon>
-          </button>
+    
+          <prm-icon id="dismiss" ng-click="$ctrl.wrDismiss()" tabindex="0"
+            icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px"></prm-icon>
         </div>
       </wrlc-announce>
     `,

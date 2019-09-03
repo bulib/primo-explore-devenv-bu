@@ -1,28 +1,29 @@
 /* - helper code for announcement banner for [`primo-explore-wrlc-announce` package](https://www.npmjs.com/package/primo-explore-wrlc-announce */
 
+/* main banner styling */
 #wrlc-announce-banner {
-	background-color: lightblue;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+  background-color: lightblue;
+  position: absolute;
+  bottom: 0; left: 0;
 	width: 100%;
-	height: 50px;
 }
 
-#message {
-  margin-left: 12px;
-  margin-right: 12px;
+/* dismiss button styling */
+#wrlc-announce-banner #dismiss { border-radius:50%; padding: 2px; }
+#wrlc-announce-banner #dismiss:hover, #wrlc-announce-banner #dismiss:focus,
+  #wrlc-announce-banner a:hover, #wrlc-announce-banner a:focus{ 
+    background-color:rgba(0, 0, 0, 0.1); 
 }
 
+/* style message (with background) */
+#wrlc-announce-banner #message { margin: 12px }
 #wrlc-announce-banner.success {
   background: #B0E0E6 !important;
 }
-
 #wrlc-announce-banner.warn, #wrlc-announce-banner.alert {
   background: lightsalmon !important;
   font-weight: 600;
 }
-
 #wrlc-announce-banner.info {
   background: #E0FFFF !important;
 }
