@@ -19,6 +19,7 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './wrlc-announce.module';
+import './footer.module';
 import './header-imports';
 
 // import additional content
@@ -50,9 +51,9 @@ angular.module('viewCustom', module_dependencies)
     }
   })
 
-  // add footer to each page
-  .component('prmServicesPageAfter', { template: '<bulib-footer></bulib-footer>'})
-  .component('prmExploreMainAfter',  { template: '<bulib-footer></bulib-footer>'})
+  // add footer 
+  .component('prmServicesPageAfter', {template: `<bulibwc-footer></bulibwc-footer>`})
+  .component('prmExploreMainAfter',  {template: '<bulibwc-footer></bulibwc-footer>'})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
