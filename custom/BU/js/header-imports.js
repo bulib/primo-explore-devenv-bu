@@ -1,11 +1,9 @@
-const headElem = document.head;
-
 let addStyleToHead = function(url){
   let new_style = document.createElement("link");
   new_style.rel="stylesheet";
   new_style.type="text/css";
   new_style.href=url;
-  headElem.appendChild(new_style);
+  document.head.appendChild(new_style);
 }
 
 let addScriptToHead = function(url, type, attr){
@@ -18,7 +16,7 @@ let addScriptToHead = function(url, type, attr){
     let att = document.createAttribute(attr);
     new_script.setAttributeNode(att);
   }
-  headElem.appendChild(new_script)
+  document.head.appendChild(new_script)
 }
 
 // load web components

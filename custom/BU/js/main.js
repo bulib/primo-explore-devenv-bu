@@ -18,9 +18,9 @@ import 'primo-explore-outbound-links';
 import 'primo-explore-unpaywall';
 
 // import other custom modules
-import './wrlc-announce.module';
-import './footer.module';
 import './header-imports';
+import './footer.module';
+import './wrlc-announce.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
