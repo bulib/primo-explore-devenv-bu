@@ -37,7 +37,13 @@ angular.module('wrlcAnnounce', ['ngAnimate'])
   ])
   .component('prmSearchBarAfter', {
     template: `
-      <wrlc-announce ng-show="!$ctrl.dismissed" ng-if="$ctrl.show">
+      <wrlc-announce ng-hide="$ctrl.dismissed" ng-if="$ctrl.show">
+        <style ng-if="$ctrl.show && !$ctrl.dismissed">
+          /* add padding under the search bar to make room for banner */ 
+          .__sm prm-search-bar { padding-bottom: 50px; }
+          prm-search-bar { padding-bottom: 58.5px; }
+          .__xs prm-search-bar { padding-bottom: 50px; }
+        </style>
         <div id="wrlc-announce-banner" class="layout-align-center-center layout-row flex {{$ctrl.severity}}">
           <prm-icon ng-if="$ctrl.severity=='info'" icon-type="svg" svg-icon-set="action" icon-definition="ic_info_24px"></prm-icon>
           <prm-icon ng-if="$ctrl.severity=='alert'" icon-type="svg" svg-icon-set="action" icon-definition="ic_announcement_24px"></prm-icon>

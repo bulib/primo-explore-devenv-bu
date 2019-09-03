@@ -1,14 +1,5 @@
 /* - helper code for announcement banner for [`primo-explore-wrlc-announce` package](https://www.npmjs.com/package/primo-explore-wrlc-announce */
 
-prm-search-bar {
-  padding-bottom: 58.5px;
-}
-.__sm prm-search-bar {
-  padding-bottom: 50px;
-}
-.__xs prm-search-bar {
-  padding-bottom: 50px;
-}
 #wrlc-announce-banner {
 	background-color: lightblue;
 	position: absolute;
