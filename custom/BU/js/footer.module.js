@@ -1,7 +1,7 @@
 angular.module('bulibwcFooter', [])
   .controller('footerController', ['$http', '$scope', '$timeout',
     function($http, $scope, $timeout){
-      $scope.showFooter = window.location.search.includes("query");
+      $scope.showFooter = false;
       $timeout(function(currentPath, hrefArgs){
         // determine whether to display the footer based on current page
         var currentPath = window.location.pathname;  // want to show on the openurl page (and maybe others)
@@ -14,6 +14,6 @@ angular.module('bulibwcFooter', [])
       
     }])
   .component('bulibwcFooter', {
-    template: '<bulib-footer ng-if="showFooter"></bulib-footer>',
+    template: '<bulib-footer ng-if="showFooter" ng-hide="!showFooter"></bulib-footer>',
     controller: 'footerController'
   });
