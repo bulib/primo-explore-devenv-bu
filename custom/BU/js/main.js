@@ -51,10 +51,6 @@ angular.module('viewCustom', module_dependencies)
     }
   })
 
-  // add footer 
-  .component('prmServicesPageAfter', {template: `<bulibwc-footer></bulibwc-footer>`})
-  .component('prmExploreMainAfter',  {template: '<bulibwc-footer></bulibwc-footer>'})
-
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
     "logToConsole":!ENV_PRODUCTION,

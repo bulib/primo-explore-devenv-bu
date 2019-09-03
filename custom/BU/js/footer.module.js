@@ -2,18 +2,13 @@ angular.module('bulibwcFooter', [])
   .controller('footerController', ['$http', '$scope', '$timeout',
     function($http, $scope, $timeout){
       $scope.showFooter = false;
-      $timeout(function(currentPath, hrefArgs){
-        // determine whether to display the footer based on current page
-        var currentPath = window.location.pathname;  // want to show on the openurl page (and maybe others)
-        var hrefArgs = window.location.search;  // want to show on home page, but not results
+      $timeout(function(){
+        var pathname = window.location.pathname;
+        $scope.showFooter = pathname.includes("openurl") || pathname.includes("fulldisplay");
+      },2500);
 
-        if((currentPath === "/primo-explore/openurl") || !hrefArgs.includes("query=")){
-          $scope.showFooter = true;
-        }
-      },2500)
-      
     }])
-  .component('bulibwcFooter', {
+  .component('prmFullViewContAfter', {
     template: '<bulib-footer ng-if="showFooter" ng-hide="!showFooter"></bulib-footer>',
     controller: 'footerController'
   });
