@@ -1,7 +1,6 @@
 // configuration options
 const INCLUDE_LIBCHAT_WIDGET = true;
 const INCLUDE_EZPROXY = true;
-const INCLUDE_FOOTER = true;
 const INCLUDE_UNPAYWALL = true;
 const INCLUDE_OUTBOUND_LINKS = false;
 const INCLUDE_HELP_MENU = true;
@@ -32,7 +31,6 @@ if(INCLUDE_LIBCHAT_WIDGET){
 
 // - module dependencies - //
 export let module_dependencies = ['angularLoad'];
-if(INCLUDE_FOOTER){ module_dependencies.push('bulibwcFooter'); }
 if(INCLUDE_UNPAYWALL){ module_dependencies.push('bulibUnpaywall'); }
 if(INCLUDE_OUTBOUND_LINKS){ module_dependencies.push('outboundLinksLogger'); }
 if(INCLUDE_HELP_MENU){ module_dependencies.push('helpMenuContentDisplay',  'helpMenuTopbar'); }
