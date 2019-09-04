@@ -5,14 +5,8 @@
   background-color: lightblue;
   position: absolute;
   bottom: 0; left: 0;
-	width: 100%;
-}
-
-/* dismiss button styling */
-#wrlc-announce-banner #dismiss { border-radius:50%; padding: 2px; }
-#wrlc-announce-banner #dismiss:hover, #wrlc-announce-banner #dismiss:focus,
-  #wrlc-announce-banner a:hover, #wrlc-announce-banner a:focus{ 
-    background-color:rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  font-size: 15px;
 }
 
 /* style message (with background) */

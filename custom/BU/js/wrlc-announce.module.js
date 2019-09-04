@@ -52,8 +52,11 @@ angular.module('wrlcAnnounce', ['ngAnimate'])
           <span ng-if="$ctrl.link" id="message"><a target="_blank" href="{{$ctrl.link}}" tabindex="0">{{ $ctrl.message }}</a></span>
           <span ng-if="!$ctrl.link" ng-bind-html=$ctrl.message id="message"></span>
     
-          <prm-icon id="dismiss" ng-click="$ctrl.wrDismiss()" tabindex="0"
-            icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px"></prm-icon>
+          <button id="dismiss-announcement" area-label="dismiss announcement" type="button" ng-click="$ctrl.wrDismiss()"
+                  class="dismiss-alert-button md-button md-primoExplore-theme button-with-icon">
+            <prm-icon icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px" class="material-icons gray txtv"></prm-icon>
+            <span translate="nui.message.dismiss" hide-xs="" class="hide-xs">DISMISS</span>
+          </button>
         </div>
       </wrlc-announce>
     `,
