@@ -746,3 +746,8 @@
   prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma {
       display: inline;
   }
+
+  /* responsiveness */
+  @media only screen and (max-width: 950px){ 
+    #s-lch-widget-8959 { display: none; }
+  }
