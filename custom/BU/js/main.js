@@ -19,7 +19,6 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './header-imports';
-import './footer.module';
 import './wrlc-announce.module';
 
 // import additional content
@@ -50,6 +49,9 @@ angular.module('viewCustom', module_dependencies)
       }
     }
   })
+
+  // add footer to main content pages (fulldisplay, openurl, permalink)
+  .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
