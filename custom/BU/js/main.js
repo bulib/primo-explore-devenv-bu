@@ -18,6 +18,7 @@ import 'primo-explore-outbound-links';
 import 'primo-explore-unpaywall';
 
 // import other custom modules
+import './header-imports';
 import './wrlc-announce.module';
 
 // import additional content
@@ -39,7 +40,7 @@ angular.module('viewCustom', module_dependencies)
       if(debug){ console.log("gaEventLogger) " + message); }
     }
     this.logEvent = function(category="", action="", label="", debug=false){
-      var eventMessage = "cat:'"+category + "' act:'"+action + "' label:'"+label+"'";
+      var eventMessage = "cat:'"+category+"' act:'"+action+"' label:'"+label+"'";
       if(window.ga){
         window.ga('send', 'event', category, action, label);
         this.logAboutEvent("new '" + category + "' event sent to Google Analytics", debug);
@@ -48,6 +49,9 @@ angular.module('viewCustom', module_dependencies)
       }
     }
   })
+
+  // add footer to main content pages (fulldisplay, openurl, permalink)
+  .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {

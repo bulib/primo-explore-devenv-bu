@@ -10,5 +10,8 @@
   "scripts": {
     "start": "gulp run --view BU --browserify",
     "build": "gulp create-package --view BU --browserify"
+  },
+  "dependencies": {
+    "bulib-wc": "0.0.72"
   }
 }
