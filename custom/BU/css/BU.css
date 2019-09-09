@@ -747,7 +747,7 @@
       display: inline;
   }
 
-  /* responsiveness */
+  /* responsiveness: hide libchat widget on small screens */
   @media only screen and (max-width: 950px){ 
     #s-lch-widget-8959 { display: none; }
   }
