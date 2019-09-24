@@ -54,8 +54,8 @@ angular.module('viewCustom', module_dependencies)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
 
   .component('prmFavoritesToolBarAfter', {template: `
-    <div class="wrlc-announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn()">
-      <span><a ng-click="$scope.handleLogin()">Sign In</a> to view your personal favorites</span>
+    <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn()">
+      <span><a ng-click="$ctrl.handleLogin()">Sign In</a> to view your favorites</span>
 
       <button id="dismiss-announcement" area-label="dismiss announcement" type="button" ng-click="$ctrl.wrDismiss()"
               class="dismiss-alert-button md-button md-primoExplore-theme button-with-icon">
