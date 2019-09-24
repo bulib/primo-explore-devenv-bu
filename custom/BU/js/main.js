@@ -53,6 +53,17 @@ angular.module('viewCustom', module_dependencies)
   // add footer to main content pages (fulldisplay, openurl, permalink)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
 
+  .component('prmFavoritesToolBarAfter', {template: `
+    <div class="wrlc-announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn()">
+      <span><a ng-click="$scope.handleLogin()">Sign In</a> to view your personal favorites</span>
+
+      <button id="dismiss-announcement" area-label="dismiss announcement" type="button" ng-click="$ctrl.wrDismiss()"
+              class="dismiss-alert-button md-button md-primoExplore-theme button-with-icon">
+        <span ng-click="$ctrl.handleLogin()" class="hide-xs">Sign In</span>
+      </button>
+    </div>
+  `})
+
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
     "logToConsole":!ENV_PRODUCTION,
