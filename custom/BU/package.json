@@ -12,6 +12,6 @@
     "build": "gulp create-package --view BU --browserify"
   },
   "dependencies": {
-    "bulib-wc": "0.0.77"
+    "bulib-wc": "0.0.86"
   }
 }
