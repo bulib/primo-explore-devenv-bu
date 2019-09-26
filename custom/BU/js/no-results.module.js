@@ -34,9 +34,24 @@ const troubleshooting_checklist = `
       <ul class="no-bullet">
         <li id="check-quotes">
           <label>
-            <input ng-hide="!$ctrl.showQuotes" type="checkbox" value="search-scope">
-            <input ng-hide="$ctrl.showQuotes"  type="checkbox" value="search-scope" checked>
+            <input ng-hide="!$ctrl.showQuotes" type="checkbox">
+            <input ng-hide="$ctrl.showQuotes"  type="checkbox" checked>
             Check for searches in <strong>quotation marks</strong>
+          </label>
+        </li>
+        <li id="check-filters">
+          <label>
+            <input ng-hide="!$ctrl.showFilter" type="checkbox">
+            <input ng-hide="$ctrl.showFilter"  type="checkbox" checked>
+            Remove any extraneous <strong>filters</strong>
+          </label>
+        </li>
+        <li id="check-scope">
+          <label>
+            <input ng-hide="!$ctrl.showScopes" type="checkbox">
+            <input ng-hide="$ctrl.showScopes"  type="checkbox" checked>
+            <strong>Try another <a href="/primo-explore/search?vid=BU">search scope</a></strong> 
+            that's better-suited to your query
           </label>
         </li>
         <li id="check-spelling">
@@ -49,14 +64,6 @@ const troubleshooting_checklist = `
           <label>
             <input type="checkbox" value="adjust-query">
             <strong>Adjust your query</strong> to contain fewer or more general/common keywords
-          </label>
-        </li>
-        <li id="check-scope">
-          <label>
-            <input ng-hide="!$ctrl.showScopes" type="checkbox" value="search-scope">
-            <input ng-hide="$ctrl.showScopes"  type="checkbox" value="search-scope" checked>
-            <strong>Try another <a href="/primo-explore/search?vid=BU">search scope</a></strong> 
-            that's better-suited to your query
           </label>
         </li>
         <li>
@@ -78,10 +85,10 @@ angular.module('noResults', [])
     vm.getSearchTerm = getSearchTerm;
     vm.pciSetting = vm.parentCtrl.searchStateService.searchObject.pcAvailability || '';
     function getSearchTerm() { return vm.parentCtrl.term; }
-    function getCurrentPathWithArgs(){ return window.location.pathname+window.location.search; }
 
     // check various conditions to determine which quick actions to show
-    this.showQuotes = this.getSearchTerm().includes('"'); 
+    console.log(this.getSearchTerm() + "<-- search term")
+    this.showQuotes = this.getSearchTerm().includes('"') || this.getSearchTerm().includes('”'); 
     this.showFilter = window.location.search.includes("mfacet=");
     this.showScopes = !window.location.search.includes("search_scope=pci_all");
 
