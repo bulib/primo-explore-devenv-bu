@@ -4,7 +4,8 @@ const quick_actions = `
       <md-card-title-text><span translate="" class="md-headline ng-scope">Quick Actions</span></md-card-title-text>
     </md-card-title>
     <md-card-content>
-      <ul class="deck no-bullet">
+      <p>Here are some quick things we can to do for you pretty easily:</p>
+      <ul class="no-bullet">
         <li id="action-quotes" ng-if="$ctrl.showQuotes">
           <bulib-card small title="Search without Quotes" icon="format_quote" debug description="Run the same query without the quotes"
             action="console.log('searchWithoutQuotes()')"></bulib-card>
@@ -31,25 +32,26 @@ const troubleshooting_checklist = `
       <md-card-title-text><span translate="" class="md-headline ng-scope">Troubleshooting the Problem</span></md-card-title-text>
     </md-card-title>
     <md-card-content> 
+      <p>Still having trouble getting the results you want? Try out the following: </p>
       <ul class="no-bullet">
         <li id="check-quotes">
           <label>
-            <input ng-hide="!$ctrl.showQuotes" type="checkbox">
-            <input ng-hide="$ctrl.showQuotes"  type="checkbox" checked>
+            <input ng-hide="!$ctrl.showQuotes" type="checkbox" disabled>
+            <input ng-hide="$ctrl.showQuotes"  type="checkbox" disabled checked>
             Check for searches in <strong>quotation marks</strong>
           </label>
         </li>
         <li id="check-filters">
           <label>
-            <input ng-hide="!$ctrl.showFilter" type="checkbox">
-            <input ng-hide="$ctrl.showFilter"  type="checkbox" checked>
+            <input ng-hide="!$ctrl.showFilter" type="checkbox" disabled>
+            <input ng-hide="$ctrl.showFilter"  type="checkbox" disabled checked>
             Remove any extraneous <strong>filters</strong>
           </label>
         </li>
         <li id="check-scope">
           <label>
-            <input ng-hide="!$ctrl.showScopes" type="checkbox">
-            <input ng-hide="$ctrl.showScopes"  type="checkbox" checked>
+            <input ng-hide="!$ctrl.showScopes" type="checkbox" disabled>
+            <input ng-hide="$ctrl.showScopes"  type="checkbox" disabled checked>
             <strong>Try another <a href="/primo-explore/search?vid=BU">search scope</a></strong> 
             that's better-suited to your query
           </label>
@@ -111,6 +113,8 @@ angular.module('noResults', [])
       <style type="text/css">
         /* hide the first boilerplate */
         prm-no-search-result > md-card { display: none; }
+        prm-no-search-result-after p, prm-no-search-result-after label, prm-no-search-result-after input { font-size: large; }
+        prm-no-search-result-after label:hover { cursor: pointer; }
         bulib-card a { text-decoration: none !important; }
       </style>
       <md-card>
@@ -118,7 +122,7 @@ angular.module('noResults', [])
           <md-card-title-text><span translate="" class="md-headline ng-scope">No results found</span></md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <p>There are no results matching your search:<em>{{$ctrl.getSearchTerm()}}</em>.</p>
+          <p>There are no results matching your search:&nbsp;&nbsp;<em>{{$ctrl.getSearchTerm()}}</em>.</p>
         </md-card-content>
       </md-card>`+quick_actions+troubleshooting_checklist
   });
