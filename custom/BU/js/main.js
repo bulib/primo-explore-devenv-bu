@@ -19,7 +19,8 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './header-imports';
-import './wrlc-announce.module';
+import './accounts-banner.module';
+import './announce-banner.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
@@ -52,27 +53,6 @@ angular.module('viewCustom', module_dependencies)
 
   // add footer to main content pages (fulldisplay, openurl, permalink)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
-
-  // add sign-in prompt ('.announce-banner') to /favorites page (if not signed in)
-  .controller('favoritesBannerCtrl',[function(){ 
-    this.dismiss = function(){ this.dismissed = true; }
-    this.handleLogin = function(){ 
-      console.log("handleLogin();");
-      this.dismiss()
-      this.prmAuthenticationCtrl.handleLogin(); 
-    } 
-  }])
-  .component('prmFavoritesToolBarAfter', {
-    // require: { prmAuthenticationCtrl: '^prmAuthentication' },
-    controller: 'favoritesBannerCtrl',
-    template: `
-      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn() && !$ctrl.dismissed">
-        <span><a ng-click="$ctrl.handleLogin()">Sign In</a> to view your favorites</span>
-        <button id="sign-in" type="button" class="md-button md-primoExplore-theme button-with-icon">
-          <span ng-click="$ctrl.handleLogin()">Sign In</span>
-        </button>
-      </div>
-  `})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {

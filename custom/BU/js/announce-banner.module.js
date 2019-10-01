@@ -7,7 +7,7 @@
 *   is merged and the npm package is versioned to where we can use that instead).
 */
 
-angular.module('wrlcAnnounce', ['ngAnimate'])
+angular.module('announceBanner', ['ngAnimate'])
   .controller('announceController', ['announceConfig', '$http', 
     function(announceConfig, $http){
       var self = this;
