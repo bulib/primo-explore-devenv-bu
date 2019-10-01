@@ -53,15 +53,25 @@ angular.module('viewCustom', module_dependencies)
   // add footer to main content pages (fulldisplay, openurl, permalink)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
 
-  .component('prmFavoritesToolBarAfter', {template: `
-    <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn()">
-      <span><a ng-click="$ctrl.handleLogin()">Sign In</a> to view your favorites</span>
-
-      <button id="dismiss-announcement" area-label="dismiss announcement" type="button" ng-click="$ctrl.wrDismiss()"
-              class="dismiss-alert-button md-button md-primoExplore-theme button-with-icon">
-        <span ng-click="$ctrl.handleLogin()" class="hide-xs">Sign In</span>
-      </button>
-    </div>
+  // add sign-in prompt ('.announce-banner') to /favorites page (if not signed in)
+  .controller('favoritesBannerCtrl',[function(){ 
+    this.dismiss = function(){ this.dismissed = true; }
+    this.handleLogin = function(){ 
+      console.log("handleLogin();");
+      this.dismiss()
+      this.prmAuthenticationCtrl.handleLogin(); 
+    } 
+  }])
+  .component('prmFavoritesToolBarAfter', {
+    // require: { prmAuthenticationCtrl: '^prmAuthentication' },
+    controller: 'favoritesBannerCtrl',
+    template: `
+      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn() && !$ctrl.dismissed">
+        <span><a ng-click="$ctrl.handleLogin()">Sign In</a> to view your favorites</span>
+        <button id="sign-in" type="button" class="md-button md-primoExplore-theme button-with-icon">
+          <span ng-click="$ctrl.handleLogin()">Sign In</span>
+        </button>
+      </div>
   `})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
