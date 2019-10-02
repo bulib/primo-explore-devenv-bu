@@ -56,7 +56,7 @@ angular.module('viewCustom', module_dependencies)
   // add sign-in prompt ('.announce-banner') to /favorites page (if not signed in)
   .component('prmFavoritesToolBarAfter', {
     template: `
-      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="$ctrl.isSignedIn()">
+      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn()">
         <div>Sign in to view your favorites: <prm-authentication></prm-authentication> </div>
       </div>
   `})
