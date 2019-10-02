@@ -19,7 +19,6 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './header-imports';
-import './accounts-banner.module';
 import './announce-banner.module';
 
 // import additional content
@@ -53,6 +52,14 @@ angular.module('viewCustom', module_dependencies)
 
   // add footer to main content pages (fulldisplay, openurl, permalink)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
+
+  // add sign-in prompt ('.announce-banner') to /favorites page (if not signed in)
+  .component('prmFavoritesToolBarAfter', {
+    template: `
+      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="$ctrl.isSignedIn()">
+        <div>Sign in to view your favorites: <prm-authentication></prm-authentication> </div>
+      </div>
+  `})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
