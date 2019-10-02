@@ -4,22 +4,22 @@ const quick_actions = `
       <md-card-title-text><span translate="" class="md-headline ng-scope">Quick Actions</span></md-card-title-text>
     </md-card-title>
     <md-card-content>
-      <p>Here are some quick things we can to do for you pretty easily:</p>
+      <p>Here are some things we can do to help you find search results</p>
       <ul class="no-bullet">
         <li id="action-quotes" ng-if="$ctrl.showQuotes">
           <bulib-card small title="Search without Quotes" icon="format_quote" debug description="Run the same query without the quotes"
             action="console.log('searchWithoutQuotes()')"></bulib-card>
         </li>
         <li id="action-scope" ng-if="$ctrl.showScopes">
-          <bulib-card small title="Expand Search" icon="zoom_out_map" description="Try searching over a larger set of results"
+          <bulib-card small title="Expand Search" icon="zoom_out_map" description="Trying searching beyond your current scope setting"
             action="console.log('searchWithoutQuotes()')"></bulib-card> 
         </li>
         <li id="action-filter" ng-if="$ctrl.showFilter">
-          <bulib-card small title="Remove Filters" icon="label_off" description="Remove active filters "
+          <bulib-card small title="Remove Filters" icon="label_off" description="Remove active filters"
             action="console.log('searchWithoutFilters()')"></bulib-card> 
         </li>
         <li id="action-chat">
-          <bulib-card small title="Ask for Help" icon="people" description="Get assistance with your search from a real librarian!"
+          <bulib-card small title="Ask for Help" icon="people" description="Contact us and a librarian will help you with your research"
             action="console.log('openChat()')"><bulib-card>
         </li>
       </ul>
@@ -29,16 +29,16 @@ const quick_actions = `
 const troubleshooting_checklist = `
   <md-card>
     <md-card-title>
-      <md-card-title-text><span translate="" class="md-headline ng-scope">Troubleshooting the Problem</span></md-card-title-text>
+      <md-card-title-text><span translate="" class="md-headline ng-scope">Troubleshooting</span></md-card-title-text>
     </md-card-title>
     <md-card-content> 
-      <p>Still having trouble getting the results you want? Try out the following: </p>
+      <p>Still having trouble getting the results you want? Try the following: </p>
       <ul class="no-bullet">
         <li id="check-quotes">
           <label>
             <input ng-hide="!$ctrl.showQuotes" type="checkbox" disabled>
             <input ng-hide="$ctrl.showQuotes"  type="checkbox" disabled checked>
-            Check for searches in <strong>quotation marks</strong>
+            Check that you are using <strong>quotation marks</strong> correctly
           </label>
         </li>
         <li id="check-filters">
@@ -59,7 +59,7 @@ const troubleshooting_checklist = `
         <li id="check-spelling">
           <label>
             <input type="checkbox" name="check" value="spelling">
-            Check for <strong>misspelled words or typos</strong>.
+            Check for <strong>misspelled words or typos</strong>
           </label>
         </li>
         <li id="check-query">
@@ -72,7 +72,7 @@ const troubleshooting_checklist = `
           <label>
             <input type="checkbox" value="learn-more">
             <strong><a href="https://www.bu.edu/library/help/bu-libraries-search/power-searching/">Learn more</a></strong> 
-            about searching strategies.
+            about searching strategies
           </label>
         </li>
       </ul>
