@@ -20,6 +20,7 @@ import 'primo-explore-unpaywall';
 // import other custom modules
 import './header-imports';
 import './announce-banner.module';
+import './no-results.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
