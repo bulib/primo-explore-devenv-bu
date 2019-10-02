@@ -54,9 +54,21 @@ angular.module('viewCustom', module_dependencies)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
 
   // add sign-in prompt ('.announce-banner') to /favorites page (if not signed in)
+  .controller('accountsController', [function(){
+    this.showBanner = function(){
+      let showBanner = false;
+      let signInElem = document.querySelector("prm-user-area-expandable button");
+    
+      if(signInElem !== null){
+        showBanner = signInElem.innerText.toLowerCase() == "sign in";
+      } 
+      return showBanner;
+    }
+  }])
   .component('prmFavoritesToolBarAfter', {
+    controller: 'accountsController',
     template: `
-      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="!$ctrl.isSignedIn()">
+      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="$ctrl.showBanner()">
         <div>Sign in to view your favorites: <prm-authentication></prm-authentication> </div>
       </div>
   `})
