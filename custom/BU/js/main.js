@@ -57,19 +57,24 @@ angular.module('viewCustom', module_dependencies)
   .controller('accountsController', [function(){
     this.showBanner = function(){
       let showBanner = false;
+      
+      // look for 'Sign In' in the top banner (medium and above)
       let signInElem = document.querySelector("prm-user-area-expandable button");
-    
-      if(signInElem !== null){
-        showBanner = signInElem.innerText.toLowerCase() == "sign in";
-      } 
+      showBanner = (signInElem !== null) && (signInElem.innerText.toLowerCase() == "sign in");
+      
+      // on small screens, assume that if there aren't any favorites, you're not signed in
+      if(window.innerWidth <= 600){
+        signInElem = document.querySelector("prm-search-result-list span.results-count");
+        showBanner = (signInElem !== null) && (signInElem.innerText == "0 items");
+      }
       return showBanner;
     }
   }])
   .component('prmFavoritesToolBarAfter', {
     controller: 'accountsController',
     template: `
-      <div class="announce-banner layout-align-center-center layout-row flex info" ng-if="$ctrl.showBanner()">
-        <div>Sign in to view your favorites: <prm-authentication></prm-authentication> </div>
+      <div class="announce-banner layout-align-center-center layout-row flex warn" ng-if="$ctrl.showBanner()">
+        <div>Sign in to view My Favorites: <prm-authentication></prm-authentication> </div>
       </div>
   `})
 
