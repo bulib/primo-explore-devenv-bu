@@ -89,21 +89,21 @@ const troubleshooting_checklist = `
       <ul class="no-bullet">
         <li id="check-quotes">
           <label>
-            <input ng-hide="!$ctrl.showQuotes" type="checkbox" disabled>
-            <input ng-hide="$ctrl.showQuotes"  type="checkbox" disabled checked>
+            <input ng-hide="!$ctrl.checkQuotes" type="checkbox">
+            <input ng-hide="$ctrl.checkQuotes"  type="checkbox" disabled checked>
             Check that you are using <strong>quotation marks</strong> correctly
           </label>
         </li>
         <li id="check-filters">
           <label>
-            <input ng-hide="!$ctrl.showFilter" type="checkbox" disabled>
-            <input ng-hide="$ctrl.showFilter"  type="checkbox" disabled checked>
+            <input ng-hide="!$ctrl.checkFilter" type="checkbox">
+            <input ng-hide="$ctrl.checkFilter"  type="checkbox" disabled checked>
             Remove any extraneous <strong>filters</strong>
           </label>
         </li>
         <li id="check-scope">
           <label>
-            <input ng-hide="!$ctrl.showScopes" type="checkbox" disabled>
+            <input ng-hide="!$ctrl.showScopes" type="checkbox">
             <input ng-hide="$ctrl.showScopes"  type="checkbox" disabled checked>
             <strong>Try another <a href="/primo-explore/search?vid=BU">search scope</a></strong> 
             that's better-suited to your query
