@@ -26,18 +26,13 @@ const searchWithoutQuotes = function(){
 }
 
 // replace 'tab' and 'search_scope'
-const default_scope = "default_scope"; const default_tab = "default_tab"
 const searchBiggerScope = function(){
-  let existingScope = getValueFromHrefArgKey("search_scope");
   let existingTab = getValueFromHrefArgKey("tab");
+  let replaceWithTab = "default_tab";
+  if(existingTab === replaceWithTab){ replaceWithTab = "beyond_bu"; }
   
-  let replaceWithScope = default_scope; let replaceWithTab = default_tab;
-  if(existingScope === replaceWithScope){ 
-    replaceWithScope = "pci_nft"; replaceWithTab = "beyond_bu";
-  }
-  
-  let newLink = getCurrentPathWithArgs().replace(existingScope,replaceWithScope).replace(existingTab, replaceWithTab);
-  logNoResultsMessage(`scope changed from '${existingScope}' -> '${replaceWithScope}.`);
+  let newLink = getCurrentPathWithArgs().replace(existingTab, replaceWithTab);
+  logNoResultsMessage(`tab changed from '${existingTab}' -> '${replaceWithTab}.`);
   logNoResultsMessage(newLink);
   window.location = newLink;
 }
@@ -147,9 +142,9 @@ angular.module('noResults', [])
     function getSearchTerm() { return vm.parentCtrl.term; }
 
     // check various conditions to determine which quick actions to show
-    this.showQuotes = this.getSearchTerm().includes('"') || this.getSearchTerm().includes('”'); 
-    this.showFilter = window.location.search.includes("mfacet=");
-    this.showScopes = !window.location.search.includes("search_scope=pci_all");
+    this.checkQuotes = this.getSearchTerm().includes('"') || this.getSearchTerm().includes('”'); 
+    this.checkFilter = this.showFilter = window.location.search.includes("mfacet=");
+    this.showScopes = getValueFromHrefArgKey("tab") !== "beyond_bu";
 
     // add eventListeners for the quick actions
     window.addEventListener('searchWithoutQuotesEvent', searchWithoutQuotes);
