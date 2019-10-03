@@ -1,3 +1,61 @@
+// - quick actions - //
+const DEBUG = true;
+const logNoResultsMessage = (message) => { if(DEBUG){ console.log("no-results) "+message); }}
+const getCurrentPathWithArgs = function(){ return window.location.pathname + window.location.search; }
+
+// helper
+const getValueFromHrefArgKey = function(key, href){ 
+  let relLink = href? href : window.location.pathname+ window.location.search;
+  let i_key_start   = relLink.indexOf(key);
+  let i_value_start = i_key_start+key.length+1;
+  let i_value_end   = relLink.indexOf("&",i_value_start) || relLink.length-1; 
+  if(i_value_end < 0){ i_value_end = relLink.length; }
+
+  let oldValue = relLink.substring(i_value_start, i_value_end);
+  logNoResultsMessage(`key:'${key}' value:'${oldValue}'`);
+  return oldValue;
+}
+
+// remove quotations from 'query' 
+const searchWithoutQuotes = function(){
+  let existingSearchValue = getValueFromHrefArgKey("query");
+  let newSearchValue = existingSearchValue.replace(/"/g,'').replace(/%22/g,"");
+  let newLink = getCurrentPathWithArgs().replace(existingSearchValue, newSearchValue)
+  console.log(`'${getCurrentPathWithArgs()}' -> '${newLink}'`)
+  window.location = newLink;
+}
+
+// replace 'tab' and 'search_scope'
+const default_scope = "default_scope"; const default_tab = "default_tab"
+const searchBiggerScope = function(){
+  let existingScope = getValueFromHrefArgKey("search_scope");
+  let existingTab = getValueFromHrefArgKey("tab");
+  
+  let replaceWithScope = default_scope; let replaceWithTab = default_tab;
+  if(existingScope === replaceWithScope){ 
+    replaceWithScope = "pci_nft"; replaceWithTab = "beyond_bu";
+  }
+  
+  let newLink = getCurrentPathWithArgs().replace(existingScope,replaceWithScope).replace(existingTab, replaceWithTab);
+  logNoResultsMessage(`scope changed from '${existingScope}' -> '${replaceWithScope}.`);
+  logNoResultsMessage(newLink);
+  window.location = newLink;
+}
+
+// rerun the search without any filters
+const searchWithoutFilters = function(){
+  let existingFilters = ""; let newLink = getCurrentPathWithArgs();
+  while(newLink.includes("mfacet=")){
+    existingFilters = getValueFromHrefArgKey("mfacet", newLink);
+    newLink = newLink.replace("mfacet="+existingFilters, "");
+    newLink = newLink.replace("&&","&");
+    logNoResultsMessage("filters ('"+existingFilters+"') removed.");
+    logNoResultsMessage(newLink);
+  }
+  window.location = newLink;
+}
+
+// - templates - //
 const quick_actions = `
   <md-card>
     <md-card-title>
@@ -8,19 +66,19 @@ const quick_actions = `
       <ul class="no-bullet">
         <li id="action-quotes" ng-if="$ctrl.showQuotes">
           <bulib-card small title="Search without Quotes" icon="format_quote" debug description="Run the same query without the quotes"
-            action="console.log('searchWithoutQuotes()')"></bulib-card>
+            action="window.dispatchEvent(new Event('searchWithoutQuotesEvent'))".></bulib-card>
         </li>
         <li id="action-scope" ng-if="$ctrl.showScopes">
           <bulib-card small title="Expand Search" icon="zoom_out_map" description="Trying searching beyond your current scope setting"
-            action="console.log('searchWithoutQuotes()')"></bulib-card> 
+            action="window.dispatchEvent(new Event('searchBiggerScopeEvent'))"></bulib-card> 
         </li>
         <li id="action-filter" ng-if="$ctrl.showFilter">
           <bulib-card small title="Remove Filters" icon="label_off" description="Remove active filters"
-            action="console.log('searchWithoutFilters()')"></bulib-card> 
+            action="window.dispatchEvent(new Event('searchWithoutFiltersEvent'))"></bulib-card> 
         </li>
         <li id="action-chat">
           <bulib-card small title="Ask for Help" icon="people" description="Contact us and a librarian will help you with your research"
-            action="console.log('openChat()')"><bulib-card>
+            action="window.dispatchEvent(new Event('openChatEvent'))"><bulib-card>
         </li>
       </ul>
     </md-card-content>
@@ -89,20 +147,16 @@ angular.module('noResults', [])
     function getSearchTerm() { return vm.parentCtrl.term; }
 
     // check various conditions to determine which quick actions to show
-    console.log(this.getSearchTerm() + "<-- search term")
     this.showQuotes = this.getSearchTerm().includes('"') || this.getSearchTerm().includes('”'); 
     this.showFilter = window.location.search.includes("mfacet=");
     this.showScopes = !window.location.search.includes("search_scope=pci_all");
 
-    // action helpers
-    function searchWithoutQuotes(){
-      let newLink = this.getCurrentPathWithArgs().replace('/"/g','');
-      console.log("'" + this.getCurrentPathWithArgs() + "' -> '" + newLink + "'")
-      return newLink;
-    }
-    function searchWithoutFilters(){
-      let newLink = this.getCurrentPathWithArgs.replace('/')
-    }
+    // add eventListeners for the quick actions
+    window.addEventListener('searchWithoutQuotesEvent', searchWithoutQuotes);
+    window.addEventListener('searchBiggerScopeEvent',   searchBiggerScope);
+    window.addEventListener('searchWithoutFiltersEvent',searchWithoutFilters);
+    window.addEventListener('openChatEvent', function(){ document.querySelector('button.s-lch-widget-float-btn').click(); });
+    
   }])
 
   // Update links in template line below to direct to your Primo server and WorldCat, etc.
