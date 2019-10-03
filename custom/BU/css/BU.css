@@ -736,7 +736,7 @@
       margin: 0;
   }
   
-  /*Aug 2018 SP*/
+  /* - Aug 2018 SP - */
   /*Continue hiding language in new Sign In menu*/
   md-menu-item.my-languages-ctm {
       display: none;
@@ -750,4 +750,13 @@
   /* responsiveness: hide libchat widget on small screens */
   @media only screen and (max-width: 950px){ 
     #s-lch-widget-8959 { display: none; }
+
+  /* responsiveness for small screens */
+  @media only screen and (max-width: 500px){ 
+
+    /* - mobile changes - */ 
+    prm-search-bar input#searchBar{ 
+      font-size: small;
+      padding-left: 5px;
+    }
   }

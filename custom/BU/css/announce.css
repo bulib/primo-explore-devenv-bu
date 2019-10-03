@@ -18,13 +18,16 @@ prm-search-bar-after div.announce-banner {
   margin: 12px;
   vertical-align: inherit;
 }
+.announce-banner.info {
+  background: #E0FFFF !important;
+}
 .announce-banner.success {
   background: #B0E0E6 !important;
 }
-.announce-banner.warn, .announce-banner.alert {
+.announce-banner.warn {
+  background: #ede49e !important;
+}
+.announce-banner.alert {
   background: lightsalmon !important;
   font-weight: 600;
-}
-.announce-banner.info {
-  background: #E0FFFF !important;
 }
