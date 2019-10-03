@@ -750,12 +750,11 @@
   /* responsiveness: hide libchat widget on small screens */
   @media only screen and (max-width: 950px){ 
     #s-lch-widget-8959 { display: none; }
+  }
 
-  /* responsiveness for small screens */
+  /* responsiveness: reduce size, padding of placeholder text in search bar */
   @media only screen and (max-width: 500px){ 
-
-    /* - mobile changes - */ 
-    prm-search-bar input#searchBar{ 
+    prm-search-bar input#searchBar { 
       font-size: small;
       padding-left: 5px;
     }
