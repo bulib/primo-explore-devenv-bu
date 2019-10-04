@@ -32,6 +32,8 @@ const searchBiggerScope = function(){
   if(existingTab === replaceWithTab){ replaceWithTab = "beyond_bu"; }
   
   let newLink = getCurrentPathWithArgs().replace(existingTab, replaceWithTab);
+  let existingScope = getValueFromHrefArgKey("search_scope", newLink);
+  newLink = newLink.replace("search_scope="+existingScope, "").replace("&&", "&");
   logNoResultsMessage(`tab changed from '${existingTab}' -> '${replaceWithTab}.`);
   logNoResultsMessage(newLink);
   window.location = newLink;
