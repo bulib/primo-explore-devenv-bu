@@ -59,7 +59,7 @@ const quick_actions = `
     <md-card-content>
       <p>Here are some things we can do to help you find search results</p>
       <ul class="no-bullet">
-        <li id="action-quotes" ng-if="$ctrl.showQuotes">
+        <li id="action-quotes" ng-if="$ctrl.checkQuotes">
           <bulib-card small title="Search without Quotes" icon="format_quote" debug description="Run the same query without the quotes"
             action="window.dispatchEvent(new Event('searchWithoutQuotesEvent'))".></bulib-card>
         </li>
