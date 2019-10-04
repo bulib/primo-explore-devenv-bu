@@ -7,7 +7,7 @@
 *   is merged and the npm package is versioned to where we can use that instead).
 */
 
-angular.module('wrlcAnnounce', ['ngAnimate'])
+angular.module('announceBanner', ['ngAnimate'])
   .controller('announceController', ['announceConfig', '$http', 
     function(announceConfig, $http){
       var self = this;
@@ -40,22 +40,22 @@ angular.module('wrlcAnnounce', ['ngAnimate'])
       <wrlc-announce ng-hide="$ctrl.dismissed" ng-if="$ctrl.show">
         <style ng-if="$ctrl.show && !$ctrl.dismissed">
           /* add padding under the search bar to make room for banner */ 
-          .__sm prm-search-bar { padding-bottom: 50px; }
-          prm-search-bar { padding-bottom: 58.5px; }
-          .__xs prm-search-bar { padding-bottom: 50px; }
+          .__sm prm-search-bar { padding-bottom: 60px; }
+          prm-search-bar { padding-bottom: 68.5px; }
+          .__xs prm-search-bar { padding-bottom: 60px; }
         </style>
-        <div id="wrlc-announce-banner" class="layout-align-center-center layout-row flex {{$ctrl.severity}}">
+        <div class="announce-banner" class="layout-align-center-center layout-row flex {{$ctrl.severity}}">
           <prm-icon ng-if="$ctrl.severity=='info'" icon-type="svg" svg-icon-set="action" icon-definition="ic_info_24px"></prm-icon>
           <prm-icon ng-if="$ctrl.severity=='alert'" icon-type="svg" svg-icon-set="action" icon-definition="ic_announcement_24px"></prm-icon>
           <prm-icon ng-if="$ctrl.severity=='warn'" icon-type="svg" svg-icon-set="action" icon-definition="ic_report_problem_24px"></prm-icon>
           <prm-icon ng-if="$ctrl.severity=='success'" icon-type="svg" svg-icon-set="action" icon-definition="ic_check_circle_24px"></prm-icon>
-          <span ng-if="$ctrl.link" id="message"><a target="_blank" href="{{$ctrl.link}}" tabindex="0">{{ $ctrl.message }}</a></span>
+          <span ng-if="$ctrl.link" class="message"><a target="_blank" href="{{$ctrl.link}}" class="txtv" tabindex="0">{{ $ctrl.message }}</a></span>
           <span ng-if="!$ctrl.link" ng-bind-html=$ctrl.message id="message"></span>
     
           <button id="dismiss-announcement" area-label="dismiss announcement" type="button" ng-click="$ctrl.wrDismiss()"
                   class="dismiss-alert-button md-button md-primoExplore-theme button-with-icon">
-            <prm-icon icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px" class="material-icons gray txtv"></prm-icon>
-            <span translate="nui.message.dismiss" hide-xs="" class="hide-xs">DISMISS</span>
+            <prm-icon icon-type="svg" svg-icon-set="navigation" icon-definition="ic_close_24px" class="material-icons gray"></prm-icon>
+            <span translate="nui.message.dismiss" hide-xs="" class="hide-xs txtv">DISMISS</span>
           </button>
         </div>
       </wrlc-announce>

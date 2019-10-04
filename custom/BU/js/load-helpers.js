@@ -34,4 +34,4 @@ export let module_dependencies = ['angularLoad', 'noResults'];
 if(INCLUDE_UNPAYWALL){ module_dependencies.push('bulibUnpaywall'); }
 if(INCLUDE_OUTBOUND_LINKS){ module_dependencies.push('outboundLinksLogger'); }
 if(INCLUDE_HELP_MENU){ module_dependencies.push('helpMenuContentDisplay',  'helpMenuTopbar'); }
-if(INCLUDE_ANNOUNCE_BANNER){ module_dependencies.push('wrlcAnnounce'); }
+if(INCLUDE_ANNOUNCE_BANNER){ module_dependencies.push('announceBanner'); }
