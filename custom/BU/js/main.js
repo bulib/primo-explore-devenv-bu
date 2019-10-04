@@ -19,7 +19,7 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './header-imports';
-import './wrlc-announce.module';
+import './announce-banner.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
@@ -52,6 +52,31 @@ angular.module('viewCustom', module_dependencies)
 
   // add footer to main content pages (fulldisplay, openurl, permalink)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
+
+  // add sign-in prompt ('.announce-banner') to /favorites page (if not signed in)
+  .controller('accountsController', [function(){
+    this.showBanner = function(){
+      let showBanner = false;
+      
+      // look for 'Sign In' in the top banner (medium and above)
+      let signInElem = document.querySelector("prm-user-area-expandable button");
+      showBanner = (signInElem !== null) && (signInElem.innerText.toLowerCase() == "sign in");
+      
+      // on small screens, assume that if there aren't any favorites, you're not signed in
+      if(window.innerWidth <= 600){
+        signInElem = document.querySelector("prm-search-result-list span.results-count");
+        showBanner = (signInElem !== null) && (signInElem.innerText == "0 items");
+      }
+      return showBanner;
+    }
+  }])
+  .component('prmFavoritesToolBarAfter', {
+    controller: 'accountsController',
+    template: `
+      <div class="announce-banner layout-align-center-center layout-row flex warn" ng-if="$ctrl.showBanner()">
+        <div>Sign in to view My Favorites: <prm-authentication></prm-authentication> </div>
+      </div>
+  `})
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
