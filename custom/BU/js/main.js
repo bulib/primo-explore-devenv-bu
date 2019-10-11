@@ -23,6 +23,7 @@ import './announce-banner.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
+import {ill_requests_template} from "./account-ill";
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
 angular.module('viewCustom', module_dependencies)
@@ -121,4 +122,8 @@ angular.module('viewCustom', module_dependencies)
 
   // load reportProblem component
   .component('prmActionListAfter', {template: '<oca-report-problem />'})
+
+  // add 'Inter-Library Loans' tile to /account 
+  .component('prmRequestsAfter', {template: ill_requests_template})
+  .component('prmRequestsOverviewAfter', {template: ill_requests_template})
 ;
