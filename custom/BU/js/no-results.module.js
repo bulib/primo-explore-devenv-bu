@@ -1,6 +1,6 @@
 // - quick actions - //
-const DEBUG = true;
-const logNoResultsMessage = (message) => { if(DEBUG){ console.log("no-results) "+message); }}
+const DEBUG = false;
+const logNoResultsMessage = (message) => { if(DEBUG){ console.log("no-results) " + message); }}
 const getCurrentPathWithArgs = function(){ return window.location.pathname + window.location.search; }
 
 // helper
@@ -65,11 +65,11 @@ const quick_actions = `
           <bulib-card small title="Search without Quotes" icon="format_quote" debug description="Run the same query without the quotes"
             action="window.dispatchEvent(new Event('searchWithoutQuotesEvent'))".></bulib-card>
         </li>
-        <li id="action-scope" ng-if="$ctrl.showScopes">
+        <li id="action-scope" ng-if="$ctrl.checkScopes">
           <bulib-card small title="Expand Search" icon="zoom_out_map" description="Trying searching beyond your current scope setting"
             action="window.dispatchEvent(new Event('searchBiggerScopeEvent'))"></bulib-card> 
         </li>
-        <li id="action-filter" ng-if="$ctrl.showFilter">
+        <li id="action-filter" ng-if="$ctrl.checkFilter">
           <bulib-card small title="Remove Filters" icon="label_off" description="Remove active filters"
             action="window.dispatchEvent(new Event('searchWithoutFiltersEvent'))"></bulib-card> 
         </li>
@@ -105,8 +105,8 @@ const troubleshooting_checklist = `
         </li>
         <li id="check-scope">
           <label>
-            <input ng-hide="!$ctrl.showScopes" type="checkbox">
-            <input ng-hide="$ctrl.showScopes"  type="checkbox" disabled checked>
+            <input ng-hide="!$ctrl.checkScopes" type="checkbox">
+            <input ng-hide="$ctrl.checkScopes"  type="checkbox" disabled checked>
             <strong>Try another <a href="/primo-explore/search?vid=BU">search scope</a></strong> 
             that's better-suited to your query
           </label>
@@ -145,15 +145,14 @@ angular.module('noResults', [])
 
     // check various conditions to determine which quick actions to show
     this.checkQuotes = this.getSearchTerm().includes('"') || this.getSearchTerm().includes('”'); 
-    this.checkFilter = this.showFilter = window.location.search.includes("mfacet=");
-    this.showScopes = getValueFromHrefArgKey("tab") !== "beyond_bu";
+    this.checkFilter = window.location.search.includes("mfacet=");
+    this.checkScopes = getValueFromHrefArgKey("tab") !== "beyond_bu";
 
     // add eventListeners for the quick actions
     window.addEventListener('searchWithoutQuotesEvent', searchWithoutQuotes);
     window.addEventListener('searchBiggerScopeEvent',   searchBiggerScope);
     window.addEventListener('searchWithoutFiltersEvent',searchWithoutFilters);
     window.addEventListener('openChatEvent', function(){ document.querySelector('button.s-lch-widget-float-btn').click(); });
-    
   }])
 
   // Update links in template line below to direct to your Primo server and WorldCat, etc.
