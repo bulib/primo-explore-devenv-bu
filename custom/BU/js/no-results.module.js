@@ -66,15 +66,15 @@ const quick_actions = `
             action="window.dispatchEvent(new Event('searchWithoutQuotesEvent'))".></bulib-card>
         </li>
         <li id="action-scope" ng-if="$ctrl.checkScopes">
-          <bulib-card small title="Expand Search" icon="zoom_out_map" description="Trying searching beyond your current scope setting"
+          <bulib-card small title="Expand Search" icon="zoom_out_map" description="Try searching over a wider breadth of content"
             action="window.dispatchEvent(new Event('searchBiggerScopeEvent'))"></bulib-card> 
         </li>
         <li id="action-filter" ng-if="$ctrl.checkFilter">
-          <bulib-card small title="Remove Filters" icon="label_off" description="Remove active filters"
+          <bulib-card small title="Remove Filters" icon="label_off" description="Reset active filters and rerun the query"
             action="window.dispatchEvent(new Event('searchWithoutFiltersEvent'))"></bulib-card> 
         </li>
         <li id="action-chat">
-          <bulib-card small title="Ask for Help" icon="people" description="Contact us and a librarian will help you with your research"
+          <bulib-card small title="Ask for Help" icon="people" description="Open the chat window to get realtime assistance from a professional"
             action="window.dispatchEvent(new Event('openChatEvent'))"><bulib-card>
         </li>
       </ul>
@@ -93,7 +93,7 @@ const troubleshooting_checklist = `
           <label>
             <input ng-hide="!$ctrl.checkQuotes" type="checkbox">
             <input ng-hide="$ctrl.checkQuotes"  type="checkbox" disabled checked>
-            Check that you are using <strong>quotation marks</strong> correctly
+            Check for misplaced <strong>quotation marks</strong> or them entirely
           </label>
         </li>
         <li id="check-filters">
@@ -107,7 +107,7 @@ const troubleshooting_checklist = `
           <label>
             <input ng-hide="!$ctrl.checkScopes" type="checkbox">
             <input ng-hide="$ctrl.checkScopes"  type="checkbox" disabled checked>
-            <strong>Try another <a href="/primo-explore/search?vid=BU">search scope</a></strong> 
+            <strong>Try another <a href="https://www.bu.edu/library/help/bu-libraries-search/what-is-in-bu-libraries-search/">search scope</a></strong> 
             that's better-suited to your query
           </label>
         </li>
@@ -126,7 +126,7 @@ const troubleshooting_checklist = `
         <li>
           <label>
             <input type="checkbox" value="learn-more">
-            <strong><a href="https://www.bu.edu/library/help/bu-libraries-search/power-searching/">Learn more</a></strong> 
+            <strong><a href="https://www.bu.edu/library/help/bu-libraries-search/">Learn more</a></strong> 
             about searching strategies
           </label>
         </li>
