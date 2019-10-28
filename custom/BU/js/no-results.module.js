@@ -80,7 +80,7 @@ const quick_actions = `
             action="window.dispatchEvent(new Event('searchWithoutFiltersEvent'))"></bulib-card> 
         </li>
         <li id="action-chat">
-          <bulib-card small title="Ask for Help" icon="people" description="Open the chat window to get realtime assistance from a professional"
+          <bulib-card small title="Ask for Help" icon="people" description="Open the chat window to get real time assistance"
             action="window.dispatchEvent(new Event('openChatEvent'))"><bulib-card>
         </li>
       </ul>
@@ -99,7 +99,7 @@ const troubleshooting_checklist = `
           <label>
             <input ng-hide="!$ctrl.checkQuotes" type="checkbox">
             <input ng-hide="$ctrl.checkQuotes"  type="checkbox" disabled checked>
-            Check for misplaced <strong>quotation marks</strong> or them entirely
+            Check for misplaced <strong>quotation marks</strong> or remove them entirely
           </label>
         </li>
         <li id="check-filters">
@@ -114,7 +114,7 @@ const troubleshooting_checklist = `
             <input ng-hide="!$ctrl.checkScopes" type="checkbox">
             <input ng-hide="$ctrl.checkScopes"  type="checkbox" disabled checked>
             <strong>Try another <a href="https://www.bu.edu/library/help/bu-libraries-search/what-is-in-bu-libraries-search/">search scope</a></strong> 
-            that's better-suited to your query
+            that's broader or better-suited to your query
           </label>
         </li>
         <li id="check-spelling">
