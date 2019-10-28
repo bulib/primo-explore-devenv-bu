@@ -4,6 +4,10 @@ const logNoResultsMessage = (message) => { if(DEBUG){ console.log("no-results) "
 const getCurrentPathWithArgs = function(){ return window.location.pathname + window.location.search; }
 
 // helper
+const prepareDispatchEventAction = (eventName, eventData) => {
+  let event = !!eventData? `new CustomEvent('${eventName}', {detail:'${eventData}'})` : `new CustomEvent('${eventName}')`
+  return `window.dispatchEvent(${event})`;
+}
 const getValueFromHrefArgKey = function(key, href){ 
   let relLink = href? href : window.location.pathname+ window.location.search;
   let i_key_start   = relLink.indexOf(key);
@@ -69,19 +73,19 @@ const quick_actions = `
       <ul class="no-bullet">
         <li id="action-quotes" ng-if="$ctrl.checkQuotes">
           <bulib-card small title="Search without Quotes" icon="format_quote" debug description="Run the same query without the quotes"
-            action="window.dispatchEvent(new Event('searchWithoutQuotesEvent'))".></bulib-card>
+            action="${prepareDispatchEventAction('searchWithoutQuotesEvent')}".></bulib-card>
         </li>
         <li id="action-scope" ng-if="$ctrl.checkScopes">
           <bulib-card small title="Expand Search" icon="zoom_out_map" description="Try searching over a wider breadth of content"
-            action="window.dispatchEvent(new Event('searchBiggerScopeEvent'))"></bulib-card> 
+            action="${prepareDispatchEventAction('searchBiggerScopeEvent')}"></bulib-card> 
         </li>
         <li id="action-filter" ng-if="$ctrl.checkFilter">
           <bulib-card small title="Remove Filters" icon="label_off" description="Reset active filters and rerun the query"
-            action="window.dispatchEvent(new Event('searchWithoutFiltersEvent'))"></bulib-card> 
+            action="${prepareDispatchEventAction('searchWithoutFiltersEvent')}"></bulib-card> 
         </li>
         <li id="action-chat">
           <bulib-card small title="Ask for Help" icon="people" description="Open the chat window to get real time assistance"
-            action="window.dispatchEvent(new Event('openChatEvent'))"><bulib-card>
+            action="${prepareDispatchEventAction('openChatEvent')}"><bulib-card>
         </li>
       </ul>
     </md-card-content>
@@ -113,7 +117,7 @@ const troubleshooting_checklist = `
           <label>
             <input ng-hide="!$ctrl.checkScopes" type="checkbox">
             <input ng-hide="$ctrl.checkScopes"  type="checkbox" disabled checked>
-            <strong>Try another <a href="https://www.bu.edu/library/help/bu-libraries-search/what-is-in-bu-libraries-search/">search scope</a></strong> 
+            <strong>Try another <a onclick="${prepareDispatchEventAction('openHelpMenuEvent','whats-in-search')}">search scope</a></strong> 
             that's broader or better-suited to your query
           </label>
         </li>
@@ -132,7 +136,7 @@ const troubleshooting_checklist = `
         <li>
           <label>
             <input type="checkbox" value="learn-more">
-            <strong><a href="https://www.bu.edu/library/help/bu-libraries-search/">Learn more</a></strong> 
+            <strong><a onclick="${prepareDispatchEventAction('openHelpMenuEvent','didnt-find')}">Learn more</a></strong> 
             about searching strategies
           </label>
         </li>
