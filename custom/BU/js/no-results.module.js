@@ -25,25 +25,31 @@ const searchWithoutQuotes = function(){
   window.location = newLink;
 }
 
-// replace 'tab' and 'search_scope'
+// search over a broader amount of content by replacing 'tab' and removing the 'search_scope'
 const searchBiggerScope = function(){
+  // determine new tab value
   let existingTab = getValueFromHrefArgKey("tab");
   let replaceWithTab = "default_tab";
   if(existingTab === replaceWithTab){ replaceWithTab = "beyond_bu"; }
-  
+  logNoResultsMessage(`tab changed from '${existingTab}' -> '${replaceWithTab}.`);
+
+  // remove search scope
   let newLink = getCurrentPathWithArgs().replace(existingTab, replaceWithTab);
   let existingScope = getValueFromHrefArgKey("search_scope", newLink);
   newLink = newLink.replace("search_scope="+existingScope, "").replace("&&", "&");
-  logNoResultsMessage(`tab changed from '${existingTab}' -> '${replaceWithTab}.`);
-  logNoResultsMessage(newLink);
+
+  // open advanced search when editing the scope
+  if(!newLink.includes("mode=advanced")){ newLink += "&mode=advanced"; }
+  logNoResultsMessage("conducting new search over adjusted scope, tab, mode with link: '" + newLink + "'");
   window.location = newLink;
 }
 
 // rerun the search without any filters
 const searchWithoutFilters = function(){
-  let existingFilters = ""; let newLink = getCurrentPathWithArgs();
+  let existingFilters = ""; 
+  let newLink = getCurrentPathWithArgs();
   while(newLink.includes("mfacet=")){
-    existingFilters = getValueFromHrefArgKey("mfacet", newLink);
+    existingFilters = getValueFromHrefArgKey("mfacet", newLink); 
     newLink = newLink.replace("mfacet="+existingFilters, "");
     newLink = newLink.replace("&&","&");
     logNoResultsMessage("filters ('"+existingFilters+"') removed.");
