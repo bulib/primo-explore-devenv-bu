@@ -19,6 +19,7 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './header-imports';
+import './no-results.module';
 import './announce-banner.module';
 
 // import additional content
