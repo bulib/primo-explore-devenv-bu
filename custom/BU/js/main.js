@@ -19,6 +19,7 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './header-imports';
+import './no-results.module';
 import './announce-banner.module';
 
 // import additional content
@@ -84,6 +85,7 @@ angular.module('viewCustom', module_dependencies)
     "logToConsole":!ENV_PRODUCTION,
     "publishEvents":ENV_PRODUCTION,
     "list_of_elements":ls_help_menu_items,
+    "helpMenuTitle":"Search Help",
     "helpMenuWidth":550
   })
 
