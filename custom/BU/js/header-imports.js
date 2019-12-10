@@ -21,7 +21,7 @@ let addScriptToHead = function(url, type, attr){
 
 // load web components
 addScriptToHead("https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.min.js", "", "defer");
-addScriptToHead("https://unpkg.com/bulib-wc@0.0.92/src/index.js?module", "module", "defer");
+addScriptToHead("https://unpkg.com/bulib-wc@0.0.105/src/index.js?module", "module", "defer");
 
 // add styles 
-addStyleToHead("https://cdn.jsdelivr.net/npm/bulib-wc@0.0.92/dist/bundle.min.css");
+addStyleToHead("https://cdn.jsdelivr.net/npm/bulib-wc@0.0.105/dist/bundle.min.css");
