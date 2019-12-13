@@ -1,3 +1,4 @@
+/* - add 'Interlibrary Loans (ILL)' tile to the My Account page (/primo-explore/account) - */
 
 const md_list_item = (title, href, desc) => `
   <md-list-item class="md-3-line _md-button-wrap _md md-clickable" role="listitem" tabindex="-1" style="">

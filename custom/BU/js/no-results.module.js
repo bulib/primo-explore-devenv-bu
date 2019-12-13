@@ -1,3 +1,5 @@
+/* - add quick actions and links to assist users whose searches yeild no results - */
+
 // - quick actions - //
 const DEBUG = false;
 const logNoResultsMessage = (message) => { if(DEBUG){ console.log("no-results) " + message); }}

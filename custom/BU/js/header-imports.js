@@ -1,3 +1,5 @@
+/* - add css and javascript imports to the header - */
+
 let addStyleToHead = function(url){
   let new_style = document.createElement("link");
   new_style.rel="stylesheet";
