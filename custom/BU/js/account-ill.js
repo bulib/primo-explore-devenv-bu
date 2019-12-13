@@ -36,7 +36,7 @@ export const ill_requests_template = `
       </div>
       <div>
         <md-list layout="column" role="list" class="md-primoExplore-theme layout-column">
-          ${md_list_item("Central ILL account", url_generic_ill, "View your ILL loans")}
+          ${md_list_item("Central ILL account", url_generic_ill, "View your ILL items and requests")}
           ${md_list_item("Law Library ILL", "https://www.bu.edu/lawlibrary/using-the-library/other-libraries/", "Info for Law affiliates")}
           ${md_list_item("Medical Library ILL", "https://www.bumc.bu.edu/medlib/services/order-articlesbooks/", "Info for Med campus affiliates")}
           ${md_list_item("Theology Library ILL", url_generic_ill, "Info for STH affiliates")}
