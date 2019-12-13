@@ -1,4 +1,3 @@
-const url_generic_ill = "https://illiad.bu.edu/illiad/bos/illiad.dll";
 
 const md_list_item = (title, href, desc) => `
   <md-list-item class="md-3-line _md-button-wrap _md md-clickable" role="listitem" tabindex="-1" style="">
@@ -29,17 +28,17 @@ export const ill_requests_template = `
     <div class="tile-content layout-column" layout="column">
       <div class="tile-header layout-column" layout="column">
         <div layout="row" layout-align="space-between" class="layout-align-space-between-stretch layout-row">
-          <h2 class="header-link light-text" tabindex="0" role="button" onclick="window.open('${url_generic_ill}')">
+          <h2 class="header-link light-text" tabindex="0" role="button" onclick="window.open('https://illiad.bu.edu/illiad/bos/illiad.dll')">
             <span>Interlibrary Loans (ILL)</span>
           </h2>
         </div>
       </div>
       <div>
         <md-list layout="column" role="list" class="md-primoExplore-theme layout-column">
-          ${md_list_item("Central ILL account", url_generic_ill, "View your ILL items and requests")}
+          ${md_list_item("Central ILL account", "https://illiad.bu.edu/illiad/bos/illiad.dll", "View your ILL items and requests")}
           ${md_list_item("Law Library ILL", "https://www.bu.edu/lawlibrary/using-the-library/other-libraries/", "Info for Law affiliates")}
           ${md_list_item("Medical Library ILL", "https://www.bumc.bu.edu/medlib/services/order-articlesbooks/", "Info for Med campus affiliates")}
-          ${md_list_item("Theology Library ILL", url_generic_ill, "Info for STH affiliates")}
+          ${md_list_item("Theology Library ILL", "https://illiad.bu.edu/illiad/bos/illiad.dll", "Info for STH affiliates")}
         </md-list>
       </div>
     </div>
