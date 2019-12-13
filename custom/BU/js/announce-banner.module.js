@@ -1,11 +1,12 @@
-/*
-* NOTE: this is based entirely off of [`primo-explore-wrlc-announce](https://github.com/wrlc-primo-dev) and their
-*  associated [npm package](https://www.npmjs.com/package/primo-explore-wrlc-announce).
-*
-* All credit goes to them, and this file is only here until BU-Lib specific functionality can be added to the
-*   existing repo (e.g. until [our PR](https://github.com/wrlc-primo-dev/primo-explore-wrlc-announce/pull/8)
-*   is merged and the npm package is versioned to where we can use that instead).
-*/
+/* - Add conditional banner to all primo pages for time-sensitive messages - 
+ *
+ * NOTE: this is based entirely off of [`primo-explore-wrlc-announce](https://github.com/wrlc-primo-dev) and their
+ *  associated [npm package](https://www.npmjs.com/package/primo-explore-wrlc-announce).
+ *
+ * All credit goes to them, and this file is only here until BU-Lib specific functionality can be added to the
+ *   existing repo (e.g. until [our PR](https://github.com/wrlc-primo-dev/primo-explore-wrlc-announce/pull/8)
+ *   is merged and the npm package is versioned to where we can use that instead).
+ */
 
 angular.module('announceBanner', ['ngAnimate'])
   .controller('announceController', ['announceConfig', '$http', 

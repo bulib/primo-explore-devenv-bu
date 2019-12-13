@@ -1,3 +1,5 @@
+/* - help to construct 'module_dependencies' based on feature flags - */ 
+
 // configuration options
 const INCLUDE_LIBCHAT_WIDGET = true;
 const INCLUDE_EZPROXY = true;
