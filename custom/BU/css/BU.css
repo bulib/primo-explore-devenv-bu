@@ -1,14 +1,25 @@
+
 /*Header Styles*/
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
-  color: #333333;
+  color: var(--color-secondary-background, #333333);
   background-color: #53738C; /*Why?*/ 
 }
 .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, 
-  prm-topbar .top-nav-bar, prm-search-bar.prm-hue1 { background-color: #000000; }
+  prm-topbar .top-nav-bar, prm-search-bar.prm-hue1 { 
+    background-color: var(--color-primary-background-dark, #000000); 
+}
+
+/* secondary bar */
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
+  color: black;
+  background-color: var(--color-secondary-background, #333333);
+}
 .prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, 
   prm-search-bar.prm-hue2 { background-color: #333333; }
 .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, 
-  prm-search-bar.prm-hue3, md-backdrop.md-opaque { background-color: #333333; }
+  prm-search-bar.prm-hue3, md-backdrop.md-opaque { 
+    background-color: var(--color-secondary-background, #333333); 
+}
   
 /*User name or Guest*/
 prm-user-area .user-menu-button .user-name {color: #f7eda3;}
@@ -60,18 +71,15 @@ prm-topbar prm-logo {
 
 prm-topbar .md-button:not(.md-icon-button) {
   border-radius: 0;
-  color: #f1f1f0;
+  color: var(--color-primary-text, #f1f1f0);
 }
 prm-topbar .md-button:not(.md-icon-button):hover {
   border-radius: 0;
-  color: #ffffff !important;
+  color: var(--color-primary-text-light, #ffffff) !important;
   background-color: #333333 !important;
 }
 
-.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
-  color: black;
-  background-color: #333333;
-}
+
 
 /*Hide Language menu from Header in desktop and mobile, leave in My Account*/
 prm-change-lang { display: none; }
