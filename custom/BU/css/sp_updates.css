@@ -9,8 +9,8 @@ prm-add-alert-toast md-toast .md-toast-content {
   -ms-flex-pack: center;
   justify-content: center;
   box-shadow: none;
-  color: #333333;
-  background-color: #EAF4FF;
+  color: var(--color-secondary-background, #333333);
+  background-color: var(--color-secondary-text, #EAF4FF);
   height: 100%;
   width: 100%;
   max-height: 100%;
@@ -58,12 +58,12 @@ body.md-dialog-is-showing  {
 /*Citation trails*/
 /*Selected text highlighting*/
 ::selection {
-  background: rgba(0, 188, 212, 0.25);
+  background: var(--color-accent-blue-highlight, rgba(0, 188, 212, 0.25));
 }
 
 /*Send to first button hover*/
 .md-button.md-primary._md-focused:not([disabled]), .md-button.md-primary.hovered:not([disabled]), .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary:focus:not([disabled]), .md-button.md-primary:hover:not([disabled]) {
-  color: #22647b;
+  color: var(--color-button-background-accent, #22647b);
   background-color: rgba(58,58,58,.1);
 }
 
@@ -82,7 +82,7 @@ button[aria-label="Tags"] {display:none;}
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after,
   prm-browse-search-bar, prm-journals-search-bar, 
   prm-search-bar, prm-tags-search-bar {
-    background-color: #333333;
+    background-color: var(--color-secondary-background, #333333);
 }
 /*Browse drop down*/
 .classic-input .search-scope {
@@ -91,23 +91,10 @@ button[aria-label="Tags"] {display:none;}
 }
 
 /*For new display type icon multiple versions*/
-prm-search-result-thumbnail-container .fan-img:nth-of-type(1) {
-  transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
-}
-prm-search-result-thumbnail-container .fan-img:nth-of-type(2) {
-  transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
-}
-prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
-  transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
-}
-prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1) {
-  transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
-}
-prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(2) {
-  transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
-}
-prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
-  transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1),
+  prm-search-result-thumbnail-container .fan-img:nth-of-type(2), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(2),
+  prm-search-result-thumbnail-container .fan-img:nth-of-type(3), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
 }
 
 
@@ -115,7 +102,7 @@ prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:
 
 /*Basic Search Drop Downs*/
 prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
-  color: #257ABE;
+  color: var(--color-button-background, #257ABE);
 }
 
 /*Link to Online Resource - esp. for Open Access articles*/
@@ -137,14 +124,14 @@ prm-brief-result-container .list-item-primary-content {background-color: #ffffff
 
 /*Send to*/
 .saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button {
-  color: #22647b;
+  color: var(--color-button-background-accent, #22647b);
   border-radius: 0;
   padding-bottom: .75em;
   padding-top: .75em;
   margin: 0;
 }
 .saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button:hover {
-  color: #22647b;
+  color: var(--color-button-background-accent, #22647b);
   border-radius: 0;
   padding-bottom: .75em;
   padding-top: .75em;

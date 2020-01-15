@@ -2,31 +2,23 @@ body {
   /* BULIB-WC Color Variable overrides */ 
   --color-primary-background-dark: #000000;
   --color-secondary-background: #333333;
+  --color-secondary-text: whitesmoke;
+  --color-button-background-accent: #22647B;
 
   /* top-level usages */
   background-color: var(--color-secondary-background-color-light, #f5f5f5);
   
   /* preliminary color audit (to be replaced) 
 
-  blacks:
-  - #000000 pure black (top bar)
-  - #333333 secondary bar
-  - #2f2f2f (spinner background)
+    blacks:
+    - #000000 pure black (top bar)
+    - #333333 secondary bar
+    - #2f2f2f (spinner background)
 
-  blues:
-  - #3398BB (2) /* primary, facets 
-  - #22647B  (6) /* lower contrast blue replacement
-  - #639CC9 (2) /* radio buttons
-   - #257abe /* (6-7) [--color-button-background]
-
-  accents:
-  - #BB7933 /* multiple versions [orange]
-  - #147114 /* full text link (availability link) [green]
-
-  greys:
-  - #676767 /* avaialability statement
-  - #3a3a3a /* facets 
-  - #999999 /* (2)
+    greys:
+    - #676767 /* avaialability statement
+    - #3a3a3a /* facets 
+    - #999999 /* (2)
 
   */
 }

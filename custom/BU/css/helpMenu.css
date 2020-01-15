@@ -10,9 +10,9 @@
 }
 a.helpMenu--location-button {
     padding: 6px;
-    background-color: #22647B;
+    background-color: var(--color-button-background-accent, #22647B);
+    color: var(--color-button-text-light, #ffffff);
     border-radius: 4px;
-    color: #ffffff;
     text-transform: uppercase;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
 }
@@ -20,13 +20,6 @@ a.helpMenu--location-button {
 div.helpMenu--location{
 	padding-bottom: 10px;
 }
-
-/*img.bulsHelpMenu-inline-images {
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    margin: 10px;
-    padding: 10px;
-}*/
 
 /*remove inline style*/
 help-menu-content-display {font-size: 100% !important;}
