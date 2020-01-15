@@ -1,5 +1,7 @@
 
-/*Header Styles*/
+/* - Header Styles - */
+
+/* top bar */
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
   color: var(--color-secondary-background, #333333);
   background-color: var(--color-button-background-dark, #53738C); /*Why?*/ 
@@ -23,7 +25,7 @@
 /* User name or Guest */
 prm-user-area .user-menu-button .user-name { color: #f7eda3; }
 
-/*Header Toolbar Open*/
+/* Header Toolbar Open */
 prm-user-area md-fab-toolbar.md-is-open {
   z-index: 0;
   transition: z-index 0s .1s linear, opacity 0s 0s ease; 
@@ -41,14 +43,14 @@ prm-user-area md-fab-toolbar.md-is-open .md-fab-action-item {
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); 
 }
 
-/*Logo width to prevent nav links from being blocked */
+/* Logo width to prevent nav links from being blocked */
 prm-topbar prm-logo {
   z-index: 10;
   height: 100%;
   max-width: 240px;
 }
 
-/*Logo - prevent covering My Account pin for small widths*/
+/* Logo - prevent covering My Account pin for small widths */
 @media screen and (max-width:374px) {
   prm-logo .logo-image, prm-logo img {
     z-index: 10;
@@ -79,21 +81,20 @@ prm-topbar .md-button:not(.md-icon-button):hover {
 }
 
 
-
-/*Hide Language menu from Header in desktop and mobile, leave in My Account*/
+/* Hide Language menu from Header in desktop and mobile, leave in My Account */
 prm-change-lang { display: none; }
 span.user-language { display: none !important; }
 prm-icon[icon-definition="earth"] {display: none;}
 md-divider.vertical-divider.hide-xs.md-primoExplore-theme {display: none;}
 
-/*Main menu header links*/
+/* Main menu header links */
 prm-main-menu[menu-type="menu"] .md-button {
   padding: 0 0.75em;
   max-width: 12em;
   font-size: 0.8em;
 }
 
-/*Main menu overlay screen*/
+/* Main menu overlay screen */
 md-dialog.light-on-dark-dialog {
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid white;
@@ -101,7 +102,7 @@ md-dialog.light-on-dark-dialog {
   color: white;
 }
 
-/*Hide the redundant main menu links code text*/
+/* Hide the redundant main menu links code text */
 prm-main-menu[menu-type=full] md-card-title md-card-title-text:only-child .md-subhead {
   display: none;
 }
@@ -109,14 +110,14 @@ prm-main-menu[menu-type=full] md-card-title md-card-title-text:only-child .md-su
   display:none;
 }
 
-/*Main menu links on mobile*/
+/* Main menu links on mobile */
 prm-main-menu[menu-type=full] .md-button .md-headline, 
   prm-main-menu[menu-type=full] .overlay-menu-item .md-headline {
     font-weight: 400;
     color: #3398BB;
 }
 
-/*Advanced Search text*/
+/* Advanced Search text */
 prm-search-bar .search-switch-buttons .md-button.switch-to-advanced {
   color: var(--color-button-text-light, #ffffff);
 }
@@ -134,10 +135,10 @@ prm-search-bar .advanced-search-tabs {
     background-color: var(--color-accent-blue-hover, rgba(51, 152, 187, 0.1));
 }
 
-/*Add a new line*/
+/* Add a new line */
 .md-button.md-primary { color: #3398BB; }
 
-/*Radio buttons*/
+/* Radio buttons */
 .prm-secondary-bg.prm-hue1, md-tabs md-ink-bar, md-input-container:after, 
   md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
     background-color: #3398BB;
@@ -146,10 +147,10 @@ prm-search-bar .advanced-search-tabs {
 /* Advanced search Clear */
 .md-button.button-notice { color: var(--color-accent-orange-background, #BB7933); }
 
-/*Drop down search fields*/
+/* Drop down search fields */
 md-option { height: 40px; }
 
-/*Unknown lower contrast blue replacement*/
+/* Unknown lower contrast blue replacement */
 .prm-links, .md-button.arrow-link-button [link-arrow], md-grid-tile .tile-header .header-link .arrow-icon,
   .tiles-grid-tile .tile-header .header-link .arrow-icon, md-grid-tile .tile-header .header-link:hover,
   .tiles-grid-tile .tile-header .header-link:hover, md-grid-tile .tile-header .md-button,
@@ -157,7 +158,7 @@ md-option { height: 40px; }
     color: var(--color-button-background-accent, #22647B); 
 }
 
-/*Result title hyperlink*/
+/* Result title hyperlink */
 prm-brief-result .item-title {
   font-size: 1.18em;
   line-height: 1.2em;
@@ -212,7 +213,7 @@ div.list-item-wrapper { background-color: white; }
     background-color: var(--color-accent-blue-hover, rgba(37, 122, 190, 0.05));
 }
 
-/*Pin*/
+/* Pin */
 .prm-secondary-color.prm-hue1, .result-item-actions .custom-button.pin-button, 
   prm-search-bookmark-filter .prm-hue1.md-button, prm-topbar .prm-hue1.top-nav-bar, 
   prm-recomendation-item .media-on-hover .pin-button {
@@ -241,7 +242,7 @@ prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon {
   left: -1.5em;
 }
 
-/*Availability Statement*/
+/* Availability Statement */
 .status-unavailable, [class*="unavailable"] > span:first-of-type, 
   [class*="no_"] > span:first-of-type, .restricted > span:first-of-type, 
   .duedate > span:first-of-type {
@@ -253,7 +254,7 @@ prm-search-result-availability-line {
   padding-bottom: .2em;
 }
 
-/*Results count section background make lighter*/
+/* Results count section background make lighter */
 .prm-background.prm-hue2, html.prm-hue2, body.prm-hue2, 
   .line-clamp-1::after, .line-clamp-2::after, .line-clamp-3::after, .line-clamp-4::after, .line-clamp-5::after, 
   prm-search-result-list md-list-item, prm-search-result-list .results-title, prm-search-result-list .results-footer, 
@@ -282,13 +283,13 @@ prm-search-result-availability-line {
 }
 prm-newspapers-search-bar .flex-xl-20.flex-lgPlus-15 { background-color: unset; }
 
-/*Results see all*/
+/* Results see all */
 a, .md-button.arrow-link-button .button-content {
   color: var(--color-button-background-accent, #22647B);
   cursor: pointer;
 }
 
-/*Results display resource type*/
+/* Results display resource type */
 .tiny-uppercase-text, prm-brief-result-container .media-content-type, md-menu-content .menu-title {
   color: #676767;
   letter-spacing: 0.07em;
@@ -297,7 +298,7 @@ a, .md-button.arrow-link-button .button-content {
   font-size: .75em;
 }
 
-/*Sign In bar */
+/* Sign In bar */
 .md-button.button-as-link, .bar prm-authentication .md-button {
   color: var(--color-button-background-accent, #22647B);
 }
@@ -306,7 +307,7 @@ a, .md-button.arrow-link-button .button-content {
   min-height: 40px !important;
 }
 
-/*FACETS*/
+/* FACETS */
 .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link {
   color: #3398BB;
 }
@@ -321,10 +322,10 @@ a, .md-button.arrow-link-button .button-content {
   margin-right: .5em;
 }
 
-/*Primarily for facets background*/
+/* Primarily for facets background */
 html, body {background-color: #f3f3f3;}
 
-/*Filter coloring*/
+/* Filter coloring */
 .section-content .md-chips .md-chip .md-chip-content._md-focused:not([disabled]), 
   .section-content .md-chips .md-chip .md-chip-content.hovered:not([disabled]), 
   .section-content .md-chips .md-chip .md-chip-content.md-focused:not([disabled]), 
@@ -341,7 +342,7 @@ html, body {background-color: #f3f3f3;}
   transform: translate3d(-10px,0,0);
 }
 
-/*Multiple versions*/
+/* Multiple versions */
 .prm-notice, prm-search-result-frbr-line a > prm-icon:first-child, 
   prm-search-result-frbr-line .md-button.arrow-link-button .button-content > prm-icon:first-child, 
   .md-button.arrow-link-button prm-search-result-frbr-line .button-content > prm-icon:first-child {
@@ -417,7 +418,7 @@ prm-search-bar .search-switch-buttons .md-button.switch-to-advanced:hover,
     background-color: rgba(79, 79, 79, 0.9);
 }
 
-/*Dark Adv search radio button bar*/
+/* Dark Adv search radio button bar */
 prm-search-bar .advanced-search-tabs {
   background-color: var(--color-secondary-background, #333333);
   color: var(--color-button-text-light, #ffffff);
@@ -432,7 +433,7 @@ prm-journals-search-bar .advanced-search-tabs md-radio-button ._md-label,
     font-weight: 600;
 }
 
-/*Radio buttons ring*/
+/* Radio buttons ring */
 .md-input-container-dummy>.md-select-dummy:focus .md-select-value, 
   .md-input-focused .md-input-container-dummy>.md-select-dummy .md-select-value, 
   .md-input-focused md-select .md-select-value, .md-input-focused md-select:not([disabled]) .md-select-value, 
@@ -441,7 +442,7 @@ prm-journals-search-bar .advanced-search-tabs md-radio-button ._md-label,
   md-select:focus .md-select-value, md-select:not([disabled]):focus .md-select-value {
     border-color: var(--color-button-background-light, #639CC9);
 }
-/*Radio buttons*/
+/* Radio buttons */
 .prm-secondary-bg.prm-hue1, md-tabs md-ink-bar, md-input-container:after, 
   md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
     background-color: var(--color-button-background-light, #639CC9);
@@ -581,25 +582,25 @@ button[aria-label="Virtual Browse"]{
   order: 5;
 }
 
-/*Hide PCI toggle*/
+/* Hide PCI toggle */
 div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNewspapersSearch && !$ctrl.searchInProgress)"] {display:none;}
 
-/*Hide PCI toggle for Mobile width*/
+/* Hide PCI toggle for Mobile width */
 md-checkbox[ng-model="$ctrl.pcAvailability"] {display:none;}
 span[translate="expandresults"]{display:none;}
 
-/*iOS11 workaround until Nov 2017 SP*/
+/* iOS11 workaround until Nov 2017 SP */
 .md-dialog-container {
   height: 100% !important;
   position: fixed !important;
   top: 0px !important;
 }
 
-/*Hide Collection nav from Full Display*/
+/* Hide Collection nav from Full Display */
 prm-record-collection-paths { display: none; }
 
 /* - Resource Recommender - */
-/*ResRec Brief results*/
+/* ResRec Brief results */
 prm-resource-recommender .resource-image .resource-image-inner {
   overflow: hidden;
   max-width: 50px;
@@ -619,7 +620,7 @@ span[translate="nui.resRecomm.brief.fullviewLink"]{
   color: var(--color-button-background, #257ABE);
 }
 
-/*ResRec full view*/
+/* ResRec full view */
 md-card-title-text[translate="nui.resRecomm.type.label.library_information"] {
   letter-spacing: .07em;
   text-transform: uppercase;

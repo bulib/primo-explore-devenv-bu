@@ -1,6 +1,6 @@
 /* - 2016-11 SP - */
 
-/*Highlighted Search Terms*/
+/* Highlighted Search Terms */
 .text-highlight, mark {
   box-shadow: inset 0 -1.2em 0 0 rgba(255, 235, 59, 0.4);
 }
@@ -17,7 +17,7 @@ prm-add-alert-toast md-toast .md-toast-content {
   max-width: 100%;
 }
 
-/*Home page cards*/
+/* Home page cards */
 md-card.default-card._md.md-primoExplore-theme {
   background-color: #ffffff;
   border-radius: 2px;
@@ -27,15 +27,15 @@ span.md-headline {
   font-weight: 600;
 }
 
-/*Home Page Images*/
+/* Home Page Images */
 .buHomeImg { border: 1px solid #aaaaaa; }
 .buHomeImg { width: 300px; }
 @media (max-width: 400px) {
   .buHomeImg { width: 200px; }
 }
 
-/*Contrast of headings in My Favorites*/
-/*My Favorites*/
+/* Contrast of headings in My Favorites */
+/* My Favorites */
 md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, 
   md-toolbar:not(.md-menu-toolbar) .toolbar-title {
     font-weight: 400;
@@ -44,53 +44,53 @@ md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title,
     padding-left: .5em;
 }
 
-/*My Favorites, My Account Headers*/
+/* My Favorites, My Account Headers */
 md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, 
   md-toolbar:not(.md-menu-toolbar) .toolbar-title {
     font-weight: 400;
 }
 
-/*Full record gray overlay defect fix?*/
+/* Full record gray overlay defect fix? */
 body.md-dialog-is-showing  {
   overflow-x:visible!important;
 }
 
-/*Citation trails*/
-/*Selected text highlighting*/
+/* Citation trails */
+/* Selected text highlighting */
 ::selection {
   background: var(--color-accent-blue-highlight, rgba(0, 188, 212, 0.25));
 }
 
-/*Send to first button hover*/
+/* end to first button hover */
 .md-button.md-primary._md-focused:not([disabled]), .md-button.md-primary.hovered:not([disabled]), .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary:focus:not([disabled]), .md-button.md-primary:hover:not([disabled]) {
   color: var(--color-button-background-accent, #22647b);
   background-color: rgba(58,58,58,.1);
 }
 
-/*Spacing for ed in brief result title*/
+/* Spacing for ed in brief result title */
 prm-brief-result .item-title span { padding-right: .1em; }
 
 
 /* - 2017-05 SP - */
 
-/*Hide Tags*/
+/* Hide Tags */
 div#tags {display: none;}
 button[aria-label="Tags"] {display:none;}
 
-/*Browse Search*/
-/*Browse search bar background*/
+/* Browse Search */
+/* Browse search bar background */
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after,
   prm-browse-search-bar, prm-journals-search-bar, 
   prm-search-bar, prm-tags-search-bar {
     background-color: var(--color-secondary-background, #333333);
 }
-/*Browse drop down*/
+/* Browse drop down */
 .classic-input .search-scope {
   background-color: #dcf3fe;
   border-color: #dcf3fe;
 }
 
-/*For new display type icon multiple versions*/
+/* For new display type icon multiple versions */
 prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1),
   prm-search-result-thumbnail-container .fan-img:nth-of-type(2), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(2),
   prm-search-result-thumbnail-container .fan-img:nth-of-type(3), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
@@ -100,12 +100,12 @@ prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-
 
 /* - 2018-05 SP - */
 
-/*Basic Search Drop Downs*/
+/* Basic Search Drop Downs */
 prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
   color: var(--color-button-background, #257ABE);
 }
 
-/*Link to Online Resource - esp. for Open Access articles*/
+/* Link to Online Resource - esp. for Open Access articles */
 prm-view-online div{
   background-color: #ffffff;
   padding-top: 20px;
@@ -119,10 +119,10 @@ prm-view-online div{
 
 /* - Summer 2018 fixes - */
 
-/*My Favorites*/
+/* My Favorites */
 prm-brief-result-container .list-item-primary-content {background-color: #ffffff;}
 
-/*Send to*/
+/* Send to */
 .saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button {
   color: var(--color-button-background-accent, #22647b);
   border-radius: 0;
@@ -141,10 +141,10 @@ prm-brief-result-container .list-item-primary-content {background-color: #ffffff
 
 /* - 2018-08 SP - */
 
-/*Continue hiding language in new Sign In menu*/
+/* Continue hiding language in new Sign In menu */
 md-menu-item.my-languages-ctm { display: none; }
 
-/*Main Menu links in OpenURL services*/
+/* Main Menu links in OpenURL services */
 prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma {
   display: inline;
 }

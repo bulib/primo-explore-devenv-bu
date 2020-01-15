@@ -1,4 +1,4 @@
-/*Move for tablets and mobile*/
+/* Move for tablets and mobile */
 @media (max-width:929px) {
   .s-lch-widget-float { bottom: 60px !important; }
 }
@@ -16,7 +16,7 @@
   box-shadow: 0.1em 0.1em 0.1em var(--color-button-background-dark, #286090) !important;
 }
 
-/*start and minimize buttons*/
+/* start and minimize buttons */
 .s-la-widget .btn-chat {
   color: var(--color-button-text, #EEEEEE);
   background-color: var(--color-button-background, #286090);
