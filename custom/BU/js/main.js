@@ -75,10 +75,11 @@ angular.module('viewCustom', module_dependencies)
   .component('prmFavoritesToolBarAfter', {
     controller: 'accountsController',
     template: `
-      <div class="announce-banner layout-align-center-center layout-row flex warn" ng-if="$ctrl.showBanner()">
-        <div>Sign in to view My Favorites: <prm-authentication></prm-authentication> </div>
+      <div class="announce-banner warn">
+        Sign in to view My Favorites: <prm-authentication></prm-authentication>
       </div>
-  `})
+    `
+  })
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
@@ -102,25 +103,6 @@ angular.module('viewCustom', module_dependencies)
     "publishEvents":ENV_PRODUCTION,
     "overrideOACheck":false
   })
-
-  // configure wrlc announce
-  .constant('announceConfig', {
-
-    // view/edit the values in this spreadsheet by using the same 'id' (/feeds/list/<ID>/1/public) in the following: (docs.google.com/spreadsheets/d/<SHEET_ID>)
-    announceAPI: 'https://spreadsheets.google.com/feeds/list/1ElW0CUOV3LvcHuYxK2BZfFjo65a-XDrlNJtnrelA6tM/1/public/values?alt=json',
-
-    // specify which of the N 'entries' (zero-based row id [not including headers]) you want the info for [defaulted to 0]
-    apiEntryNumber: 0,
-  
-    // get the main data object associated with your desired view
-    getData: function(response) { return response.data.feed.entry[this.apiEntryNumber]; },
-  
-    // obtain the specifically relevant parts of that data object
-    getShow:    function(data){ return data.gsx$showbanner.$t;  },
-    getMessage: function(data){ return data.gsx$messagetext.$t; },
-    getLink:    function(data){ return data.gsx$messagelink.$t; },
-    getSeverity:function(data){ return data.gsx$messageseverity.$t; }
-  })  
 
   // load reportProblem component
   .component('prmActionListAfter', {template: '<oca-report-problem />'})
