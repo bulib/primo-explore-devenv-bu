@@ -760,3 +760,15 @@
       padding-left: 5px;
     }
   }
+
+/* - WEB-188: .announcement-banner updates - */
+
+/* set css variables for the padding amounts needed to giv 'bulib-announce' banner room if/when it appears */ 
+prm-search-bar-after div.announce-banner {
+  position: absolute;
+  bottom: 0; left: 0;
+}
+prm-search-bar { 
+  --primo-announce-padding: 60px;
+  --primo-announce-padding-small: 68.5px;
+}
