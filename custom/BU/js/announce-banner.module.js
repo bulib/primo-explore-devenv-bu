@@ -20,9 +20,8 @@ angular.module('announceBanner', ['ngAnimate'])
         // check if we want to show the banner or not
         var showFlagEnabled = data.gsx$showbanner.$t == "TRUE";
         self.message = data.gsx$messagetext.$t; 
-        var isEmptyMessage = message.length == 0;
-        self.show = showFlagEnabled && !isEmptyMessage && !self.dismissed;
-        if(!self.show){ return; }
+        var isEmptyMessage = self.message.length == 0;
+        self.show = showFlagEnabled && !isEmptyMessage;
 
         // get message info using configured functions
         self.link = data.gsx$messagelink.$t;
@@ -33,7 +32,7 @@ angular.module('announceBanner', ['ngAnimate'])
   ])
   .component('prmSearchBarAfter', {
     template: `
-      <bulib-announce code="primo-explore" debug
+      <bulib-announce ng-if="$ctrl.show" code="primo-explore"
         message="{{$ctrl.message}}" severity="{{$ctrl.severity}}" 
         cta_text="{{$ctrl.cta_text}}" cta_url="{{$ctrl.link}}">
       </bulib-announce>
