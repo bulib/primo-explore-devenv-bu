@@ -1,3 +1,16 @@
+/* - Colors - */
+body primo-explore {
+  /* BULIB-WC Color Variable overrides */ 
+  --color-primary-background-dark: #000000;
+  --color-secondary-background: #333333;
+  --color-secondary-text: whitesmoke;
+  --color-button-background-accent: #22647B;
+
+  /* top-level usages */
+  background-color: var(--color-secondary-background-color-light, #f5f5f5); 
+}
+
+
 /* - Home page - */
 
 /* primo homp page cards */
@@ -36,7 +49,7 @@ md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title,
 }
 
 
-/* - assorted unknown SP updates - */
+/* - dated SP updates - */
 
 /* 2016-11 SP: toast allert - */
 prm-add-alert-toast md-toast .md-toast-content {
@@ -55,5 +68,35 @@ prm-add-alert-toast md-toast .md-toast-content {
 div#tags {display: none;}
 button[aria-label="Tags"] {display:none;}
 
+/* 2017-11 SP: iOS11 workaround (until?) */
+.md-dialog-container {
+  height: 100% !important;
+  position: fixed !important;
+  top: 0px !important;
+}
+
 /* 2018-08 SP: Continue hiding language in new Sign In menu */
 md-menu-item.my-languages-ctm { display: none; }
+
+
+/* - assorted unknown - */
+
+/* Add a new line */
+.md-button.md-primary { color: #3398BB; }
+
+/* Radio buttons */
+.prm-secondary-bg.prm-hue1, md-tabs md-ink-bar, md-input-container:after, 
+  md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
+    background-color: #3398BB;
+}
+
+/* Drop down search fields */
+md-option { height: 40px; }
+
+/* Unknown lower contrast blue replacement */
+.prm-links, .md-button.arrow-link-button [link-arrow], md-grid-tile .tile-header .header-link .arrow-icon,
+  .tiles-grid-tile .tile-header .header-link .arrow-icon, md-grid-tile .tile-header .header-link:hover,
+  .tiles-grid-tile .tile-header .header-link:hover, md-grid-tile .tile-header .md-button,
+  .tiles-grid-tile .tile-header .md-button {
+    color: var(--color-button-background-accent, #22647B); 
+}

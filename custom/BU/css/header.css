@@ -1,6 +1,4 @@
-/* - Header Styles - */
-
-/* top bar */
+/* - top bar - */
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
   color: var(--color-secondary-background, #333333);
   background-color: var(--color-button-background-dark, #53738C); /*Why?*/ 
@@ -21,11 +19,9 @@ prm-topbar .md-button:not(.md-icon-button):hover {
 }
 
 /* Main Menu links in OpenURL services */
-prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma {
-  display: inline;
-}
+prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma { display: inline; }
 
-/* secondary bar */
+/* - secondary (search) bar - */
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
   color: black;
   background-color: var(--color-secondary-background, #333333);
@@ -35,6 +31,9 @@ prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma {
   md-backdrop.md-opaque { 
     background-color: var(--color-secondary-background, #333333); 
 }
+
+
+/* - topbar > User Area - */
   
 /* User name or Guest */
 prm-user-area .user-menu-button .user-name { color: #f7eda3; }
@@ -57,7 +56,8 @@ prm-user-area md-fab-toolbar.md-is-open .md-fab-action-item {
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); 
 }
 
-/* - Logo - */ 
+
+/* - topbar > Logo - */ 
 
 /* width to prevent nav links from being blocked */
 prm-topbar prm-logo {
@@ -92,6 +92,9 @@ span.user-language { display: none !important; }
 prm-icon[icon-definition="earth"] {display: none;}
 md-divider.vertical-divider.hide-xs.md-primoExplore-theme {display: none;}
 
+
+/* - topbar > main menu - */
+
 /* Main menu header links */
 prm-main-menu[menu-type="menu"] .md-button {
   padding: 0 0.75em;
@@ -120,25 +123,6 @@ prm-main-menu[menu-type=full] .md-button .md-headline,
     color: #3398BB;
 }
 
-/* Add a new line */
-.md-button.md-primary { color: #3398BB; }
-
-/* Radio buttons */
-.prm-secondary-bg.prm-hue1, md-tabs md-ink-bar, md-input-container:after, 
-  md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
-    background-color: #3398BB;
-}
-
-/* Drop down search fields */
-md-option { height: 40px; }
-
-/* Unknown lower contrast blue replacement */
-.prm-links, .md-button.arrow-link-button [link-arrow], md-grid-tile .tile-header .header-link .arrow-icon,
-  .tiles-grid-tile .tile-header .header-link .arrow-icon, md-grid-tile .tile-header .header-link:hover,
-  .tiles-grid-tile .tile-header .header-link:hover, md-grid-tile .tile-header .md-button,
-  .tiles-grid-tile .tile-header .md-button {
-    color: var(--color-button-background-accent, #22647B); 
-}
 
 /* Sign In bar */
 .md-button.button-as-link, .bar prm-authentication .md-button {
@@ -169,14 +153,9 @@ span[ng-if="cur.expiryDate"], span[ng-if="cur.patronGroup"] {
     background-color: var(--color-button-background-light, #639CC9);
 }
 
-/* iOS11 workaround until Nov 2017 SP */
-.md-dialog-container {
-  height: 100% !important;
-  position: fixed !important;
-  top: 0px !important;
-}
 
-/* - WEB-188: .announcement-banner updates - */
+
+/* - secondary bar > Announcement Banner - */
 
 /* set css variables for the padding amounts needed to giv 'bulib-announce' banner room if/when it appears */ 
 prm-search-bar-after div.announce-banner {
