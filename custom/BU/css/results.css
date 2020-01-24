@@ -135,24 +135,6 @@ a, .md-button.arrow-link-button .button-content {
     color: var(--color-accent-orange-background, #BB7933);
 }
 
-
-/* Facets */
-.md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, 
-  .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, 
-  .section-title prm-icon.md-button.button-as-link {
-    color: #3398BB;
-}
-.section-title-header, .sidebar-header {
-  text-transform: none;
-  font-weight: 600;
-  font-size: 1.10rem;
-  color: #3a3a3a;
-  margin-bottom: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin-right: .5em;
-}
-
 /* - Resource Recommender - */
 
 /* ResRec Brief results */
@@ -192,6 +174,25 @@ md-card-title-text[translate="nui.resRecomm.type.label.library_information"] {
 .prm-recommendations-fullview .resource-image .resource-image-inner img {
   width: auto;
 }
+
+
+/* - Facets - */
+.md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, 
+  .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, 
+  .section-title prm-icon.md-button.button-as-link {
+    color: #3398BB;
+}
+.section-title-header, .sidebar-header {
+  text-transform: none;
+  font-weight: 600;
+  font-size: 1.10rem;
+  color: #3a3a3a;
+  margin-bottom: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-right: .5em;
+}
+
 
 /* Primarily for facets background */
 html, body { background-color: #f3f3f3; }

@@ -62,9 +62,11 @@ body.md-dialog-is-showing  {
 }
 
 /* end to first button hover */
-.md-button.md-primary._md-focused:not([disabled]), .md-button.md-primary.hovered:not([disabled]), .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary:focus:not([disabled]), .md-button.md-primary:hover:not([disabled]) {
-  color: var(--color-button-background-accent, #22647b);
-  background-color: rgba(58,58,58,.1);
+.md-button.md-primary._md-focused:not([disabled]), .md-button.md-primary.hovered:not([disabled]), 
+  .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary:focus:not([disabled]), 
+  .md-button.md-primary:hover:not([disabled]) {
+    color: var(--color-button-background-accent, #22647b);
+    background-color: rgba(58,58,58,.1);
 }
 
 /* Spacing for ed in brief result title */
@@ -78,17 +80,7 @@ div#tags {display: none;}
 button[aria-label="Tags"] {display:none;}
 
 /* Browse Search */
-/* Browse search bar background */
-.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after,
-  prm-browse-search-bar, prm-journals-search-bar, 
-  prm-search-bar, prm-tags-search-bar {
-    background-color: var(--color-secondary-background, #333333);
-}
-/* Browse drop down */
-.classic-input .search-scope {
-  background-color: #dcf3fe;
-  border-color: #dcf3fe;
-}
+
 
 /* For new display type icon multiple versions */
 prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1),
@@ -98,46 +90,10 @@ prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-
 }
 
 
-/* - 2018-05 SP - */
-
-/* Basic Search Drop Downs */
-prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
-  color: var(--color-button-background, #257ABE);
-}
-
-/* Link to Online Resource - esp. for Open Access articles */
-prm-view-online div{
-  background-color: #ffffff;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 10px;
-  font-weight: 600;
-  font-size: 110%;
-  border-radius: 6px;
-}
-
-
 /* - Summer 2018 fixes - */
 
 /* My Favorites */
 prm-brief-result-container .list-item-primary-content {background-color: #ffffff;}
-
-/* Send to */
-.saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button {
-  color: var(--color-button-background-accent, #22647b);
-  border-radius: 0;
-  padding-bottom: .75em;
-  padding-top: .75em;
-  margin: 0;
-}
-.saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button:hover {
-  color: var(--color-button-background-accent, #22647b);
-  border-radius: 0;
-  padding-bottom: .75em;
-  padding-top: .75em;
-  margin: 0;
-}
-
 
 /* - 2018-08 SP - */
 

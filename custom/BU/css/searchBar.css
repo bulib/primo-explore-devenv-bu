@@ -87,3 +87,20 @@ prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon {
   position: absolute;
   left: -1.5em;
 }
+
+/* Browse search bar background */
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after,
+  prm-browse-search-bar, prm-journals-search-bar, 
+  prm-search-bar, prm-tags-search-bar {
+    background-color: var(--color-secondary-background, #333333);
+}
+/* Browse drop down */
+.classic-input .search-scope {
+  background-color: #dcf3fe;
+  border-color: #dcf3fe;
+}
+
+/* Basic Search Drop Downs */
+prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
+  color: var(--color-button-background, #257ABE);
+}

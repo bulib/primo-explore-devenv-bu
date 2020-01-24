@@ -6,20 +6,6 @@ body primo-explore {
   --color-button-background-accent: #22647B;
 
   /* top-level usages */
-  background-color: var(--color-secondary-background-color-light, #f5f5f5);
-  
-  /* preliminary color audit (to be replaced) 
-
-    blacks:
-    - #000000 pure black (top bar)
-    - #333333 secondary bar
-    - #2f2f2f (spinner background)
-
-    greys:
-    - #676767 /* avaialability statement
-    - #3a3a3a /* facets 
-    - #999999 /* (2)
-
-  */
+  background-color: var(--color-secondary-background-color-light, #f5f5f5); 
 }
 

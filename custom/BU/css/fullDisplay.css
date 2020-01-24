@@ -3,33 +3,27 @@
   background-color: #f8f8f8;
   border-right: 1px #999999 solid;
 }
-.full-view-spacer.flex-xl-30.flex-md-0.flex-lg-20.flex-0 {
-  background-color: #eeeeee;
-}
-.full-view-aside.flex-xl-20.flex-md-25.flex-lg-25.flex {
-  background-color: #e0e0e0;
-}
-.full-view-section .section-title {
+.flex-xl-20.flex-lgPlus-15 { background-color: #e0e0e0; }
+.full-view-spacer.flex-xl-30.flex-md-0.flex-lg-20.flex-0 { background-color: #eeeeee; }
+.full-view-aside.flex-xl-20.flex-md-25.flex-lg-25.flex { background-color: #e0e0e0; }
+.full-view-section .section-title { font-weight: 600; }
+.full-view-section .section-body { padding-bottom: 0em; }
+
+
+
+/* Find Online - Link to Online Resource, esp. for Open Access articles */
+prm-view-online div{
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
   font-weight: 600;
-}
-.full-view-section .section-body {
-  padding-bottom: 0em;
-}
-
-/* bX recommendations related readings pane */
-.flex-xl-20.flex-lgPlus-15 {
-  background-color: #e0e0e0;
+  font-size: 110%;
+  border-radius: 6px;
 }
 
-/* Hide bX cover images, text, icon */
-div[ng-if="$ctrl.rec.image"] {display: none;}
-span[translate="nui.suggestion.bx.message"] {display:none;}
-img[ng-if="$ctrl.rec.suggestion == 'BX'"] {display:none;}
 
-/* Hide Collection nav from Full Display */
-prm-record-collection-paths { display: none; }
-
-/* Full record display: ordering for More Links and nav */
+/* More Info/More Links - Full record display: ordering for More Links and nav */
 .full-view-inner-container{
   display: -webkit-box;
   display: -moz-box;
@@ -155,20 +149,48 @@ button[aria-label="Virtual Browse"]{
   order: 5;
 }
 
+/* Hide bX cover images, text, icon */
+div[ng-if="$ctrl.rec.image"] {display: none;}
+span[translate="nui.suggestion.bx.message"] {display:none;}
+img[ng-if="$ctrl.rec.suggestion == 'BX'"] {display:none;}
+
+/* Hide Collection nav from Full Display */
+prm-record-collection-paths { display: none; }
+
 /* Hide PCI toggle */
 div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNewspapersSearch && !$ctrl.searchInProgress)"] {display:none;}
 
 /* Hide PCI toggle for Mobile width */
 md-checkbox[ng-model="$ctrl.pcAvailability"] {display:none;}
-span[translate="expandresults"]{display:none;}/* Details - adjust padding for images in the 'Source' block of full display > Details */
-prm-service-details > #item-details div.item-details-element prm-highlight img { 
-  margin-left: 5px; 
-  margin-bottom: -5px;
-  border-radius: 3px !important;
+span[translate="expandresults"]{display:none;}
+
+
+/* Send to - query list buttons */
+.saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button {
+  color: var(--color-button-background-accent, #22647b);
+  border-radius: 0;
+  padding-bottom: .75em;
+  padding-top: .75em;
+  margin: 0;
+}
+.saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button:hover {
+  color: var(--color-button-background-accent, #22647b);
+  border-radius: 0;
+  padding-bottom: .75em;
+  padding-top: .75em;
+  margin: 0;
 }
 
 /* reduce padding for text encoding dropdown (send to > export bibtex, zotero selected) */
 prm-export-bibtex div.send-actions-content-item form md-input-container,
   prm-export-ris div.send-actions-content-item form md-input-container  { 
     margin: unset;
+}
+
+
+/* Details - adjust padding for images in the 'Source' block of full display > Details */
+prm-service-details > #item-details div.item-details-element prm-highlight img { 
+  margin-left: 5px; 
+  margin-bottom: -5px;
+  border-radius: 3px !important;
 }
