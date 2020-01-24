@@ -160,4 +160,15 @@ div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNew
 
 /* Hide PCI toggle for Mobile width */
 md-checkbox[ng-model="$ctrl.pcAvailability"] {display:none;}
-span[translate="expandresults"]{display:none;}
+span[translate="expandresults"]{display:none;}/* Details - adjust padding for images in the 'Source' block of full display > Details */
+prm-service-details > #item-details div.item-details-element prm-highlight img { 
+  margin-left: 5px; 
+  margin-bottom: -5px;
+  border-radius: 3px !important;
+}
+
+/* reduce padding for text encoding dropdown (send to > export bibtex, zotero selected) */
+prm-export-bibtex div.send-actions-content-item form md-input-container,
+  prm-export-ris div.send-actions-content-item form md-input-container  { 
+    margin: unset;
+}
