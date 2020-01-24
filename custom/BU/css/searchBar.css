@@ -88,18 +88,6 @@ prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon {
   left: -1.5em;
 }
 
-/* Browse search bar background */
-.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after,
-  prm-browse-search-bar, prm-journals-search-bar, 
-  prm-search-bar, prm-tags-search-bar {
-    background-color: var(--color-secondary-background, #333333);
-}
-/* Browse drop down */
-.classic-input .search-scope {
-  background-color: #dcf3fe;
-  border-color: #dcf3fe;
-}
-
 /* Basic Search Drop Downs */
 prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
   color: var(--color-button-background, #257ABE);
@@ -119,3 +107,22 @@ prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-
   prm-search-result-thumbnail-container .fan-img:nth-of-type(3), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
     transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
 }
+
+
+/* - Browse - */ 
+
+/* browse searchbar background */
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after,
+  prm-browse-search-bar, prm-journals-search-bar, 
+  prm-search-bar, prm-tags-search-bar {
+    background-color: var(--color-secondary-background, #333333);
+}
+
+/* browse dropdown */
+.classic-input .search-scope {
+  background-color: #dcf3fe;
+  border-color: #dcf3fe;
+}
+
+/* browse clear button padding ('x' next to search button) */
+prm-browse-search-bar .clear-button { position: inherit; }
