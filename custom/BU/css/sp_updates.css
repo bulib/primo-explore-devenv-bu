@@ -1,23 +1,6 @@
-/* - 2016-11 SP - */
+/* - Home page - */
 
-/* Highlighted Search Terms */
-.text-highlight, mark {
-  box-shadow: inset 0 -1.2em 0 0 rgba(255, 235, 59, 0.4);
-}
-
-prm-add-alert-toast md-toast .md-toast-content {
-  -ms-flex-pack: center;
-  justify-content: center;
-  box-shadow: none;
-  color: var(--color-secondary-background, #333333);
-  background-color: var(--color-secondary-text, #EAF4FF);
-  height: 100%;
-  width: 100%;
-  max-height: 100%;
-  max-width: 100%;
-}
-
-/* Home page cards */
+/* primo homp page cards */
 md-card.default-card._md.md-primoExplore-theme {
   background-color: #ffffff;
   border-radius: 2px;
@@ -34,8 +17,10 @@ span.md-headline {
   .buHomeImg { width: 200px; }
 }
 
+
+/* - My Favorites - */
+
 /* Contrast of headings in My Favorites */
-/* My Favorites */
 md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, 
   md-toolbar:not(.md-menu-toolbar) .toolbar-title {
     font-weight: 400;
@@ -44,71 +29,31 @@ md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title,
     padding-left: .5em;
 }
 
-/* My Favorites, My Account Headers */
+/* My Account Headers */
 md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title, 
   md-toolbar:not(.md-menu-toolbar) .toolbar-title {
     font-weight: 400;
 }
 
-/* Full record gray overlay defect fix? */
-body.md-dialog-is-showing  {
-  overflow-x:visible!important;
+
+/* - assorted unknown SP updates - */
+
+/* 2016-11 SP: toast allert - */
+prm-add-alert-toast md-toast .md-toast-content {
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-shadow: none;
+  color: var(--color-secondary-background, #333333);
+  background-color: var(--color-secondary-text, #EAF4FF);
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
-/* Citation trails */
-/* Selected text highlighting */
-::selection {
-  background: var(--color-accent-blue-highlight, rgba(0, 188, 212, 0.25));
-}
-
-/* end to first button hover */
-.md-button.md-primary._md-focused:not([disabled]), .md-button.md-primary.hovered:not([disabled]), 
-  .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary:focus:not([disabled]), 
-  .md-button.md-primary:hover:not([disabled]) {
-    color: var(--color-button-background-accent, #22647b);
-    background-color: rgba(58,58,58,.1);
-}
-
-/* Spacing for ed in brief result title */
-prm-brief-result .item-title span { padding-right: .1em; }
-
-
-/* - 2017-05 SP - */
-
-/* Hide Tags */
+/* 2017-05 SP: Hide Tags */
 div#tags {display: none;}
 button[aria-label="Tags"] {display:none;}
 
-/* Browse Search */
-
-
-/* For new display type icon multiple versions */
-prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1),
-  prm-search-result-thumbnail-container .fan-img:nth-of-type(2), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(2),
-  prm-search-result-thumbnail-container .fan-img:nth-of-type(3), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
-    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
-}
-
-
-/* - Summer 2018 fixes - */
-
-/* My Favorites */
-prm-brief-result-container .list-item-primary-content {background-color: #ffffff;}
-
-/* - 2018-08 SP - */
-
-/* Continue hiding language in new Sign In menu */
+/* 2018-08 SP: Continue hiding language in new Sign In menu */
 md-menu-item.my-languages-ctm { display: none; }
-
-/* Main Menu links in OpenURL services */
-prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma {
-  display: inline;
-}
-
-/* responsiveness: reduce size, padding of placeholder text in search bar */
-@media only screen and (max-width: 500px){ 
-  prm-search-bar input#searchBar { 
-    font-size: small;
-    padding-left: 5px;
-  }
-}

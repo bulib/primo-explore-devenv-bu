@@ -1,3 +1,8 @@
+/* Highlighted Search Terms */
+.text-highlight, mark {
+  box-shadow: inset 0 -1.2em 0 0 rgba(255, 235, 59, 0.4);
+}
+
 /* Result title hyperlink */
 prm-brief-result .item-title {
   font-size: 1.18em;
@@ -77,6 +82,12 @@ div.list-item-wrapper { background-color: white; }
     background-color: var(--color-accent-blue-hover, rgba(37, 122, 190, 0.05));
 }
 
+/* Spacing for ed in brief result title */
+prm-brief-result .item-title span { padding-right: .1em; }
+
+/* Summer 2018 fixes */
+prm-brief-result-container .list-item-primary-content {background-color: #ffffff;}
+
 /* Pin */
 .prm-secondary-color.prm-hue1, .result-item-actions .custom-button.pin-button, 
   prm-search-bookmark-filter .prm-hue1.md-button, prm-topbar .prm-hue1.top-nav-bar, 
@@ -135,9 +146,8 @@ a, .md-button.arrow-link-button .button-content {
     color: var(--color-accent-orange-background, #BB7933);
 }
 
-/* - Resource Recommender - */
 
-/* ResRec Brief results */
+/* - Resource Recommender (brief results) - */
 prm-resource-recommender .resource-image .resource-image-inner {
   overflow: hidden;
   max-width: 50px;
@@ -155,24 +165,6 @@ prm-resource-recommender div.layout-sm-column div.layout-align-center-end {paddi
 span[translate="nui.resRecomm.brief.fullviewLink"]{
   font-size: 1.1em; 
   color: var(--color-button-background, #257ABE);
-}
-
-/* ResRec full view */
-md-card-title-text[translate="nui.resRecomm.type.label.library_information"] {
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: .75em;
-}
-.padding-large.prm-recommendations-fullview.layout-column {
-  background-color: #ffffff;
-}
-
-.prm-recommendations-fullview .resource-image {
-  float: left;
-}
-.prm-recommendations-fullview .resource-image .resource-image-inner img {
-  width: auto;
 }
 
 
@@ -212,4 +204,20 @@ html, body { background-color: #f3f3f3; }
   transition: transform .3s cubic-bezier(.075,.82,.165,1),opacity .2s ease,z-index 0s .3s;
   color: #999999;
   transform: translate3d(-10px,0,0);
+}
+
+
+/* - Citation trails - */
+
+/* Selected text highlighting */
+::selection {
+  background: var(--color-accent-blue-highlight, rgba(0, 188, 212, 0.25));
+}
+
+/* end to first button hover */
+.md-button.md-primary._md-focused:not([disabled]), .md-button.md-primary.hovered:not([disabled]), 
+  .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary:focus:not([disabled]), 
+  .md-button.md-primary:hover:not([disabled]) {
+    color: var(--color-button-background-accent, #22647b);
+    background-color: rgba(58,58,58,.1);
 }

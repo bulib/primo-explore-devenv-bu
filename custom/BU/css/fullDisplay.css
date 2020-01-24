@@ -3,12 +3,13 @@
   background-color: #f8f8f8;
   border-right: 1px #999999 solid;
 }
-.flex-xl-20.flex-lgPlus-15 { background-color: #e0e0e0; }
 .full-view-spacer.flex-xl-30.flex-md-0.flex-lg-20.flex-0 { background-color: #eeeeee; }
 .full-view-aside.flex-xl-20.flex-md-25.flex-lg-25.flex { background-color: #e0e0e0; }
 .full-view-section .section-title { font-weight: 600; }
 .full-view-section .section-body { padding-bottom: 0em; }
 
+/* Full record gray overlay defect fix? */
+body.md-dialog-is-showing  { overflow-x:visible!important; }
 
 
 /* Find Online - Link to Online Resource, esp. for Open Access articles */
@@ -149,6 +150,9 @@ button[aria-label="Virtual Browse"]{
   order: 5;
 }
 
+/* bX recommendations related readings pane */
+.flex-xl-20.flex-lgPlus-15 { background-color: #e0e0e0; }
+
 /* Hide bX cover images, text, icon */
 div[ng-if="$ctrl.rec.image"] {display: none;}
 span[translate="nui.suggestion.bx.message"] {display:none;}
@@ -194,3 +198,16 @@ prm-service-details > #item-details div.item-details-element prm-highlight img {
   margin-bottom: -5px;
   border-radius: 3px !important;
 }
+
+
+/* Resource Recommender (full view) */
+
+md-card-title-text[translate="nui.resRecomm.type.label.library_information"] {
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: .75em;
+}
+.padding-large.prm-recommendations-fullview.layout-column { background-color: #ffffff; }
+.prm-recommendations-fullview .resource-image { float: left; }
+.prm-recommendations-fullview .resource-image .resource-image-inner img { width: auto; }

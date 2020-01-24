@@ -104,3 +104,18 @@ prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon {
 prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
   color: var(--color-button-background, #257ABE);
 }
+
+/* responsiveness: reduce size, padding of placeholder text in search bar */
+@media only screen and (max-width: 500px){ 
+  prm-search-bar input#searchBar { 
+    font-size: small;
+    padding-left: 5px;
+  }
+}
+
+/* For new display type icon multiple versions */
+prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1),
+  prm-search-result-thumbnail-container .fan-img:nth-of-type(2), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(2),
+  prm-search-result-thumbnail-container .fan-img:nth-of-type(3), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+}

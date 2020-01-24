@@ -20,6 +20,11 @@ prm-topbar .md-button:not(.md-icon-button):hover {
   background-color: var(--color-secondary-background, #333333) !important;
 }
 
+/* Main Menu links in OpenURL services */
+prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma {
+  display: inline;
+}
+
 /* secondary bar */
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
   color: black;
