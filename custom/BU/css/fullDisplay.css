@@ -192,8 +192,9 @@ prm-export-bibtex div.send-actions-content-item form md-input-container,
 }
 
 
-/* Details - adjust padding for images in the 'Source' block of full display > Details */
+/* Details - adjust padding for images in the 'Source' line */
 prm-service-details > #item-details div.item-details-element prm-highlight img { 
+  vertical-align: bottom;
   margin-left: 5px; 
   margin-bottom: -5px;
   border-radius: 3px !important;
