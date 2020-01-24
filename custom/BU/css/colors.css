@@ -6,17 +6,9 @@ body primo-explore {
   --color-button-background-accent: #22647B;
 }
 
-/* set the background color for the sight */
+/* set the background color for the site */
 body primo-explore {
   background-color: var(--color-secondary-background-color-light, #f5f5f5); 
-}
-
-/* Primary button styling */
-.md-button.md-primary,
-  .prm-secondary-bg.prm-hue1, md-tabs md-ink-bar, md-input-container:after, 
-  md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
-    background-color: #3398BB;
-    color: var(--color-button-text, white);
 }
 
 /* Additional accent button and link colors */
