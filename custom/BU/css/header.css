@@ -18,20 +18,6 @@ prm-topbar .md-button:not(.md-icon-button):hover {
   background-color: var(--color-secondary-background, #333333) !important;
 }
 
-/* Main Menu links in OpenURL services */
-prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma { display: inline; }
-
-/* - secondary (search) bar - */
-.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
-  color: black;
-  background-color: var(--color-secondary-background, #333333);
-}
-.prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2,
-  .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue3, 
-  md-backdrop.md-opaque { 
-    background-color: var(--color-secondary-background, #333333); 
-}
-
 
 /* - topbar > User Area - */
   
@@ -86,23 +72,26 @@ prm-topbar prm-logo {
     color: #3398BB;
 }
 
-/* Hide Language menu from Header in desktop and mobile, leave in My Account */
+/* Hide Language menu from Header, leave in My Account */
 prm-change-lang { display: none; }
 span.user-language { display: none !important; }
 prm-icon[icon-definition="earth"] {display: none;}
 md-divider.vertical-divider.hide-xs.md-primoExplore-theme {display: none;}
 
+/* 2018-08 SP: Continue hiding language in new Sign In menu */
+md-menu-item.my-languages-ctm { display: none; }
+
 
 /* - topbar > main menu - */
 
-/* Main menu header links */
+/* Main menu: header links */
 prm-main-menu[menu-type="menu"] .md-button {
   padding: 0 0.75em;
   max-width: 12em;
   font-size: 0.8em;
 }
 
-/* Main menu overlay screen */
+/* Main menu: overlay screen */
 md-dialog.light-on-dark-dialog {
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid white;
@@ -110,13 +99,16 @@ md-dialog.light-on-dark-dialog {
   color: white;
 }
 
+/* inline main menu links in OpenURL services */
+prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma { display: inline; }
+
 /* Hide the redundant main menu links code text */
 prm-main-menu[menu-type=full] md-card-title md-card-title-text:only-child .md-subhead,
   .md-subhead[translate*="nui.mainmenu.description"] {
     display: none;
 }
 
-/* Main menu links on mobile */
+/* style main menu links on mobile */
 prm-main-menu[menu-type=full] .md-button .md-headline, 
   prm-main-menu[menu-type=full] .overlay-menu-item .md-headline {
     font-weight: 400;
@@ -124,35 +116,29 @@ prm-main-menu[menu-type=full] .md-button .md-headline,
 }
 
 
-/* Sign In bar */
-.md-button.button-as-link, .bar prm-authentication .md-button {
+/* - top bar > Sign In/My Account - */
+
+/* style sign-in button as an accent */
+.bar prm-authentication .md-button {
   color: var(--color-button-background-accent, #22647B);
 }
-.alert-bar {
-  height: 40px !important;
-  min-height: 40px !important;
-}
 
-/* My Account Section: Hide user expiration date and patron group */
+/* my account hide user expiration date and patron group */
 span[ng-if="cur.expiryDate"], span[ng-if="cur.patronGroup"] {
   display: none;
 }
 
-/* Radio buttons ring */
-.md-input-container-dummy>.md-select-dummy:focus .md-select-value, 
-  .md-input-focused .md-input-container-dummy>.md-select-dummy .md-select-value, 
-  .md-input-focused md-select .md-select-value, .md-input-focused md-select:not([disabled]) .md-select-value, 
-  .prm-secondary-border.prm-hue1, 
-  md-radio-button.md-checked ._md-off, md-radio-button.md-checked .md-off, 
-  md-select:focus .md-select-value, md-select:not([disabled]):focus .md-select-value {
-    border-color: var(--color-button-background-light, #639CC9);
-}
-/* Radio buttons */
-.prm-secondary-bg.prm-hue1, md-tabs md-ink-bar, md-input-container:after, 
-  md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
-    background-color: var(--color-button-background-light, #639CC9);
-}
 
+/* - secondary (search) bar - */
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
+  color: black;
+  background-color: var(--color-secondary-background, #333333);
+}
+.prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2,
+  .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue3, 
+  md-backdrop.md-opaque { 
+    background-color: var(--color-secondary-background, #333333); 
+}
 
 
 /* - secondary bar > Announcement Banner - */
@@ -165,4 +151,10 @@ prm-search-bar-after div.announce-banner {
 prm-search-bar { 
   --primo-announce-padding: 60px;
   --primo-announce-padding-small: 68.5px;
+}
+
+/* note: not a '.announce-banner' note, but references a similar thing */
+.alert-bar {
+  height: 40px !important;
+  min-height: 40px !important;
 }

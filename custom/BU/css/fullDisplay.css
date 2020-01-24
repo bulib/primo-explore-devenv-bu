@@ -170,19 +170,13 @@ span[translate="expandresults"]{display:none;}
 
 
 /* Send to - query list buttons */
-.saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button {
-  color: var(--color-button-background-accent, #22647b);
-  border-radius: 0;
-  padding-bottom: .75em;
-  padding-top: .75em;
-  margin: 0;
-}
-.saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button:hover {
-  color: var(--color-button-background-accent, #22647b);
-  border-radius: 0;
-  padding-bottom: .75em;
-  padding-top: .75em;
-  margin: 0;
+.saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button,
+  .saved-query-list>md-nav-bar .md-nav-item .md-button, prm-action-list>md-nav-bar .md-nav-item .md-button:hover {
+    color: var(--color-button-background-accent, #22647b);
+    border-radius: 0;
+    padding-bottom: .75em;
+    padding-top: .75em;
+    margin: 0;
 }
 
 /* reduce padding for text encoding dropdown (send to > export bibtex, zotero selected) */
