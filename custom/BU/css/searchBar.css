@@ -126,3 +126,12 @@ prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-
 
 /* browse clear button padding ('x' next to search button) */
 prm-browse-search-bar .clear-button { position: inherit; }
+
+
+/* - bugfixes - */
+@media (max-width: 959px) and (min-width: 600px){
+  /* prm-search-bar */ .flex-sm-40, .layout-row>.flex-sm-40, .layout-sm-row>.flex-sm-40 {
+    flex: unset;
+    max-width: unset;
+  }
+}
