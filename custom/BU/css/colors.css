@@ -1,0 +1,25 @@
+/* establish bulib-wc css variable overrides */ 
+body primo-explore {
+  --color-primary-background-dark: #000000;
+  --color-secondary-background: #333333;
+  --color-secondary-text: whitesmoke;
+  --color-button-background-accent: #22647B;
+}
+
+/* set the background color for the site */
+body primo-explore {
+  background-color: var(--color-secondary-background-color-light, #f5f5f5); 
+}
+
+/* Additional accent button and link colors */
+.prm-links, .md-button.arrow-link-button [link-arrow], md-grid-tile .tile-header .header-link .arrow-icon,
+  .tiles-grid-tile .tile-header .header-link .arrow-icon, md-grid-tile .tile-header .header-link:hover,
+  .tiles-grid-tile .tile-header .header-link:hover, md-grid-tile .tile-header .md-button,
+  .tiles-grid-tile .tile-header .md-button {
+    color: var(--color-button-background-accent, #22647B); 
+}
+
+/* style '.button-as-link's with an accent */
+.md-button.button-as-link, .bar prm-authentication .md-button {
+  color: var(--color-button-background-accent, #22647B);
+}

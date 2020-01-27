@@ -1,0 +1,160 @@
+/* - top bar - */
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
+  color: var(--color-secondary-background, #333333);
+  background-color: var(--color-button-background-dark, #53738C); /*Why?*/ 
+}
+.prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, 
+  prm-topbar .top-nav-bar, prm-search-bar.prm-hue1 { 
+    background-color: var(--color-primary-background-dark, #000000); 
+}
+
+prm-topbar .md-button:not(.md-icon-button) {
+  border-radius: 0;
+  color: var(--color-primary-text, #f1f1f0);
+}
+prm-topbar .md-button:not(.md-icon-button):hover {
+  border-radius: 0;
+  color: var(--color-primary-text-light, #ffffff) !important;
+  background-color: var(--color-secondary-background, #333333) !important;
+}
+
+
+/* - topbar > User Area - */
+  
+/* User name or Guest */
+prm-user-area .user-menu-button .user-name { color: #f7eda3; }
+
+/* Header Toolbar Open */
+prm-user-area md-fab-toolbar.md-is-open {
+  z-index: 0;
+  transition: z-index 0s .1s linear, opacity 0s 0s ease; 
+}
+prm-user-area md-fab-toolbar.md-is-open md-toolbar {
+  width: auto;
+  overflow: auto; 
+}
+prm-user-area md-fab-toolbar.md-is-open md-fab-trigger .md-fab-toolbar-background, 
+  prm-user-area md-fab-toolbar.md-is-open md-fab-trigger ._md-fab-toolbar-background {
+    background-color: #000000 !important;
+    transition-duration: .2s; 
+}
+prm-user-area md-fab-toolbar.md-is-open .md-fab-action-item {
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); 
+}
+
+
+/* - topbar > Logo - */ 
+
+/* width to prevent nav links from being blocked */
+prm-topbar prm-logo {
+  z-index: 10;
+  height: 100%;
+  max-width: 240px;
+}
+
+/* prevent covering My Account pin for small widths */
+@media screen and (max-width:374px) {
+  prm-logo .logo-image, prm-logo img {
+    z-index: 10;
+    height: 100%;
+    max-width: 195px;
+  }
+}
+
+.prm-links.prm-alt-link.prm-hue1, prm-main-menu[menu-type="full"] md-card .md-headline, 
+  .md-button.arrow-link-button .prm-alt-link.prm-hue1[link-arrow], 
+  md-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon, 
+  .tiles-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon, 
+  md-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover, 
+  .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover, 
+  md-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button, 
+  .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button {
+    color: #3398BB;
+}
+
+/* Hide Language menu from Header, leave in My Account */
+prm-change-lang { display: none; }
+span.user-language { display: none !important; }
+prm-icon[icon-definition="earth"] {display: none;}
+md-divider.vertical-divider.hide-xs.md-primoExplore-theme {display: none;}
+
+/* 2018-08 SP: Continue hiding language in new Sign In menu */
+md-menu-item.my-languages-ctm { display: none; }
+
+
+/* - topbar > main menu - */
+
+/* Main menu: header links */
+prm-main-menu[menu-type="menu"] .md-button {
+  padding: 0 0.75em;
+  max-width: 12em;
+  font-size: 0.8em;
+}
+
+/* Main menu: overlay screen */
+md-dialog.light-on-dark-dialog {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+}
+
+/* inline main menu links in OpenURL services */
+prm-topbar .isDeposit, prm-topbar .isServicePage, prm-topbar .isSummonOverAlma { display: inline; }
+
+/* Hide the redundant main menu links code text */
+prm-main-menu[menu-type=full] md-card-title md-card-title-text:only-child .md-subhead,
+  .md-subhead[translate*="nui.mainmenu.description"] {
+    display: none;
+}
+
+/* style main menu links on mobile */
+prm-main-menu[menu-type=full] .md-button .md-headline, 
+  prm-main-menu[menu-type=full] .overlay-menu-item .md-headline {
+    font-weight: 400;
+    color: #3398BB;
+}
+
+
+/* - top bar > Sign In/My Account - */
+
+/* style sign-in button as an accent */
+.bar prm-authentication .md-button {
+  color: var(--color-button-background-accent, #22647B);
+}
+
+/* my account hide user expiration date and patron group */
+span[ng-if="cur.expiryDate"], span[ng-if="cur.patronGroup"] {
+  display: none;
+}
+
+
+/* - secondary (search) bar - */
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
+  color: black;
+  background-color: var(--color-secondary-background, #333333);
+}
+.prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2,
+  .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue3, 
+  md-backdrop.md-opaque { 
+    background-color: var(--color-secondary-background, #333333); 
+}
+
+
+/* - secondary bar > Announcement Banner - */
+
+/* set css variables for the padding amounts needed to giv 'bulib-announce' banner room if/when it appears */ 
+prm-search-bar-after div.announce-banner {
+  position: absolute;
+  bottom: 0; left: 0;
+}
+prm-search-bar { 
+  --primo-announce-padding: 60px;
+  --primo-announce-padding-small: 68.5px;
+}
+
+/* note: not a '.announce-banner' note, but references a similar thing */
+.alert-bar {
+  height: 40px !important;
+  min-height: 40px !important;
+}
