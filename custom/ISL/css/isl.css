@@ -1,23 +1,25 @@
-/*Start ISL branding*/
+/* - Start ISL branding - */
+
+/* set search background colors */
+body primo-explore primo-explore-main { --color-secondary-background: #445566; }
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
-    background-color: #445566;
- }
-
-/*Disable Caps in Main Menu Links*/
-prm-topbar .md-button {
-    text-transform: none;
+  background-color: #445566;
 }
-/*Main menu header links*/
+
+/* Disable Caps in Main Menu Links */
+prm-topbar .md-button { text-transform: none; }
+
+/* main menu header links */
 prm-main-menu[menu-type="menu"] .md-button {
-    padding: 0 0.5em;
-    max-width: 12em;
-    font-size: 1em;
+  padding: 0 0.5em;
+  max-width: 12em;
+  font-size: 1em;
 }
-/*Highlight ISL link*/
+/* Highlight ISL link */
 span[translate="mainmenu.label.industry_survey_locator"]{
-    border-bottom: 2px #3398BB solid; 
-    padding-bottom: 2px; 
-    white-space: pre-line;
+  border-bottom: 2px #3398BB solid; 
+  padding-bottom: 2px; 
+  white-space: pre-line;
 }
 
-/*End ISL Branding*/
+/* - End ISL Branding - */

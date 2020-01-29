@@ -1,5 +1,6 @@
 /* - add css and javascript imports to the header - */
 
+// add a css stylesheet import to the head
 let addStyleToHead = function(url){
   let new_style = document.createElement("link");
   new_style.rel="stylesheet";
@@ -8,12 +9,13 @@ let addStyleToHead = function(url){
   document.head.appendChild(new_style);
 }
 
+// add javascript helper/library to the header
 let addScriptToHead = function(url, type, attr){
   let new_script = document.createElement("script");
   new_script.src = url; 
   new_script.type = (!!type)? type : "text/javascript";
   
-  // add bare attribute (if one exists)
+  // add bare attribute, if one exists (e.g. 'defer')
   if(!!attr){
     let att = document.createAttribute(attr);
     new_script.setAttributeNode(att);

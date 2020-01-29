@@ -17,9 +17,7 @@ a.helpMenu--location-button {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
 }
 
-div.helpMenu--location{
-	padding-bottom: 10px;
-}
+div.helpMenu--location{ padding-bottom: 10px; }
 
 /* remove inline style */
 help-menu-content-display {font-size: 100% !important;}
