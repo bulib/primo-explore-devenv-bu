@@ -1,0 +1,30 @@
+{
+  "name": "primo-explore-devenv-bu",
+  "version": "0.1.0",
+  "description": "BU Libraries' customizations to the primo newUI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bulib/primo-explore-devenv-bu.git"
+  },
+  "keywords": [
+    "primo",
+    "primo-explore",
+    "primo-explore-devenv",
+    "bu",
+    "bulib",
+    "code4lib"
+  ],
+  "author": "bulib",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bulib/primo-explore-devenv-bu/issues"
+  },
+  "homepage": "https://github.com/bulib/primo-explore-devenv-bu#readme",
+  "devDependencies": {
+    "primo-explore-devenv": "^1.0.5"
+  }
+}
