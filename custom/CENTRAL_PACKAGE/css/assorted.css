@@ -1,15 +1,5 @@
 /* - Home page - */
 
-/* primo homp page cards */
-md-card.default-card._md.md-primoExplore-theme {
-  background-color: #ffffff;
-  border-radius: 2px;
-}
-span.md-headline {
-  color: #4d6b82;
-  font-weight: 600;
-}
-
 /* Home Page Images */
 .buHomeImg { border: 1px solid #aaaaaa; }
 .buHomeImg { width: 300px; }
@@ -34,7 +24,6 @@ md-toolbar.md-primoExplore-theme .toolbar-title, md-toolbar .toolbar-title,
   md-toolbar:not(.md-menu-toolbar) .toolbar-title {
     font-weight: 400;
 }
-
 
 /* - dated SP updates - */
 
