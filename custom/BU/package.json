@@ -9,7 +9,7 @@
     "primo-explore-unpaywall": "^1.4.1"
   },
   "scripts": {
-    "start": "gulp run --browserify ",
-    "build": "gulp create-package --browserify "
+    "start": "gulp run --view=BU --browserify",
+    "build": "gulp create-package --view=BU --browserify"
   }
 }
