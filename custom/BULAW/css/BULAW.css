@@ -1,1 +1,8 @@
-/* custom BULAW styling */
+/* - custom BULAW styling - */
+
+/* UN-Hide PCI toggle */
+div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNewspapersSearch && !$ctrl.searchInProgress)"],
+  div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNewspapersSearch && !$ctrl.searchInProgress)"] md-checkbox[ng-model="$ctrl.pcAvailability"],
+  div[ng-if="($ctrl.showPcAvailability && !$ctrl.searchInProgress) || ($ctrl.isNewspapersSearch && !$ctrl.searchInProgress)"]  md-checkbox[ng-model="$ctrl.pcAvailability"] span[translate="expandresults"] {
+    display: block !important;  /* note: overrides CENTRAL_PACKAGE/css/fullDisplay.css */
+}
