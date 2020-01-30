@@ -22,3 +22,9 @@ export function addScriptToHead(url, type, attr){
   }
   document.head.appendChild(new_script)
 }
+
+// add libchat widget
+export function addLibchatWidgetWithHash(hash){
+  let libchat_script_url = "https://v2.libanswers.com/load_chat.php?hash="+hash;
+  addScriptToHead(libchat_script_url);
+}
