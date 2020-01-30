@@ -7,4 +7,5 @@ addScriptToHead("https://unpkg.com/bulib-wc@0.1.9/src/index.js?module", "module"
 // add styles 
 addStyleToHead("https://cdn.jsdelivr.net/npm/bulib-wc@0.1.9/dist/bundle.min.css");
 
-angular.module('centralCustom', [])
+// create the 'centralCustom' and add in the pageview i
+angular.module('centralCustom', ['angularLoad']);
