@@ -1,6 +1,6 @@
 /* - top bar - */
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
-  color: var(--color-secondary-background, #333333);
+  color: var(--color-secondary-background-dark, #333333);
   background-color: var(--color-button-background-dark, #53738C); /*Why?*/ 
 }
 .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, 
@@ -15,7 +15,7 @@ prm-topbar .md-button:not(.md-icon-button) {
 prm-topbar .md-button:not(.md-icon-button):hover {
   border-radius: 0;
   color: var(--color-primary-text-light, #ffffff) !important;
-  background-color: var(--color-secondary-background, #333333) !important;
+  background-color: var(--color-secondary-background-dark, #333333) !important;
 }
 
 
@@ -132,12 +132,12 @@ span[ng-if="cur.expiryDate"], span[ng-if="cur.patronGroup"] {
 /* - secondary (search) bar - */
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar {
   color: black;
-  background-color: var(--color-secondary-background, #333333);
+  background-color: var(--color-secondary-background-dark, #333333);
 }
 .prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2,
   .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue3, 
   md-backdrop.md-opaque { 
-    background-color: var(--color-secondary-background, #333333); 
+    background-color: var(--color-secondary-background-dark, #333333); 
 }
 
 

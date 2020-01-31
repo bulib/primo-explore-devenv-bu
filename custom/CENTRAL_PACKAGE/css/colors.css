@@ -1,7 +1,8 @@
 /* establish bulib-wc css variable overrides */ 
 body primo-explore {
   --color-primary-background-dark: #000000;
-  --color-secondary-background: #333333;
+  --color-secondary-background-dark: #333333;
+  --color-secondary-background: #e9e9e9;
   --color-secondary-text: whitesmoke;
   --color-button-background-accent: #22647B;
 }

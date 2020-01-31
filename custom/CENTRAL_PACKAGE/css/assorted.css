@@ -32,7 +32,7 @@ prm-add-alert-toast md-toast .md-toast-content {
   -ms-flex-pack: center;
   justify-content: center;
   box-shadow: none;
-  color: var(--color-secondary-background, #333333);
+  color: var(--color-secondary-background-dark, #333333);
   background-color: var(--color-secondary-text, #EAF4FF);
   height: 100%;
   width: 100%;
