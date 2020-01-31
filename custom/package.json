@@ -8,6 +8,6 @@
     "start": "gulp run --browserify --view CENTRAL_PACKAGE",
     "start:view": "gulp run --browserify --view ",
     "build": "gulp create-package --browserify --view CENTRAL_PACKAGE",
-    "build:view": "gulp run --browserify --view "
+    "build:view": "gulp create-package --browserify --view "
   }
 }
