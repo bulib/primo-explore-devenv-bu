@@ -21,3 +21,9 @@ div.helpMenu--location{ padding-bottom: 10px; }
 
 /* remove inline style */
 help-menu-content-display {font-size: 100% !important;}
+
+/* remove border-top from help menu dialog box */ 
+#search-help-dialog > form > md-dialog-actions { 
+  border-top: unset;
+  background-color: var(--color-secondary-background, grey);
+}
