@@ -24,9 +24,3 @@ body {
 .md-button.button-as-link, .bar prm-authentication .md-button {
   color: var(--color-button-background-accent, #22647B);
 }
-
-/* lighten the background-color for primo's 'md-card' */
-md-card.default-card {
-  background-color: #ffffff;
-  border-radius: 2px;
-}

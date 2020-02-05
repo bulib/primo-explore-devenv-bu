@@ -1,10 +1,26 @@
 /* - Home page - */
 
 /* Home Page Images */
-.buHomeImg { border: 1px solid #aaaaaa; }
-.buHomeImg { width: 300px; }
+.buHomeImg { 
+  border: 1px solid #aaaaaa; 
+  width: 300px;
+}
 @media (max-width: 400px) {
   .buHomeImg { width: 200px; }
+}
+
+/* cards */ 
+
+/* lighten the md-card background-color */
+md-card.default-card {
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+/* dark and bold md-headlines */
+span.md-headline {
+  color: #4d6b82;
+  font-weight: 600;
 }
 
 
