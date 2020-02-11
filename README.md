@@ -38,6 +38,7 @@ Below are some brief descriptions of each view as of 2020-02-11.
 |prod|`cgcm`|Specialty view for 'School of Theology - History of Missiology'. (undeployed/low use)|
 |test|`newUIDev`|testing view for experimenting with new ideas|
 |test|`features`|another testing view deployed as staff features testing site|
+|test|`tmp/preview`|past experiments with various primo updates/customization methods|
 
 ### Help Menu Contents
 

@@ -2,12 +2,14 @@
 
 prm-search > md-content.md-primoExplore-theme .main {
   /* most browsers */
-  display: flex; flex-flow: row-reverse wrap;
+  display: flex; 
+  flex-flow: row-reverse wrap;
 
   /* safari-specific */
-  display: -webkit-flex; -webkit-flex-flow: row-reverse wrap; 
+  display: -webkit-flex; 
+  -webkit-flex-flow: row-reverse wrap; 
 }
-.screen-gt-sm .sidebar{
+.screen-gt-sm .sidebar {
   webkit-flex: 0 0 15%;
   flex: 0 0 15%;
 }

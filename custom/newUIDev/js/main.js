@@ -1,4 +1,4 @@
-import {addLibchatWidgetWithHash, addScriptToHead, addStyleToHead} from '../../CENTRAL_PACKAGE/js/header-imports.js';
+import {addLibchatWidgetWithHash, addScriptToHead} from '../../CENTRAL_PACKAGE/js/header-imports.js';
 
 // add JQuery
 addScriptToHead("//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
