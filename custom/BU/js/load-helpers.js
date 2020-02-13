@@ -1,7 +1,11 @@
-/* - help to construct 'module_dependencies' based on feature flags - */ 
+/* - help to construct 'module_dependencies' based on feature flags - */
+
+// add LibChat widget
+import {addLibchatWidgetWithHash} from '../../CENTRAL_PACKAGE/js/header-imports';
+const LIBCHAT_HASH_BU = "0b9beff60316d9b71b1de06909bdf5c1";
+addLibchatWidgetWithHash(LIBCHAT_HASH_BU);
 
 // configuration options
-const INCLUDE_LIBCHAT_WIDGET = true;
 const INCLUDE_EZPROXY = true;
 const INCLUDE_UNPAYWALL = true;
 const INCLUDE_OUTBOUND_LINKS = false;
@@ -9,7 +13,7 @@ const INCLUDE_HELP_MENU = true;
 const INCLUDE_ANNOUNCE_BANNER = true;
 
 // - production vs staging - //
-export const ENV_PRODUCTION = true;
+export const ENV_PRODUCTION = true; 
 const config_staging    = { "logToConsole":true,  "publishEvents":false };
 const config_production = { "logToConsole":false, "publishEvents":true  };
 export const default_config = ENV_PRODUCTION ? config_production : config_staging;
@@ -22,13 +26,6 @@ if(INCLUDE_EZPROXY){
       window.location.assign(n);
     }
   });
-}
-
-// - libchat widget - //
-if(INCLUDE_LIBCHAT_WIDGET){
-  let libChatWidgetElement = document.createElement('script') ;
-  libChatWidgetElement.src = "https://v2.libanswers.com/load_chat.php?hash=0b9beff60316d9b71b1de06909bdf5c1";
-  document.head.appendChild(libChatWidgetElement);
 }
 
 // - module dependencies - //

@@ -1,0 +1,152 @@
+/* Search bar background */
+prm-spinner.overlay-cover.light-on-dark:after {
+  background-color: #2f2f2f;
+}
+
+/* Advanced Search text */
+prm-search-bar .search-switch-buttons .md-button.switch-to-advanced {
+  color: var(--color-button-text-light, #ffffff);
+}
+prm-search-bar .advanced-search-tabs {
+  background-color: var(--color-secondary-background-light, #f1f1f0);
+  box-shadow: inset 0 -1px 0 0 var(--color-secondary-background, #e1e1e0);
+}
+
+/* Search magnifying glass */
+.md-button.button-confirm { color: var(--color-button-background, #257abe); }
+.md-button.button-confirm:hover:not([disabled]), .md-button.button-confirm:focus:not([disabled]), 
+  .md-button.button-confirm.hovered:not([disabled]), .md-button.button-confirm.md-focused:not([disabled]), 
+  .md-button.button-confirm._md-focused:not([disabled]) {
+    color: var(--color-button-background, #257abe);
+    background-color: var(--color-accent-blue-hover, rgba(51, 152, 187, 0.1));
+}
+
+/* Magnifying glass */
+.md-button.button-confirm {
+  color: #ffffff;
+  background-color: rgba(37, 122, 190, 0.9);
+  border-top-right-radius: 2px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0px;
+}
+.md-button.button-confirm:hover:not([disabled]), .md-button.button-confirm:focus:not([disabled]), 
+  .md-button.button-confirm.hovered:not([disabled]), .md-button.button-confirm.md-focused:not([disabled]), 
+  .md-button.button-confirm._md-focused:not([disabled]) {
+    color: var(--color-button-text-light, #ffffff);
+    background-color: var(--color-button-background, #257abe);
+}
+/* Adv search mag glass */
+button.button-confirm.button-large.button-with-icon.md-button.md-primoExplore-theme.md-ink-ripple {
+  color: var(--color-button-text-light, #ffffff);
+  background-color: var(--color-button-background, #257abe);
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+/* Advanced Search button blue bg */
+prm-search-bar .search-switch-buttons .md-button.switch-to-advanced:hover, 
+  prm-search-bar .search-switch-buttons .md-button.switch-to-advanced:focus {
+    color: var(--color-button-text-light, #ffffff);
+    background-color: rgba(79, 79, 79, 0.9);
+}
+
+/* Dark Adv search radio button bar */
+prm-search-bar .advanced-search-tabs {
+  background-color: var(--color-secondary-background-dark, #333333);
+  color: var(--color-button-text-light, #ffffff);
+  box-shadow: inset 0 -1px 0 0 #e1e1e0;
+}
+md-radio-button ._md-off, md-radio-button .md-off {
+  border-color: #f8f8f8;
+}
+prm-journals-search-bar .advanced-search-tabs md-radio-button ._md-label, 
+  prm-search-bar .advanced-search-tabs md-radio-button ._md-label {
+    margin-left: 1.2em;
+    font-weight: 600;
+}
+
+/* Radio buttons ring */
+.md-input-container-dummy>.md-select-dummy:focus .md-select-value, 
+  .md-input-focused .md-input-container-dummy>.md-select-dummy .md-select-value, 
+  .md-input-focused md-select .md-select-value, .md-input-focused md-select:not([disabled]) .md-select-value, 
+  .prm-secondary-border.prm-hue1, md-radio-button.md-checked ._md-off, md-radio-button.md-checked .md-off, 
+  md-select:focus .md-select-value, md-select:not([disabled]):focus .md-select-value {
+    border-color: var(--color-button-background-light, #639CC9);
+}
+/* Radio buttons */
+.prm-secondary-bg.prm-hue1, md-tabs md-ink-bar, md-input-container:after, md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
+  background-color: var(--color-button-background-light, #639CC9);
+}
+
+/* responsiveness: reduce size, padding of placeholder text in search bar */
+@media only screen and (max-width: 500px){ 
+  prm-search-bar input#searchBar { 
+    font-size: small;
+    padding-left: 5px;
+  }
+}
+
+/* Advanced search Clear */
+.md-button.button-notice { color: var(--color-accent-orange-background, #BB7933); }
+
+prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon {
+  float: left;
+  clear: none;
+  display: inline;
+  color: #333;
+  color: var(--color-accent-green-background, #147114);
+  margin-right: .25em;
+  position: absolute;
+  left: -1.5em;
+}
+
+/* Basic Search Drop Downs */
+prm-pre-filters md-input-container.is-active, prm-pre-filters md-input-container.is-active :focus {
+  color: var(--color-button-background, #257ABE);
+}
+
+/* responsiveness: reduce size, padding of placeholder text in search bar */
+@media only screen and (max-width: 500px){ 
+  prm-search-bar input#searchBar { 
+    font-size: small;
+    padding-left: 5px;
+  }
+}
+
+/* For new display type icon multiple versions */
+prm-search-result-thumbnail-container .fan-img:nth-of-type(1), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1),
+  prm-search-result-thumbnail-container .fan-img:nth-of-type(2), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(2),
+  prm-search-result-thumbnail-container .fan-img:nth-of-type(3), prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(3) {
+    transform: rotate(0deg) translate3d(0,0,0) scale3d(1,1,1);
+}
+
+
+/* - Browse - */ 
+
+/* browse searchbar background */
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after,
+  prm-browse-search-bar, prm-journals-search-bar, 
+  prm-search-bar, prm-tags-search-bar {
+    background-color: var(--color-secondary-background-dark, #333333);
+}
+
+/* browse dropdown */
+.classic-input .search-scope {
+  background-color: #dcf3fe;
+  border-color: #dcf3fe;
+}
+
+/* browse clear button padding ('x' next to search button) */
+prm-browse-search-bar .clear-button { position: inherit; }
+
+
+/* - bugfixes - */
+
+/* resolve WEB-287 searchbar spacing */
+@media (max-width: 959px) and (min-width: 600px){
+  /* prm-search-bar */ .flex-sm-40, .layout-row>.flex-sm-40, .layout-sm-row>.flex-sm-40 {
+    flex: unset;
+    max-width: unset;
+  }
+}

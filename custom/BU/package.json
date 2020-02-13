@@ -2,14 +2,14 @@
   "name": "BU",
   "description": "default view for http://bu.edu/library running in production since January 2017",
   "devDependencies": {
-    "bulib-wc": "^0.1.9",
+    "bulib-wc": "^0.1.13",
     "primo-explore-help-menu": "^1.4.1",
     "primo-explore-outbound-links": "^0.6.0",
     "primo-explore-report-problem": "^3.0.0",
     "primo-explore-unpaywall": "^1.4.1"
   },
   "scripts": {
-    "start": "gulp run --view BU --browserify",
-    "build": "gulp create-package --view BU --browserify"
+    "start": "gulp run --view=BU --browserify",
+    "build": "gulp create-package --view=BU --browserify"
   }
 }
