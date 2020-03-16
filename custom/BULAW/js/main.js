@@ -16,4 +16,17 @@ const stackmap_scriptjs_url = "https://www.stackmap.com/integration/bulaw-new-pr
 addScriptToHead(stackmap_scriptjs_url, "text/javascript", "async");
 
 /* load custom view */
-angular.module('viewCustom', ['angularLoad']);
+angular.module('viewCustom', ['angularLoad'])
+
+  // add 'bulib-announce' banner for 'primo-BULAW', 'primo', 'all'
+  .component('prmSearchBarAfter', { 
+    template: `
+      <div id="bulib-announcements">
+        <bulib-announce dismissed code="primo-BULAW"></bulib-announce>
+        <bulib-announce dismissed code="primo"></bulib-announce>
+        <bulib-announce dismissed code="all"></bulib-announce>
+      </div>
+    `
+  })
+
+;
