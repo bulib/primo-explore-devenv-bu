@@ -19,7 +19,6 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './no-results.module';
-import './announce-banner.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
@@ -49,6 +48,17 @@ angular.module('viewCustom', module_dependencies)
         this.logAboutEvent("window.ga not found! cannot log message: '" + eventMessage + "'.", debug);
       }
     }
+  })
+
+  // add 'bulib-announce' banner for 'primo-BU', 'primo', 'all'
+  .component('prmSearchBarAfter', {
+    template: `
+      <div id="bulib-announcements">
+        <bulib-announce dismissed code="primo-BU"></bulib-announce>
+        <bulib-announce dismissed code="primo"></bulib-announce>
+        <bulib-announce dismissed code="all"></bulib-announce>
+      </div>
+    `
   })
 
   // add footer to main content pages (fulldisplay, openurl, permalink)
