@@ -150,3 +150,6 @@ prm-browse-search-bar .clear-button { position: inherit; }
     max-width: unset;
   }
 }
+
+/* WEB-272: announcement banners */  
+div#bulib-announcements { display: inline-block; }
