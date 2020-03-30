@@ -24,7 +24,7 @@ angular.module('viewCustom', ['angularLoad'])
       <div id="bulib-announcements">
         <bulib-announce dismissed code="primo-BULAW"></bulib-announce>
         <bulib-announce dismissed code="primo"></bulib-announce>
-        <bulib-announce dismissed code="all"></bulib-announce>
+        <!--bulib-announce dismissed code="all"></bulib-announce-->
       </div>
     `
   })

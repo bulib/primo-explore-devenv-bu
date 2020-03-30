@@ -2,7 +2,7 @@
   "name": "primo-explore-devenv-bu",
   "description": "Boston University Libraries' views for the primo-explore-devenv",
   "devDependencies": {
-    "bulib-wc": "^0.1.21"
+    "bulib-wc": "^0.1.28"
   },
   "scripts": {
     "start": "gulp run --browserify --view CENTRAL_PACKAGE",

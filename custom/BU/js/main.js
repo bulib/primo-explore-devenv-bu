@@ -56,7 +56,7 @@ angular.module('viewCustom', module_dependencies)
       <div id="bulib-announcements">
         <bulib-announce dismissed code="primo-BU"></bulib-announce>
         <bulib-announce dismissed code="primo"></bulib-announce>
-        <bulib-announce dismissed code="all"></bulib-announce>
+        <!--bulib-announce dismissed code="all"></bulib-announce-->
       </div>
     `
   })
