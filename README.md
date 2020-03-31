@@ -73,7 +73,7 @@ $ git clone https://github.com/bulib/primo-explore-devenv-bu.git ./
 
 ```bash
 $ npm run start  # run the CENTRAL_PACKAGE
-$ npm run start:view -- VIEW_NAME  # run a particular VIEW_NAME (e.g. 'BU', 'BULAW')
+$ npm run start:view VIEW_NAME  # run a particular VIEW_NAME (e.g. 'BU', 'BULAW')
 ```
 
 2. Open your browser to [localhost:8003/primo-explore/search?vid=default](http://localhost:8003/primo-explore/search?vid=default&sortby=rank&lang=en_US)

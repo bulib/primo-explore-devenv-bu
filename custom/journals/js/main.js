@@ -17,4 +17,15 @@ angular.module('viewCustom', ['angularLoad'])
         $window.ga('send', 'pageview', {location: $location.url()});
       });
     }
-  ]);
+  ])
+
+  // add 'bulib-announce' banner for 'primo-journals', 'primo', 'all'
+  .component('prmSearchBarAfter', {
+    template: `
+      <div id="bulib-announcements">
+        <bulib-announce dismissed code="primo-journals"></bulib-announce>
+        <bulib-announce dismissed code="primo"></bulib-announce>
+      </div>
+    `
+  })
+;

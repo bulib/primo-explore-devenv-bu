@@ -19,7 +19,6 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './no-results.module';
-import './announce-banner.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
@@ -51,6 +50,16 @@ angular.module('viewCustom', module_dependencies)
     }
   })
 
+  // add 'bulib-announce' banner for 'primo-BU', 'primo', 'all'
+  .component('prmSearchBarAfter', {
+    template: `
+      <div id="bulib-announcements">
+        <bulib-announce dismissed code="primo-BU"></bulib-announce>
+        <bulib-announce dismissed code="primo"></bulib-announce>
+      </div>
+    `
+  })
+
   // add footer to main content pages (fulldisplay, openurl, permalink)
   .component('prmFullViewContAfter', {template: '<bulib-footer></bulib-footer>'})
 
@@ -61,12 +70,12 @@ angular.module('viewCustom', module_dependencies)
       
       // look for 'Sign In' in the top banner (medium and above)
       let signInElem = document.querySelector("prm-user-area-expandable button");
-      showBanner = (signInElem !== null) && (signInElem.innerText.toLowerCase() == "sign in");
+      showBanner = !!signInElem && (signInElem.innerText.toLowerCase().includes("sign in"));
       
       // on small screens, assume that if there aren't any favorites, you're not signed in
       if(window.innerWidth <= 600){
         signInElem = document.querySelector("prm-search-result-list span.results-count");
-        showBanner = (signInElem !== null) && (signInElem.innerText == "0 items");
+        showBanner = !!signInElem && (signInElem.innerText == "0 items");
       }
       return showBanner;
     }
@@ -74,7 +83,7 @@ angular.module('viewCustom', module_dependencies)
   .component('prmFavoritesToolBarAfter', {
     controller: 'accountsController',
     template: `
-      <div class="announce-banner warn">
+      <div class="announce-banner warn" ng-if="$ctrl.showBanner()">
         Sign in to view My Favorites: <prm-authentication></prm-authentication>
       </div>
     `

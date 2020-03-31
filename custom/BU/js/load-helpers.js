@@ -10,7 +10,6 @@ const INCLUDE_EZPROXY = true;
 const INCLUDE_UNPAYWALL = true;
 const INCLUDE_OUTBOUND_LINKS = false;
 const INCLUDE_HELP_MENU = true;
-const INCLUDE_ANNOUNCE_BANNER = true;
 
 // - production vs staging - //
 export const ENV_PRODUCTION = true; 
@@ -33,4 +32,3 @@ export let module_dependencies = ['angularLoad', 'noResults'];
 if(INCLUDE_UNPAYWALL){ module_dependencies.push('bulibUnpaywall'); }
 if(INCLUDE_OUTBOUND_LINKS){ module_dependencies.push('outboundLinksLogger'); }
 if(INCLUDE_HELP_MENU){ module_dependencies.push('helpMenuContentDisplay',  'helpMenuTopbar'); }
-if(INCLUDE_ANNOUNCE_BANNER){ module_dependencies.push('announceBanner'); }
