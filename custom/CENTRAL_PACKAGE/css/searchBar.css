@@ -152,4 +152,4 @@ prm-browse-search-bar .clear-button { position: inherit; }
 }
 
 /* WEB-272: announcement banners */  
-div#bulib-announcements { display: inline-block; }
+prm-search-bar-after, div#bulib-announcements { display: inline-block; }

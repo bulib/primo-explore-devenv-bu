@@ -56,7 +56,6 @@ angular.module('viewCustom', module_dependencies)
       <div id="bulib-announcements">
         <bulib-announce dismissed code="primo-BU"></bulib-announce>
         <bulib-announce dismissed code="primo"></bulib-announce>
-        <!--bulib-announce dismissed code="all"></bulib-announce-->
       </div>
     `
   })
@@ -71,12 +70,12 @@ angular.module('viewCustom', module_dependencies)
       
       // look for 'Sign In' in the top banner (medium and above)
       let signInElem = document.querySelector("prm-user-area-expandable button");
-      showBanner = (signInElem !== null) && (signInElem.innerText.toLowerCase() == "sign in");
+      showBanner = !!signInElem && (signInElem.innerText.toLowerCase().includes("sign in"));
       
       // on small screens, assume that if there aren't any favorites, you're not signed in
       if(window.innerWidth <= 600){
         signInElem = document.querySelector("prm-search-result-list span.results-count");
-        showBanner = (signInElem !== null) && (signInElem.innerText == "0 items");
+        showBanner = !!signInElem && (signInElem.innerText == "0 items");
       }
       return showBanner;
     }
@@ -84,7 +83,7 @@ angular.module('viewCustom', module_dependencies)
   .component('prmFavoritesToolBarAfter', {
     controller: 'accountsController',
     template: `
-      <div class="announce-banner warn">
+      <div class="announce-banner warn" ng-if="$ctrl.showBanner()">
         Sign in to view My Favorites: <prm-authentication></prm-authentication>
       </div>
     `
