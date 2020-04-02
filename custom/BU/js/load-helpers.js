@@ -10,6 +10,7 @@ const INCLUDE_EZPROXY = true;
 const INCLUDE_UNPAYWALL = true;
 const INCLUDE_OUTBOUND_LINKS = false;
 const INCLUDE_HELP_MENU = true;
+const INCLUDE_HATHITRUST = true;
 
 // - production vs staging - //
 export const ENV_PRODUCTION = true; 
@@ -30,5 +31,6 @@ if(INCLUDE_EZPROXY){
 // - module dependencies - //
 export let module_dependencies = ['angularLoad', 'noResults'];
 if(INCLUDE_UNPAYWALL){ module_dependencies.push('bulibUnpaywall'); }
+if(INCLUDE_HATHITRUST){ module_dependencies.push('hathiTrustAvailability'); }
 if(INCLUDE_OUTBOUND_LINKS){ module_dependencies.push('outboundLinksLogger'); }
 if(INCLUDE_HELP_MENU){ module_dependencies.push('helpMenuContentDisplay',  'helpMenuTopbar'); }

@@ -13,6 +13,7 @@ if(INCLUDE_GOOGLE_ANALYTICS){
 }
 
 // import npm packages
+import 'primo-explore-hathitrust-availability';
 import 'primo-explore-help-menu';
 import 'primo-explore-outbound-links';
 import 'primo-explore-unpaywall';
@@ -103,7 +104,10 @@ angular.module('viewCustom', module_dependencies)
   
   // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
   .component('prmSearchResultAvailabilityLineAfter', {
-    template: '<bulib-unpaywall></bulib-unpaywall>'
+    template: `
+      <bulib-unpaywall></bulib-unpaywall>
+      <hathi-trust-availability ignore-copyright="true"></hathi-trust-availability>
+    `
   })
   .constant('unpaywallConfig', {
     "email":"aidans@bu.edu",
