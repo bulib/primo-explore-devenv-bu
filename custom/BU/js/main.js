@@ -102,13 +102,15 @@ angular.module('viewCustom', module_dependencies)
   // configure outboundLinksConfig
   .constant('outboundLinksConfig', default_config)
   
-  // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
+  // add bulib-unpaywall and hathi-trust-availability to result list/full display 
   .component('prmSearchResultAvailabilityLineAfter', {
     template: `
       <bulib-unpaywall></bulib-unpaywall>
-      <hathi-trust-availability ignore-copyright="true"></hathi-trust-availability>
+      <hathi-trust-availability ignore-copyright="true" hide-if-journal="true"></hathi-trust-availability>
     `
   })
+
+  // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
   .constant('unpaywallConfig', {
     "email":"aidans@bu.edu",
     "logToConsole":!ENV_PRODUCTION,
