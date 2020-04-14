@@ -153,3 +153,6 @@ prm-browse-search-bar .clear-button { position: inherit; }
 
 /* WEB-272: announcement banners */  
 prm-search-bar-after, div#bulib-announcements { display: inline-block; }
+
+/* WEB-336 : vertically center the 'Full Text Available at HathiTrust' link */
+.umnHathiTrustLink a { vertical-align: sub; padding-left: var(--padding-small, 5px); }
