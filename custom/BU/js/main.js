@@ -92,8 +92,9 @@ angular.module('viewCustom', module_dependencies)
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
-    "logToConsole":!ENV_PRODUCTION,
-    "publishEvents":ENV_PRODUCTION,
+    "logToConsole":true,
+    "publishEvents":false,
+    "enableNotificationIndicator":true,
     "list_of_elements":ls_help_menu_items,
     "helpMenuTitle":"Search Help",
     "helpMenuWidth":550
