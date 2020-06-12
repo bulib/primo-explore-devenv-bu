@@ -3,12 +3,13 @@
   "description": "default view for http://bu.edu/library running in production since January 2017",
   "devDependencies": {
     "primo-explore-hathitrust-availability": "^2.6.0",
-    "primo-explore-help-menu": "^1.4.1",
+    "primo-explore-help-menu": "^1.5.1",
     "primo-explore-outbound-links": "^0.6.0",
     "primo-explore-report-problem": "^3.0.0",
     "primo-explore-unpaywall": "^1.4.1"
   },
   "scripts": {
+    "postinstall": "cp node_modules/primo-explore-help-menu/dist/help-menu.css css/",
     "start": "gulp run --view=BU --browserify",
     "build": "gulp create-package --view=BU --browserify"
   }
