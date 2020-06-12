@@ -94,7 +94,8 @@ angular.module('viewCustom', module_dependencies)
   .constant('helpMenuConfig', {
     "logToConsole":true,
     "publishEvents":false,
-    "enableNotificationIndicator":true,
+    "enableNotificationIndicator":false,
+    "notificationIndicatorExpiration": 1000*60*60*24*7*2, // 2 weeks
     "list_of_elements":ls_help_menu_items,
     "helpMenuTitle":"Search Help",
     "helpMenuWidth":550
