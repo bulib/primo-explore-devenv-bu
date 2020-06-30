@@ -20,6 +20,7 @@ import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './no-results.module';
+import './doi-search.module';
 
 // import additional content
 import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";

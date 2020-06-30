@@ -1,1 +1,2 @@
 /* BU-specific CSS */
+prm-resource-recommender.ng-hide:not(.ng-hide-animate){ display: inline-block !important; } 

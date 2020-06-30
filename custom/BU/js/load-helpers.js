@@ -6,6 +6,7 @@ const LIBCHAT_HASH_BU = "0b9beff60316d9b71b1de06909bdf5c1";
 addLibchatWidgetWithHash(LIBCHAT_HASH_BU);
 
 // configuration options
+const INCLUDE_DOI_SEARCH = true;
 const INCLUDE_EZPROXY = true;
 const INCLUDE_UNPAYWALL = true;
 const INCLUDE_OUTBOUND_LINKS = false;
@@ -33,4 +34,5 @@ export let module_dependencies = ['angularLoad', 'noResults'];
 if(INCLUDE_UNPAYWALL){ module_dependencies.push('bulibUnpaywall'); }
 if(INCLUDE_HATHITRUST){ module_dependencies.push('hathiTrustAvailability'); }
 if(INCLUDE_OUTBOUND_LINKS){ module_dependencies.push('outboundLinksLogger'); }
+if(INCLUDE_DOI_SEARCH){ module_dependencies.push('doiSearch'); }
 if(INCLUDE_HELP_MENU){ module_dependencies.push('helpMenuContentDisplay',  'helpMenuTopbar'); }
