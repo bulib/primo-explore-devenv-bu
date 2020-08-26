@@ -1,4 +1,11 @@
-// grab the html files as js variables
+/* - grab the html files as js variables - */
+
+// updates 
+import {course_reserves} from './courseReserves.html';
+import {hathitrust_avaliability} from './hathitrust.html';
+import {visiting_the_libraries} from './visitingTheLibraries.html';
+
+// help items
 import {account} from './account.html';
 import {ask_us} from './askUs.html';
 import {citing_sources} from './citingSources.html';
@@ -13,6 +20,29 @@ import {whats_in_search} from './whatsInSearch.html';
 
 
 // form into a list
+export const ls_help_menu_updates = [
+  {
+    "id":"course-reserves",
+    "title":"Course Reserves/Materials",
+    "description":"finding course reserves and materials",
+    "icon":{"code":"move_to_inbox","group":"content"},
+    "template":course_reserves
+  },
+  {
+    "id":"hathitrust-availability",
+    "title":"Hathi Trust Availability",
+    "description":"the hathitrust emergency temporary access service (ETAS) allows online reading access to selected materials",
+    "icon":{"code":"link","group":"content"},
+    "template":hathitrust_avaliability
+  },
+  {
+    "id":"visiting-the-libraries",
+    "title":"Visiting the Libraries",
+    "description":"discussion of covid-related changes to bu libraries operation",
+    "icon":{"code":"business","group":"communication"},
+    "template":visiting_the_libraries
+  }
+];
 export const ls_help_menu_items = [
   {
     "id":"getting-started",

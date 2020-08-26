@@ -14,15 +14,16 @@ if(INCLUDE_GOOGLE_ANALYTICS){
 
 // import npm packages
 import 'primo-explore-hathitrust-availability';
-import 'primo-explore-help-menu';
+// import 'primo-explore-help-menu';
 import 'primo-explore-outbound-links';
 import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './no-results.module';
+import './help-menu.module';
 
 // import additional content
-import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
+import {ls_help_menu_items, ls_help_menu_updates} from "../../../helpMenuContents/helpMenuContents";
 import {ill_requests_template} from "./account-ill";
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
@@ -94,10 +95,11 @@ angular.module('viewCustom', module_dependencies)
   .constant('helpMenuConfig', {
     "logToConsole":false,
     "publishEvents":true,
-    "enableNotificationIndicator":false,
-    "notificationIndicatorExpiration": 1000*60*60*24*7*2, // 2 weeks
+    "enableNotificationIndicator":true,
+    "notificationIndicatorExpiration": 1000*60*60*24*7, // 1 week
+    "list_of_updates":ls_help_menu_updates,
     "list_of_elements":ls_help_menu_items,
-    "helpMenuTitle":"Search Help",
+    "helpMenuTitle":"Search Menu",
     "helpMenuWidth":550
   })
 
