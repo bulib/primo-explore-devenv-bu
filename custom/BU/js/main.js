@@ -92,14 +92,18 @@ angular.module('viewCustom', module_dependencies)
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
+    "helpMenuWidth":550,
     "logToConsole":false,
     "publishEvents":true,
+    
     "enableNotificationIndicator":true,
     "notificationIndicatorExpiration": 1000*60*60*24*7, // 1 week
-    "list_of_updates":ls_help_menu_updates,
-    "list_of_elements":ls_help_menu_items,
+    
     "helpMenuTitle":"Search Menu",
-    "helpMenuWidth":550
+    "updatesLabel":"Recently Added Features",
+    "list_of_updates":ls_help_menu_updates,
+    "entriesLabel":"Search Help",
+    "list_of_elements":ls_help_menu_items
   })
 
   // configure outboundLinksConfig
