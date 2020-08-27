@@ -1,0 +1,11 @@
+{
+  "name": "BULAW",
+  "description": "default view for BU Law Library",
+  "devDependencies": {
+    "primo-explore-hathitrust-availability": "^2.6.0"
+  },
+  "scripts":{
+    "start": "gulp run --view=BULAW --browserify",
+    "build": "gulp create-package --view=BULAW --browserify"
+  }
+}
