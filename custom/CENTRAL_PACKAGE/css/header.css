@@ -158,3 +158,6 @@ prm-search-bar {
   height: 40px !important;
   min-height: 40px !important;
 }
+
+/* hide RefWorks from My Library Account dropdown */
+md-menu-item.my-refworks-ctm, md-menu-divider.my-refworks-separator-ctm { display: none; }
