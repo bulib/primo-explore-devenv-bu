@@ -108,7 +108,8 @@ angular.module('viewCustom', module_dependencies)
   .component('prmSearchResultAvailabilityLineAfter', {
     template: `
       <bulib-unpaywall></bulib-unpaywall>
-      <hathi-trust-availability ignore-copyright="true" hide-if-journal="true"></hathi-trust-availability>
+      <hathi-trust-availability ignore-copyright="true" hide-if-journal="true"
+        msg="Full Text Available at HathiTrust - Log in with BU Login at HathiTrust"></hathi-trust-availability>
     `
   })
 

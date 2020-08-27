@@ -1,5 +1,7 @@
 import {addLibchatWidgetWithHash, addScriptToHead, addStyleToHead} from '../../CENTRAL_PACKAGE/js/header-imports.js';
 
+import 'primo-explore-hathitrust-availability';
+
 /* add libchat widget  */
 const LIBCHAT_HASH_BULAW = "d27ec78ed69c9d8969cd01f69fc196f1";
 addLibchatWidgetWithHash(LIBCHAT_HASH_BULAW);
@@ -16,7 +18,7 @@ const stackmap_scriptjs_url = "https://www.stackmap.com/integration/bulaw-new-pr
 addScriptToHead(stackmap_scriptjs_url, "text/javascript", "async");
 
 /* load custom view */
-angular.module('viewCustom', ['angularLoad'])
+angular.module('viewCustom', ['angularLoad', 'hathiTrustAvailability'])
 
   // add 'bulib-announce' banner for 'primo-BULAW', 'primo', 'all'
   .component('prmSearchBarAfter', { 
@@ -25,6 +27,13 @@ angular.module('viewCustom', ['angularLoad'])
         <bulib-announce dismissed code="primo-BULAW"></bulib-announce>
         <bulib-announce dismissed code="primo"></bulib-announce>
       </div>
+    `
+  })
+
+  .component('prmSearchResultAvailabilityLineAfter', {
+    template: `
+      <hathi-trust-availability ignore-copyright="true" hide-if-journal="true"
+        msg="Full Text Available at HathiTrust - Log in with BU Login at HathiTrust"></hathi-trust-availability>
     `
   })
 
