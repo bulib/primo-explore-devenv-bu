@@ -3,7 +3,7 @@
 // updates 
 import {course_reserves} from './courseReserves.html';
 import {hathitrust_avaliability} from './hathitrust.html';
-import {visiting_the_libraries} from './visitingTheLibraries.html';
+import {libraries_to_go} from './librariesToGo.html';
 
 // help items
 import {account} from './account.html';
@@ -30,17 +30,17 @@ export const ls_help_menu_updates = [
   },
   {
     "id":"hathitrust-availability",
-    "title":"Hathi Trust Availability",
+    "title":"HathiTrust Online Availability",
     "description":"the hathitrust emergency temporary access service (ETAS) allows online reading access to selected materials",
     "icon":{"code":"link","group":"content"},
     "template":hathitrust_avaliability
   },
   {
-    "id":"visiting-the-libraries",
-    "title":"Visiting the Libraries",
-    "description":"discussion of covid-related changes to bu libraries operation",
-    "icon":{"code":"business","group":"communication"},
-    "template":visiting_the_libraries
+    "id":"bulib2go",
+    "title":"BU Libraries 2 Go",
+    "description":"description of BU Libraries new pickup service",
+    "icon":{"code":"keyboard_tab","group":"hardware"},
+    "template":libraries_to_go
   }
 ];
 export const ls_help_menu_items = [
