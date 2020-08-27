@@ -14,13 +14,12 @@ if(INCLUDE_GOOGLE_ANALYTICS){
 
 // import npm packages
 import 'primo-explore-hathitrust-availability';
-// import 'primo-explore-help-menu';
+import 'primo-explore-help-menu';
 import 'primo-explore-outbound-links';
 import 'primo-explore-unpaywall';
 
 // import other custom modules
 import './no-results.module';
-import './help-menu.module';
 
 // import additional content
 import {ls_help_menu_items, ls_help_menu_updates} from "../../../helpMenuContents/helpMenuContents";
