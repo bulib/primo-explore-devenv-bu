@@ -1,7 +1,6 @@
 /* - grab the html files as js variables - */
 
 // updates 
-import {course_reserves} from './courseReserves.html';
 import {hathitrust_avaliability} from './hathitrust.html';
 import {libraries_to_go} from './librariesToGo.html';
 
@@ -21,13 +20,6 @@ import {whats_in_search} from './whatsInSearch.html';
 
 // form into a list
 export const ls_help_menu_updates = [
-  {
-    "id":"course-reserves",
-    "title":"Course Reserves/Materials",
-    "description":"finding course reserves and materials",
-    "icon":{"code":"move_to_inbox","group":"content"},
-    "template":course_reserves
-  },
   {
     "id":"hathitrust-availability",
     "title":"HathiTrust Online Availability",
