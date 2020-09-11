@@ -11,6 +11,8 @@
   "scripts": {
     "postinstall": "cp node_modules/primo-explore-help-menu/dist/help-menu.css css/",
     "start": "gulp run --view=BU --browserify",
-    "build": "gulp create-package --view=BU --browserify"
+    "start:view": "gulp run --browserify --view ",
+    "build": "gulp create-package --view=BU --browserify",
+    "build:view": "gulp create-package --browserify --view "
   }
 }

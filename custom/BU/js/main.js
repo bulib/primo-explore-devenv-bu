@@ -124,7 +124,7 @@ angular.module('viewCustom', module_dependencies)
 
   // configure unpaywallConfig || primoExploreUnpaywallStudioConfig
   .constant('unpaywallConfig', {
-    "email":"aidans@bu.edu",
+    "email":"libwebsv@bu.edu",
     "logToConsole":!ENV_PRODUCTION,
     "publishEvents":ENV_PRODUCTION,
     "overrideOACheck":false
