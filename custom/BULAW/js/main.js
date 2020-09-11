@@ -32,8 +32,12 @@ angular.module('viewCustom', ['angularLoad', 'hathiTrustAvailability'])
 
   .component('prmSearchResultAvailabilityLineAfter', {
     template: `
-      <hathi-trust-availability ignore-copyright="true" hide-if-journal="true"
-        msg="Full Text Available at HathiTrust - Log in with BU Login at HathiTrust"></hathi-trust-availability>
+      <hathi-trust-availability 
+        entity-id="https://shib.bu.edu/idp/shibboleth"
+        hide-if-journal="true"
+        ignore-copyright="true"
+        msg="Full Text Available at HathiTrust - Log in with BU Login at HathiTrust"
+      ></hathi-trust-availability>
     `
   })
 

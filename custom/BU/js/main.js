@@ -22,7 +22,7 @@ import 'primo-explore-unpaywall';
 import './no-results.module';
 
 // import additional content
-import {ls_help_menu_items} from "../../../helpMenuContents/helpMenuContents";
+import {ls_help_menu_items, ls_help_menu_updates} from "../../../helpMenuContents/helpMenuContents";
 import {ill_requests_template} from "./account-ill";
 
 // create the main primo-explore module and load in its local and npm-imported dependencies 
@@ -92,13 +92,18 @@ angular.module('viewCustom', module_dependencies)
 
   // configure helpMenuConfig || primoExploreHelpMenuStudioConfig
   .constant('helpMenuConfig', {
+    "helpMenuWidth":550,
     "logToConsole":false,
     "publishEvents":true,
-    "enableNotificationIndicator":false,
-    "notificationIndicatorExpiration": 1000*60*60*24*7*2, // 2 weeks
-    "list_of_elements":ls_help_menu_items,
-    "helpMenuTitle":"Search Help",
-    "helpMenuWidth":550
+    
+    "enableNotificationIndicator":true,
+    "notificationIndicatorExpiration": 1000*60*60*24*7, // 1 week
+    
+    "helpMenuTitle":"Search Menu",
+    "updatesLabel":"Recently Added Features",
+    "list_of_updates":ls_help_menu_updates,
+    "entriesLabel":"Search Help",
+    "list_of_elements":ls_help_menu_items
   })
 
   // configure outboundLinksConfig
@@ -108,8 +113,12 @@ angular.module('viewCustom', module_dependencies)
   .component('prmSearchResultAvailabilityLineAfter', {
     template: `
       <bulib-unpaywall></bulib-unpaywall>
-      <hathi-trust-availability ignore-copyright="true" hide-if-journal="true"
-        msg="Full Text Available at HathiTrust - Log in with BU Login at HathiTrust"></hathi-trust-availability>
+      <hathi-trust-availability 
+        entity-id="https://shib.bu.edu/idp/shibboleth"
+        hide-if-journal="true"
+        ignore-copyright="true"
+        msg="Full Text Available at HathiTrust - Log in with BU Login at HathiTrust"
+      ></hathi-trust-availability>
     `
   })
 
